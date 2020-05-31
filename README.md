@@ -7,7 +7,7 @@ ALFA, an acronym for Automated Log File Analyzer, is a web application that scan
 ### Project Management Tool
 ### Team Members
 ##### _Pako Diale_
-[Profile](pkdiale671.github.io)  
+[Profile](https://pkdiale671.github.io/)  
 [Linkedin](https://www.linkedin.com/in/pako-diale-53b27a1a9/)  
 (profile description goes here)
 
