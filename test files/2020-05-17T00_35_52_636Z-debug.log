@@ -1,0 +1,46 @@
+0 info it worked if it ends with ok
+1 verbose cli [
+1 verbose cli   'C:\\Program Files\\nodejs\\node.exe',
+1 verbose cli   'C:\\Program Files\\nodejs\\node_modules\\npm\\bin\\npm-cli.js',
+1 verbose cli   'install',
+1 verbose cli   '--ignore-scripts',
+1 verbose cli   '@types/electron-packager@ts3.8',
+1 verbose cli   '@types/async@ts3.8',
+1 verbose cli   '--save-dev',
+1 verbose cli   '--user-agent=typesInstaller/3.8.3'
+1 verbose cli ]
+2 info using npm@6.13.4
+3 info using node@v12.16.0
+4 verbose npm-session b3a66f0dc4926b25
+5 silly install loadCurrentTree
+6 silly install readLocalPackageData
+7 silly fetchPackageMetaData error for @types/electron-packager@ts3.8 request to https://registry.npmjs.org/@types%2felectron-packager failed, reason: getaddrinfo ENOTFOUND registry.npmjs.org
+8 warn registry Using stale data from https://registry.npmjs.org/ because the host is inaccessible -- are you offline?
+9 warn registry Using stale data from https://registry.npmjs.org/ due to a request error during revalidation.
+10 http fetch GET 200 https://registry.npmjs.org/@types%2fasync 83ms (from cache)
+11 silly pacote tag manifest for @types/async@ts3.8 fetched in 90ms
+12 timing stage:rollbackFailedOptional Completed in 1ms
+13 timing stage:runTopLevelLifecycles Completed in 260ms
+14 verbose type system
+15 verbose stack FetchError: request to https://registry.npmjs.org/@types%2felectron-packager failed, reason: getaddrinfo ENOTFOUND registry.npmjs.org
+15 verbose stack     at ClientRequest.<anonymous> (C:\Program Files\nodejs\node_modules\npm\node_modules\node-fetch-npm\src\index.js:68:14)
+15 verbose stack     at ClientRequest.emit (events.js:321:20)
+15 verbose stack     at TLSSocket.socketErrorListener (_http_client.js:426:9)
+15 verbose stack     at TLSSocket.emit (events.js:321:20)
+15 verbose stack     at emitErrorNT (internal/streams/destroy.js:92:8)
+15 verbose stack     at emitErrorAndCloseNT (internal/streams/destroy.js:60:3)
+15 verbose stack     at processTicksAndRejections (internal/process/task_queues.js:84:21)
+16 verbose cwd C:\Users\Shili Jabulani\AppData\Local\Microsoft\TypeScript\3.8
+17 verbose Windows_NT 10.0.18362
+18 verbose argv "C:\\Program Files\\nodejs\\node.exe" "C:\\Program Files\\nodejs\\node_modules\\npm\\bin\\npm-cli.js" "install" "--ignore-scripts" "@types/electron-packager@ts3.8" "@types/async@ts3.8" "--save-dev" "--user-agent=typesInstaller/3.8.3"
+19 verbose node v12.16.0
+20 verbose npm  v6.13.4
+21 error code ENOTFOUND
+22 error errno ENOTFOUND
+23 error network request to https://registry.npmjs.org/@types%2felectron-packager failed, reason: getaddrinfo ENOTFOUND registry.npmjs.org
+24 error network This is a problem related to network connectivity.
+24 error network In most cases you are behind a proxy or have bad network settings.
+24 error network
+24 error network If you are behind a proxy, please make sure that the
+24 error network 'proxy' config is set properly.  See: 'npm help config'
+25 verbose exit [ 1, true ]
