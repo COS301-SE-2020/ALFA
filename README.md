@@ -24,7 +24,7 @@ I am a final year student studying BSc Computer Science and minoring in Mathemat
 ##### _Lindo Mlambo_
 * [Github Profile](https://github.com/lindo-mlambo)  
 * [Linkedin](https://www.linkedin.com/in/lindo-mlambo-790b95101/)  
-I am a final year Bsc Computer Sciene student
+I am a final year Bsc Computer Science student
 
 ##### _Duncan Smallwood_
 * [Github Profile](github.com)  
