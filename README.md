@@ -9,7 +9,7 @@ ALFA, an acronym for Automated Log File Analyzer, is a web application that scan
 ##### _Jabulani Shili_
 * [Github Profile](https://u16220073.github.io/online-cv/)  
 * [Linkedin](https://www.linkedin.com/in/jabulani-shili-a591b4130/)  
-I am a final year BSc Information Knowledge Systems Student minoring in Software Development.
+I am a final year BSc Information Knowledge Systems Student majoring in Software Development.
 
 ##### _Pako Diale_
 * [Github Profile](https://pkdiale671.github.io/)  
