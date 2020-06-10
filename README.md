@@ -7,9 +7,9 @@ ALFA, an acronym for Automated Log File Analyzer, is a web application that scan
 ### [Project Management Tool](https://app.clickup.com/2546744/v/b/li/21408284)
 ### Team Members
 ##### _Jabulani Shili_
-* [Github Profile](github.com)  
-* [Linkedin](linkedin.com)  
-(profile description goes here)
+* [Github Profile](https://u16220073.github.io/online-cv/)  
+* [Linkedin](https://www.linkedin.com/in/jabulani-shili-a591b4130/)  
+I am a final year BSc Information Knowledge Systems Student minoring in Software Development.
 
 ##### _Pako Diale_
 * [Github Profile](https://pkdiale671.github.io/)  
