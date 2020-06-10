@@ -1,3 +1,4 @@
+//BY Pako Diale
 const mongoose = require('mongoose')
 const KBArticleSchema = mongoose.Schema({
 	link: {

@@ -9,7 +9,6 @@ const LogFileSchema = mongo.Schema({
     date:{
         type:String,
         required:true,
-        default: Date.now
     },
     content:{
         type: String,

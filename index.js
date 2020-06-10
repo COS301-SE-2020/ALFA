@@ -1,7 +1,8 @@
 var express = require('express')
-<<<<<<< HEAD
 const mongo = require('mongoose')
 const parser = require('body-parser')
+const articleRoute = require('./routes/articles')
+const logFileRoute = require('./routes/logfiles')
 require('dotenv/config')
 
 //FOR DB CONNECTION
@@ -17,12 +18,10 @@ mongo.connect(
 //MIDDLEWARE
 app = express()
 app.use(parser.json())
+app.use('/articles',articleRoute)
+app.use('/logfiles',logFileRoute)
 
-
+//listening to incoming connections
 app.listen(2221,()=>{
     console.log("Server Running on localhost:2221")
 })
-=======
-
-app = express()
->>>>>>> d56ebd0f1d630c41f5c54219f9321b6e6a3e094e
