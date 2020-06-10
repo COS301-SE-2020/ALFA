@@ -4,31 +4,31 @@ ALFA, an acronym for Automated Log File Analyzer, is a web application that scan
 
 ### Demo 1 Video
 ### SRS Document 
-### Project Management Tool
+### [Project Management Tool](https://app.clickup.com/2546744/v/b/li/21408284)
 ### Team Members
-##### _Pako Diale_
-[Profile](https://pkdiale671.github.io/)  
-[Linkedin](https://www.linkedin.com/in/pako-diale-53b27a1a9/)  
+##### _Jabulani Shili_
+* [Github Profile](github.com)  
+* [Linkedin](linkedin.com)  
 (profile description goes here)
 
-##### _Jabulani Shili_
-[Github.io profile goes here](github.com)  
-[Linkedin profile goes here](linkedin.com)  
-(profile description goes here)
+##### _Pako Diale_
+* [Github Profile](https://pkdiale671.github.io/)  
+* [Linkedin](https://www.linkedin.com/in/pako-diale-53b27a1a9/)  
+I am a final year student studying BSc Computer Science and minoring in Mathematical Statistics.
 
 ##### _Orifha Mbedzi_
-[Github.io profile goes here](github.com)  
-[Linkedin profile goes here](linkedin.com)  
+* [Github Profile](github.com)  
+* [Linkedin](linkedin.com)  
 (profile description goes here)
 
 ##### _Lindo Mlambo_
-[Github.io profile goes here](github.com)  
-[Linkedin profile goes here](linkedin.com)  
+* [Github Profile](github.com)  
+* [Linkedin](linkedin.com)  
 (profile description goes here)
 
 ##### _Duncan Smallwood_
-[Github.io profile goes here](github.com)  
-[Linkedin profile goes here](linkedin.com)  
+* [Github Profile](github.com)  
+* [Linkedin](linkedin.com)  
 (profile description goes here)
 
 
