@@ -21,7 +21,11 @@ app.use(parser.json())
 app.use('/articles',articleRoute)
 app.use('/logfiles',logFileRoute)
 
+app.get('/', (req, res)=>{
+    res.send("API IS Running")
+})
 //listening to incoming connections
-app.listen(2221,()=>{
-    console.log("Server Running on localhost:2221")
+const PORT = process.env.PORT || 2221;
+app.listen(PORT,()=>{
+    console.log(`Server Running on localhost:${PORT}`)
 })
