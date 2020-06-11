@@ -17,7 +17,7 @@ I am a final year BSc Information Knowledge Systems Student majoring in Software
 I am a final year student studying BSc Computer Science and minoring in Mathematical Statistics.
 
 ##### _Orifha Mbedzi_
-* [Github Profile](github.com)  
+* https://github.com/Mbedzi346/Profile(github.com)  
 * [Linkedin](linkedin.com)  
 I co-major in Computer Science and Data Science
 
