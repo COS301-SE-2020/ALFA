@@ -19,7 +19,7 @@ I am a final year student studying BSc Computer Science and minoring in Mathemat
 ##### _Orifha Mbedzi_
 * [Github Profile](github.com)  
 * [Linkedin](linkedin.com)  
-(profile description goes here)
+I co-major in Computer Science and Data Science
 
 ##### _Lindo Mlambo_
 * [Github Profile](https://github.com/lindo-mlambo)  
