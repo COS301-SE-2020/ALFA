@@ -2,7 +2,7 @@
 
 ALFA, an acronym for Automated Log File Analyzer, is a web application that scans any given log file and uses artificial intelligence to intelligently suggest solutions to problems encountered.
 
-### [Demo 1 Video](https://drive.google.com/file/d/1cl_EgzXxKfKW1Gb1IvowvJiMREUof8Az/view?usp=sharing)
+### [Demo 1 Video](https://drive.google.com/file/d/1clEgzXxKfKW1Gb1IvowvJiMREUof8Az/view?usp=sharing)
 ### [SRS Document](https://www.overleaf.com/project/5ed21fdc684e9a0001439e7a)
 ### [Project Management Tool](https://app.clickup.com/2546744/v/b/li/21408284)
 ### Team Members
@@ -27,9 +27,9 @@ I co-major in Computer Science and Data Science
 I am a final year Bsc Computer Science student
 
 ##### _Duncan Smallwood_
-* [Github Profile](github.com)  
-* [Linkedin](linkedin.com)  
-(profile description goes here)
+* [Github Profile](https://github.com/DuncanSmallwood)  
+* [Linkedin](https://www.linkedin.com/in/duncan-smallwood-020815187/)  
+I am in my final year for BSc Computer Science
 
 
 
