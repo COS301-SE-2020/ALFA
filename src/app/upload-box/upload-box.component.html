@@ -1,0 +1,47 @@
+<section class="row" id="form-section">
+    <div class="col-sm-10 col-md-8">
+        <form id="analyze-form" (submit)="analyzeFiles($event)"></form>
+        <div class="card my-5 bg-white" style="border-radius: 8px;">
+            <div class="card-body">
+                <div id="logfile-inp-container">
+                    <input type="file" id="logfile-inp" form="analyze-form" (change)="handleUploadFiles($event.target.files)" multiple required>
+                    <p class="text-center py-3">
+                        <span class="fa fa-file-code-o m-3"></span>
+                        <strong>Drag log file here to analyze</strong><br>
+                        Or <a href="javascript: void()">choose your file</a>
+                    </p>
+                    <div class="loaders-container" *ngIf="filesReady == false">
+                        <app-loader></app-loader>
+                    </div>
+                </div>
+                <div id="file-list" *ngIf="filesToUpload.length > 0" class="mt-3 p-1 small text-muted">
+                    Selected file(s): 
+                    <ul class="list-inline m-0 mx-1">
+                        <li *ngFor="let file of filesToUpload" class="list-inline-item btn-link">{{file.filename}}</li>
+                    </ul>
+                </div>
+            </div>
+            <button type="submit" class="btn btn-lg m-3 mt-0" form="analyze-form" id="analyze-btn" [attr.data-toggle]="filesToUpload.length > 0? 'modal':''" data-target="#analysis-board-modal">
+                Analyze File(s)
+            </button>
+        </div>
+    </div>
+    <div class="modal fade in" id="analysis-board-modal">
+        <div class="modal-dialog modal-dialog-centered modal-xl">
+            <div class="modal-content">
+                <div class="modal-body p-0">
+                    <div class="col-sm-12 text-center" style="border-radius: 8px; overflow: hidden; height: 250px;" *ngIf="isAnalyzing == true">
+                        <div class="loaders-container flex-column">
+                            <h4 class="mb-5"><strong>Analyzing Logfiles</strong></h4>
+                            <app-loader></app-loader>
+                            <p class="small text-muted mt-5">*This may take a while depending on the size and number of your logfiles</p>
+                        </div>
+                    </div>
+                    <div class="col-sm-12" *ngIf="isAnalyzing == false">
+                        <app-analysis-board></app-analysis-board>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
