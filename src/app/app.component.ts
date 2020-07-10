@@ -12,8 +12,8 @@ export class AppComponent {
   title = 'alfa-ui';
 
   constructor(route: ActivatedRoute) {
-    const url: Observable<string> = route.url.pipe( map(segments => segments.join('')) ) ;
-    console.log(url);
+    // const url: Observable<string> = route.url.pipe( map(segments => segments.join('')) ) ;
+    // console.log(url);
   }
   ngOnInit(): void {
     //   console.log(this.route.snapshot.data['path']);
