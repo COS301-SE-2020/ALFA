@@ -85,6 +85,7 @@
 }
 .how-steps:nth-child(even){
     border: 1px solid rgba(120, 81, 169, .22);
+    background-color: #fff;
 }
 .how-steps img{
     border: 1px solid rgba(120, 81, 169, .12);

@@ -16,6 +16,11 @@
     border-radius: 0px 18px 18px 0px;
     color: #fff;
     transition: all .25s ease-out;
+    overflow: hidden;
+    /* white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 82%; */
 }
 
 #analysis-board ul li a:hover, #analysis-board ul li a.active{

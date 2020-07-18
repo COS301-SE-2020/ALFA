@@ -1,27 +1,24 @@
 <section class="row" id="analysis-board">
     <div class="col-sm-12 col-md-4 primary-bg-color text-white pr-0 p-3">
-        <h4>File</h4>
+        <h4>Files</h4>
         <ul class="nav nav-pills">
-            <li class="nav-item my-1"><a href="#file1" data-toggle="pill" class="nav-link active">File one</a></li>
-            <li class="nav-item my-1"><a href="#file2" data-toggle="pill" class="nav-link">File two</a></li>
-            <li class="nav-item my-1"><a href="#file3" data-toggle="pill" class="nav-link">File three</a></li>
+            <li class="nav-item my-1" *ngFor="let article of articles">
+                <a [href]="('#') + (article.filename)" data-toggle="pill" class="nav-link" [class]="(activeLink === article.filename)? 'active':''">
+                    {{article.filename.substr(0, article.filename.length - 2)}}
+                </a>
+            </li>
         </ul>
     </div>
     <div class="col-sm-12 col-md-8 p-3 pl-1">
         <h4>Results</h4>
         <div class="tab-content">
-            <div class="tab-pane container active" id="file1">
-                <strong>File One Stuff</strong><br>
-                Lorem ipsum dolor, sit amet consectetur adipisicing elit. Adipisci voluptate quos pariatur assumenda iure? Fugit dignissimos temporibus error velit laudantium, quae quod, ipsam libero, fugiat neque sapiente? Est, ea error!
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eius itaque aliquid aperiam sit odit explicabo blanditiis iure eaque ad distinctio, esse quasi error odio? Suscipit similique autem quasi tempore labore.
-            </div>
-            <div class="tab-pane container fade" id="file2">
-                <strong>File Two Stuff</strong><br>
-                Lorem ipsum dolor, sit amet consectetur adipisicing elit. Adipisci voluptate quos pariatur assumenda iure? Fugit dignissimos temporibus error velit laudantium, quae quod, ipsam libero, fugiat neque sapiente? Est, ea error!
-            </div>
-            <div class="tab-pane container fade" id="file3">
-                <strong>File Three Stuff</strong><br>
-                Lorem ipsum dolor, sit amet consectetur adipisicing elit. Adipisci voluptate quos pariatur assumenda iure? Fugit dignissimos temporibus error velit laudantium, quae quod, ipsam libero, fugiat neque sapiente? Est, ea error!
+            <div class="tab-pane" [class]="(activeLink === article.filename)? 'active':''" [id]="article.filename" *ngFor="let article of articles">
+                <Strong>Data For {{article.filename.substr(0, article.filename.length - 2)}}</Strong>
+                <ul class="list-unstyled">
+                    <li *ngFor="let data of article.data" class="px-3">
+                        <app-article [article]="data"></app-article>
+                    </li>
+                </ul>
             </div>
         </div>
     </div>

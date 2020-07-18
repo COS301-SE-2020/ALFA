@@ -12,6 +12,7 @@ export class ArticleServiceService {
   constructor(private http: HttpClient) { }
 
   getArticles(): Observable<Article[]>{
+    // return this.http.get<Article[]>( 'http://localhost:8090/articles' )
     return this.http.get<Article[]>( 'https://project-alfa.herokuapp.com/articles' )
         .pipe(
             tap( () => {

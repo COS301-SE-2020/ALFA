@@ -40,7 +40,7 @@
                     </div>
                 </div>
                 <div class="col-sm-12" *ngIf="isAnalyzing == false">
-                    <app-analysis-board></app-analysis-board>
+                    <app-analysis-board *ngIf="isAnalyzing === false" [articles]="articles"></app-analysis-board>
                 </div>
             </div>
         </div>

@@ -11,6 +11,15 @@ export class UploadBoxComponent implements OnInit {
     filesToUpload: Logfile[] = [];
     filesReady: boolean = true;
     isAnalyzing: boolean = false;
+    articles: any[] = [];
+    /**
+     * articles: [
+     *      article: {
+     *          file: string,
+     *          data: []
+     *      }
+     * ]
+     */
 
   constructor(private uploadService: UploadServiceService) { }
 
@@ -23,11 +32,12 @@ export class UploadBoxComponent implements OnInit {
      */
   handleUploadFiles(files): void{
     this.filesReady = false;
+    this.articles = Array(files.length);
 
     // read files
     let reader: any;
     let fileData: any;
-    [... files].forEach( file => {
+    [... files].forEach( (file, index) => {
         // reader.readAsArrayBuffer(file);
         reader = new FileReader();
         reader.readAsDataURL(file);
@@ -35,14 +45,15 @@ export class UploadBoxComponent implements OnInit {
         reader.onload = evt => {
             fileData = {
                 filename: file.name,
-                date: Date.now(),
-                data: evt.target.result,
+                date: "",
+                content: evt.target.result
             }
             this.filesToUpload.push( fileData );
+            // this.articles[index].filename = (file.name.replace(' ', '-') + '-' + index);
         }
     });
 
-    console.log(this.filesToUpload);
+    // console.log(this.filesToUpload);
     this.filesReady = true;
   }
 
@@ -51,12 +62,21 @@ export class UploadBoxComponent implements OnInit {
    * uploaded file(s) are then analyzed from the server side, and results returned to this function
    * @param evt form submit event
    */
-  analyzeFiles(evt): void{
-    evt.preventDefault();
-    this.isAnalyzing = true;
-    // upload file(s)
-    // this.uploadService.uploadLogFile(this.filesToUpload[0]);
-    // this.property = this.someservice.operation(payload).subscribe( data => { this.property = data 1;})
+analyzeFiles(evt): void{
+        evt.preventDefault();
+        this.isAnalyzing = true;
+        
+        this.filesToUpload.forEach( (file, index) => {
+            this.uploadService.uploadLogFile(file).subscribe( data => {
+                this.articles[index] = {
+                    "filename" : (file.filename.replace('.','-') + '-' + index),
+                    "data": data
+                }
+                console.log(this.articles);
+                // console.log("Articles: " + JSON.stringify(this.articles));
+                if(index == this.filesToUpload.length - 1) this.isAnalyzing = false;
+            });
+        })
   }
 
 }
