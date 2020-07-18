@@ -12,7 +12,8 @@ const LogFileSchema = mongo.Schema({
     },
     content:{
         type: String,
-        required: true
+        required: true,
+        unique: true,
     }
 })
 module.exports = mongo.model("log_files", LogFileSchema)
