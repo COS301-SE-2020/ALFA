@@ -3,7 +3,7 @@
         <h4>Files</h4>
         <ul class="nav nav-pills">
             <li class="nav-item my-1" *ngFor="let article of articles">
-                <a [href]="('#') + (article.filename)" data-toggle="pill" class="nav-link" [class]="(activeLink === article.filename)? 'active':''">
+                <a [href]="('#') + (article.filename)" data-toggle="pill" class="nav-link py-2" [class]="(activeLink === article.filename)? 'active':''">
                     {{article.filename.substr(0, article.filename.length - 2)}}
                 </a>
             </li>

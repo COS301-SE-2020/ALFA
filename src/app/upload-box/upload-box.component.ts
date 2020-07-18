@@ -10,7 +10,7 @@ import { Logfile } from '../logfile';
 export class UploadBoxComponent implements OnInit {
     filesToUpload: Logfile[] = [];
     filesReady: boolean = true;
-    isAnalyzing: boolean = false;
+    isAnalyzing: boolean = true;
     articles: any[] = [];
     /**
      * articles: [
@@ -32,6 +32,7 @@ export class UploadBoxComponent implements OnInit {
      */
   handleUploadFiles(files): void{
     this.filesReady = false;
+    this.isAnalyzing = true;
     this.articles = Array(files.length);
 
     // read files
@@ -57,12 +58,16 @@ export class UploadBoxComponent implements OnInit {
     this.filesReady = true;
   }
 
+  resetForm(): void{
+      this.filesToUpload = [];
+  }
+
   /**
    * @brief this function uploads file(s) by sending a POST request to the API for analysis
    * uploaded file(s) are then analyzed from the server side, and results returned to this function
    * @param evt form submit event
    */
-analyzeFiles(evt): void{
+    analyzeFiles(evt): void{
         evt.preventDefault();
         this.isAnalyzing = true;
         
@@ -72,7 +77,7 @@ analyzeFiles(evt): void{
                     "filename" : (file.filename.replace('.','-') + '-' + index),
                     "data": data
                 }
-                console.log(this.articles);
+                // console.log(this.articles);
                 // console.log("Articles: " + JSON.stringify(this.articles));
                 if(index == this.filesToUpload.length - 1) this.isAnalyzing = false;
             });

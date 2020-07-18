@@ -1,6 +1,6 @@
 <section class="row" id="form-section">
     <div class="col-sm-12 col-md-10 col-lg-8">
-        <form id="analyze-form" (submit)="analyzeFiles($event)"></form>
+        <form id="analyze-form" (submit)="analyzeFiles($event)" (reset)="resetForm()"></form>
         <div class="card my-5 bg-white" style="border-radius: 8px;">
             <div class="card-body">
                 <div id="logfile-inp-container">
@@ -21,9 +21,14 @@
                     </ul>
                 </div>
             </div>
-            <button type="submit" class="btn btn-lg m-3 mt-0 py-2" form="analyze-form" id="analyze-btn" [attr.data-toggle]="filesToUpload.length > 0? 'modal':''" data-target="#analysis-board-modal">
-                Analyze File(s)
-            </button>
+           <div class="p-0 m-0" id="form-btn-group">
+                <button type="reset" class="btn btn-lg m-3 mt-0 py-2" form="analyze-form" id="reset-form-btn">
+                    Clear Form
+                </button>
+                <button type="submit" class="btn btn-lg m-3 mt-0 py-2" form="analyze-form" id="analyze-btn" [attr.data-toggle]="filesToUpload.length > 0? 'modal':''" data-target="#analysis-board-modal">
+                    Analyze Files
+                </button>
+           </div>
         </div>
     </div>
 </section>
