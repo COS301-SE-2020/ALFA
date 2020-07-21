@@ -1,7 +1,9 @@
 /* You can add global styles to this file, and also import other style files */
 body{
     overflow-x: hidden !important;
-    background-color: #eee;
+    /* background-color: #eee; */
+    background-color: #ecf3ff;
+    /* background-color: #fff; */
 }
 .primary-bg-color{
     background-color: #7851a9

@@ -53,6 +53,7 @@
 #about{
     position: relative;
     top: calc(66px + 45vh);
+    background: none;
 }
 
 #about #logo{
@@ -111,7 +112,13 @@
     transition: all .15s ease-out;
     color: #7851A9;
 }
-.call-to-act2 a.btn:nth-child(even){
+.call-to-act2>a.btn:nth-child(1){
+    border: 1px solid #ccc;
+}
+.call-to-act2>a.btn:nth-child(1):hover{
+    background-color: #fff;
+}
+.call-to-act2 a.btn:nth-child(2){
     border-color: #7851A9;
     background-color: #7851A9;
     color: #fff;
