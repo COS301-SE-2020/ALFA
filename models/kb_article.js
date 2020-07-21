@@ -3,7 +3,8 @@ const mongoose = require('mongoose')
 const KBArticleSchema = mongoose.Schema({
 	link: {
 		type: String,
-		required: true
+        required: true,
+        unique: true,
 	}
 })
 
