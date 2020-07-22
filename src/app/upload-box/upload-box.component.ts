@@ -86,4 +86,16 @@ export class UploadBoxComponent implements OnInit {
         })
   }
 
+  articlesReady(): boolean{
+      if((this.articles.length === this.filesToUpload.length)){
+          for(let i = 0; i < this.articles.length; i++){
+            if( !( this.articles[i] && this.articles[i].filename && this.articles[i].data ) ){
+                return false;
+            }
+          }
+        return true;
+      }
+      return false;
+  }
+
 }
