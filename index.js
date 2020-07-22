@@ -23,8 +23,7 @@ mongo.connect(
 
 // allow requests from different origin
 app.use(function(req, res, next){
-    // res.header("Access-Control-Allow-Origin", "http://localhost:4200"); // for localhost
-    res.header("Access-Control-Allow-Origin", "https://alfa-automated-log-analyzer.web.app/"); // for production/deployed
+    res.header("Access-Control-Allow-Origin", "*");
     res.header("Access-Control-Allow-Headers", "Origin, Content-Type");
     res.header("Access-Control-Allow-Methods", "POST, GET, PUT, DELETE");
     next();
