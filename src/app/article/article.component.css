@@ -1,4 +1,39 @@
 .article{
     border: 1px solid #ccc;
     border-radius: 8px;
+    background: #fff;
+    transition: all .2s ease-out;
+}
+.article:hover{
+    box-shadow: 0px 1px 2px 0px rgba(0, 0, 0, .3);
+    box-shadow: 0px 1px 3px 1px rgba(0, 0, 0, .15);
+}
+.article-origin{
+    transform: translateY(-10px);
+    opacity: .5;
+}
+.article-description{
+    /* height: 3rem; */
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    font-weight: bold;
+}
+.btn-group{
+    border: 1px solid #ccc;
+    border-radius: 30px;
+    display: inline-block;
+}
+.article-open:hover{
+    box-shadow: 0px 1px 2px 0px rgba(0, 0, 0, .3);
+    box-shadow: 0px 1px 3px 1px rgba(0, 0, 0, .15);
+}
+.article-feedback a, .article-open a{
+    outline: none !important;
+    box-shadow: none !important;
+    transition: all .2s ease-out;
+}
+.article-feedback a:hover, .article-open a i:hover{
+    transform: scale(1.1);
 }

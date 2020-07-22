@@ -1,7 +1,28 @@
 <div class="my-2 p-3 pb-0 article">
     <div class="article-header">
-        <!-- <a [href]="article.link">ALFA Article Header</a> -->
-        <a [href]="article.link">{{article.link}}</a>
+        <div class="small text-muted article-origin">
+            {{ article.link.split('/')[2] }}
+        </div>
+        <a [href]="article.link" class="text-dark article-description" [title]="article.description" target="_blank">{{article.description}}</a>
     </div>
-    <!-- <p class="text-muted small mb-0 article-description">{{article.link}}</p> -->
+    <div class="row">
+        <div class="col-12 m-0 mt-3">
+            <div class="btn-group btn-group-sm article-feedback">
+                <a  href="javascript: void(0)"  class="btn btn-default text-success">
+                    <i class="fa fa-arrow-up"></i> Yes
+                </a>
+                <span class="btn btn-default">
+                    helpful?
+                </span>
+                <a href="javascript: void(0)" class="btn btn-default text-danger">
+                    <i class="fa fa-arrow-down"></i> No
+                </a>
+            </div>
+            <div class="btn-group btn-group-sm article-open ml-3">
+                <a [href]="article.link" class="btn btn-default text-muted" target="_blank">
+                    <i class="fa fa-eye"></i> View article
+                </a>
+            </div>
+        </div>
+    </div>
 </div>
