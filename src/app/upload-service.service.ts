@@ -26,8 +26,8 @@ export class UploadServiceService {
    * @returns returns an array of Article objects that the api identifies as helpful
    */
   uploadLogFile(logfile: Logfile): Observable<Article[]>{
-    //   return this.http.post<Article[]>( 'http://localhost:8090/logfiles', logfile/* , this.httpOptions */).pipe(
-      return this.http.post<Article[]>( 'https://project-alfa.herokuapp.com/logfiles', logfile/* , this.httpOptions */).pipe(
+      return this.http.post<Article[]>( 'http://localhost:8090/logfiles', logfile/* , this.httpOptions */).pipe(
+    //   return this.http.post<Article[]>( 'https://project-alfa.herokuapp.com/logfiles', logfile/* , this.httpOptions */).pipe(
           tap( data => {
               console.log(data);
               // TODO: show msg about upload success

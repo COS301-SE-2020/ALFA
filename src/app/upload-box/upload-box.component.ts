@@ -41,7 +41,7 @@ export class UploadBoxComponent implements OnInit {
     [... files].forEach( (file, index) => {
         // reader.readAsArrayBuffer(file);
         reader = new FileReader();
-        reader.readAsDataURL(file);
+        reader.readAsText(file);
 
         reader.onload = evt => {
             fileData = {
