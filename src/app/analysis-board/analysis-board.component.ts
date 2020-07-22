@@ -8,13 +8,11 @@ import { Article } from '../article';
 })
 export class AnalysisBoardComponent implements OnInit {
     @Input() articles: any[];
-    activeLink: string;
 
   constructor() { }
 
   ngOnInit(): void {
     //   console.log(this.articles);
-    this.activeLink = this.articles[0].filename;
   }
 
 }

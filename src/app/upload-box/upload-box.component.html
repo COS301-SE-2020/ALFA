@@ -44,8 +44,8 @@
                         <p class="small text-muted mt-5">*This may take a while depending on the size and number of your logfiles</p>
                     </div>
                 </div>
-                <div class="col-sm-12" *ngIf="isAnalyzing == false">
-                    <app-analysis-board *ngIf="isAnalyzing === false" [articles]="articles"></app-analysis-board>
+                <div class="col-sm-12" *ngIf="isAnalyzing === false">
+                    <app-analysis-board *ngIf="isAnalyzing === false && articles[articles.length - 1].filename" [articles]="articles"></app-analysis-board>
                 </div>
             </div>
         </div>
