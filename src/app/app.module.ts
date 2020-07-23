@@ -11,6 +11,7 @@ import { ArticleComponent } from './article/article.component';
 import { LoaderComponent } from './loader/loader.component';
 import { AnalysisBoardComponent } from './analysis-board/analysis-board.component';
 import { AboutComponent } from './about/about.component';
+import { UpdateKnowledgeComponent } from './update-knowledge/update-knowledge.component';
 
 @NgModule({
   declarations: [
@@ -21,7 +22,8 @@ import { AboutComponent } from './about/about.component';
     ArticleComponent,
     LoaderComponent,
     AnalysisBoardComponent,
-    AboutComponent
+    AboutComponent,
+    UpdateKnowledgeComponent
   ],
   imports: [
     BrowserModule,
