@@ -6,11 +6,11 @@
             <form [formGroup]="form" (ngSubmit)="onSubmit()">
                 <div class="form-group">
                     <label for="link"><strong>Link:</strong></label>
-                    <input class="form-control" type="text" formControlName="link" style="min-height: 40px;">
+                    <input class="form-control" type="text" formControlName="link" style="min-height: 40px;" required>
                 </div>
                 <div class="form-group">
                     <label for="description"><strong>Description:</strong></label>
-                    <textarea class="form-control" formControlName="description" rows="3"></textarea>
+                    <textarea class="form-control" formControlName="description" rows="3" required></textarea>
                 </div>
                 <button type="submit" class="btn btn-block btn-default mt-5" id="update-articles-btn">
                     Submit <i class="fa fa-spinner fa-spin" *ngIf="loading"></i>
