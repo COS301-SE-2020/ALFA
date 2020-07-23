@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-
+import { FormControl, FormGroup } from '@angular/forms';
+import { ArticleServiceService } from '../article-service.service';
 @Component({
   selector: 'app-update-knowledge',
   templateUrl: './update-knowledge.component.html',
@@ -7,9 +8,18 @@ import { Component, OnInit } from '@angular/core';
 })
 export class UpdateKnowledgeComponent implements OnInit {
 
-  constructor() { }
+  constructor(private articleService: ArticleServiceService) { }
+  form = new FormGroup({
+    description: new FormControl(''),
+    link: new FormControl('')
+  });
 
   ngOnInit(): void {
+  }
+  onSubmit(): void {
+    this.articleService.postArticles(this.form.value.link, this.form.value.description).subscribe(
+      data => console.log('Done')
+    );
   }
 
 }

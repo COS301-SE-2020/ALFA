@@ -11,30 +11,33 @@ export class ArticleServiceService {
 
   constructor(private http: HttpClient) { }
 
-  getArticles(): Observable<Article[]>{
+  getArticles(): Observable<Article[]> {
     // return this.http.get<Article[]>( 'http://localhost:8090/articles' )
-    return this.http.get<Article[]>( 'https://project-alfa.herokuapp.com/articles' )
-        .pipe(
-            tap( () => {
-                console.log("Fetched articles");
-            }),
-            catchError( this.handleError<Article[]>("get articles", []) )
-        );
+    return this.http.get<Article[]>('https://project-alfa.herokuapp.com/articles')
+      .pipe(
+        tap(() => {
+          console.log("Fetched articles");
+        }),
+        catchError(this.handleError<Article[]>("get articles", []))
+      );
   }
-
+  // tslint:disable-next-line: typedef
+  postArticles(lnk, descr): Observable<any> {
+    return this.http.post('https://project-alfa.herokuapp.com/articles', { link: lnk, description: descr });
+  }
   /**
    * @brief this function handles errors encountered during Http operations
    * @param operation the opeeration that failed
    * @param result optional value, returned as the observable result
    */
-  private handleError<T>(operation = 'operation', result?: T){
+  private handleError<T>(operation = 'operation', result?: T) {
     return (err: any): Observable<T> => {
-        console.log(err);
+      console.log(err);
 
-        // TODO: show msg error to user
-        // `${operation} failed: $(error.message}`)
+      // TODO: show msg error to user
+      // `${operation} failed: $(error.message}`)
 
-        return of(result as T);
+      return of(result as T);
     };
-}
+  }
 }

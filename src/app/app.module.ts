@@ -12,6 +12,7 @@ import { LoaderComponent } from './loader/loader.component';
 import { AnalysisBoardComponent } from './analysis-board/analysis-board.component';
 import { AboutComponent } from './about/about.component';
 import { UpdateKnowledgeComponent } from './update-knowledge/update-knowledge.component';
+import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -29,6 +30,8 @@ import { UpdateKnowledgeComponent } from './update-knowledge/update-knowledge.co
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
+    FormsModule,
+    ReactiveFormsModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
