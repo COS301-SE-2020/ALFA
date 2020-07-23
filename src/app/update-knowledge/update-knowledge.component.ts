@@ -13,12 +13,13 @@ export class UpdateKnowledgeComponent implements OnInit {
     description: new FormControl(''),
     link: new FormControl('')
   });
-
+  loading = false;
   ngOnInit(): void {
   }
   onSubmit(): void {
+    this.loading = true;
     this.articleService.postArticles(this.form.value.link, this.form.value.description).subscribe(
-      data => console.log('Done')
+      data => { console.log('Done'); this.loading = false; }
     );
   }
 
