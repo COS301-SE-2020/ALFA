@@ -9,7 +9,7 @@ import { Observable } from 'rxjs';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'alfa-ui';
+  title = 'ALFA: Automated Log File Analyzer';
 
   constructor(route: ActivatedRoute) {
     // const url: Observable<string> = route.url.pipe( map(segments => segments.join('')) ) ;

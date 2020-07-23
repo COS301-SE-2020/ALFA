@@ -1,6 +1,7 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { UploadBoxComponent } from './upload-box.component';
+import { HttpClientModule } from '@angular/common/http';
 
 describe('UploadBoxComponent', () => {
   let component: UploadBoxComponent;
@@ -8,9 +9,11 @@ describe('UploadBoxComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ UploadBoxComponent ]
+      declarations: [UploadBoxComponent],
+      imports: [HttpClientModule]
+
     })
-    .compileComponents();
+      .compileComponents();
   }));
 
   beforeEach(() => {
