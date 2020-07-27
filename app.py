@@ -20,10 +20,8 @@ app = Flask(__name__)
 def predict():
     # get data
     data = request.get_json(force=True)
-    #print("Original: ", data)
     log_entry = data['entry']
-    #print("Value: ", log_entry)
-
+   
     # convert data to 2d matrix
     corpus = []
     log_entry = re.sub(r"\[[(\w+\d+\s+:\.)]+|\]|/(\w+/)+|(http(://(\w+\.)+))+|(https(://(\w+\.)+))+|(\([\w+\.|\w+,|\w+\)|\w+\\|\.]+)|line(\s+\d+)|referer(:\w+)+|[^a-zA-Z\s+]|\d+|\w+(\-|_|\w+)*\.php|AH|referer|COS|za", " ", log_entry)
@@ -31,37 +29,33 @@ def predict():
     ps = PorterStemmer()
     log_entry = [ps.stem(word) for word in log_entry]
     log_entry = ' '.join(log_entry)
-    #print("Corpus what what: ", log_entry)
 
     corpus.append(log_entry)
-    #print("Corpus what what:", corpus)
-    #countVectorizer = CountVectorizer(max_features = 1500)
-    #X = countVectorizer.fit_transform(corpus).toarray()
+  
+  	# initate Bag of Words word embedding
     X = vectorizer.transform(corpus).toarray()
-    print('Here it is: ', X)
     
-    #X = X.transpose()
-
+    # make prediction
     y_pred = model.predict(X)
     
+    # prediction corresponds to a kb index
     kb_index = y_pred[0]
-    print('prediction: ', y_pred)
-    #print("index", y_pred[0])
-    #pritn("Prediction please God: ", y_pred)
-
-    # send back to client
-    #output = {'prediction': int(y_pred[0]) }
-
-    # return data
-    #return jsonify(results=output)
+    
+    # return index value
     return int(kb_index)
 
 def fetch_data(index):
-    #db.db.kb_articles.insert_one({"name": "John"})
+	# create query object
     queryObject = {'kb_index': index}
+
+    # search query to NoSQL database
     res = db.db.kb_articles.find_one(queryObject) 
+
+    # remove id and index number as they are not needed for display
     res.pop('_id')
     res.pop('kb_index')
+
+    # return results
     return jsonify(res)
 
 # routes
