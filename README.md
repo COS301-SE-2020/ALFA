@@ -3,7 +3,9 @@
 ALFA, an acronym for Automated Log File Analyzer, is a web application that scans any given log file and uses artificial intelligence to intelligently suggest solutions to problems encountered.
 
 ### [Demo 1 Video](https://drive.google.com/file/d/1clEgzXxKfKW1Gb1IvowvJiMREUof8Az/view?usp=sharing)
-### [SRS Document](https://www.overleaf.com/project/5ed21fdc684e9a0001439e7a)
+### [Demo 2 Video](https://drive.google.com/file/d/1WJIHGYdTuHnZsDhMGKKkI6v4e8zuh1nv/view?usp=sharing)
+### [SRS Document version 1](https://www.overleaf.com/read/xrpbgbbvhhjv)
+### [SRS Document version 2](https://www.overleaf.com/project/5ed21fdc684e9a0001439e7a)
 ### [Project Management Tool](https://app.clickup.com/2546744/v/b/li/21408284)
 ### [Machine Learning repo](https://github.com/COS301-SE-2020/ALFA-ML)
 ### Team Members
