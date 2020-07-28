@@ -8,10 +8,12 @@ const KB_Article = require('../models/kb_article')
 router.post('/', async(req,res)=>{
     try {
         let data = req.body
-        // console.log("data recieved")
-        // console.log(data)
+        const maxIndexDoc = await KB_Article.findOne().sort("-kb_index");
+
         const file = new KB_Article({
-            link:data.link
+            kb_index: (maxIndexDoc.kb_index + 1),
+            description: data.description,
+            link: data.link,
         })
 
         const newFile = await file.save()
