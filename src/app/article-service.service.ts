@@ -8,12 +8,12 @@ import { Article } from './article';
   providedIn: 'root'
 })
 export class ArticleServiceService {
+    URL: string = "https://project-alfa.herokuapp.com/articles";
 
   constructor(private http: HttpClient) { }
 
   getArticles(): Observable<Article[]> {
-    // return this.http.get<Article[]>( 'http://localhost:8090/articles' )
-    return this.http.get<Article[]>('https://project-alfa.herokuapp.com/articles')
+    return this.http.get<Article[]>(this.URL)
       .pipe(
         tap(() => {
           console.log("Fetched articles");
@@ -23,7 +23,7 @@ export class ArticleServiceService {
   }
   // tslint:disable-next-line: typedef
   postArticles(lnk, descr): Observable<any> {
-    return this.http.post('https://project-alfa.herokuapp.com/articles', { link: lnk, description: descr });
+    return this.http.post(this.URL, { link: lnk, description: descr });
   }
   /**
    * @brief this function handles errors encountered during Http operations
