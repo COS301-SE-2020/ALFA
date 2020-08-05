@@ -4,7 +4,27 @@
             {{ article.link.split('/')[2] }}
         </div>
         <a [href]="article.link" class="text-dark article-description" [title]="article.description" target="_blank">{{article.description}}</a>
+
+        <div class="error-list-div small mb-0" *ngIf="location != '/articles'">
+            <button class="btn btn-link btn-sm mt-2" data-toggle="collapse" [attr.data-target]="'#error-list-for-' + article.kb_index">View Errors Mapped to this Solution</button>
+            <ul class="list-group collapse" id="error-list-for-{{article.kb_index}}">
+                <li class="list-group-item" *ngFor="let err of errors; let index = index" [title]="err">
+                    <div class="p-0 m-0 error-definition" [title]="err">
+                        {{err}}
+                    </div>
+                    <div class="btn-group btn-group-sm article-suggest ml-3" *ngIf="!article.problem_id">
+                        <a href="javascript: void(0)" class="btn btn-default text-muted" (click)="setSuggestToError(index)" data-toggle="modal" data-target="#suggestion-box-modal">
+                            <i class="fa fa-plus"></i> Suggest solution
+                        </a>
+                    </div>
+                    <!-- <div class="p-3 collapse" style="grid-column: 1/3;" id="suggestion-box-{{index}}">
+                        <app-suggestion-box [payload]="getSuggestToError()"></app-suggestion-box>
+                    </div> -->
+                </li>
+            </ul>
+        </div>
     </div>
+
     <div class="row">
         <div class="col-12 m-0 mt-3" id="bottom-section">
             <div class="btn-group btn-group-sm article-feedback">
@@ -20,7 +40,7 @@
             </div>
             <div class="btn-group btn-group-sm article-open ml-3">
                 <a [href]="article.link" class="btn btn-default text-muted" target="_blank">
-                    <i class="fa fa-eye"></i> View article
+                    <i class="fa fa-eye"></i> View solution
                 </a>
             </div>
         </div>

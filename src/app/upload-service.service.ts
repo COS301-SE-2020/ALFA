@@ -17,6 +17,7 @@ export class UploadServiceService {
         })
     }; */
     URL: string = "https://project-alfa.herokuapp.com/logfiles";
+    // URL: string = "http://127.0.0.1:6667/logfiles";
 
   constructor(private http: HttpClient, private article: ArticleServiceService) { }
 

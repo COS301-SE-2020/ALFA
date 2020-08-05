@@ -13,6 +13,8 @@ import { AnalysisBoardComponent } from './analysis-board/analysis-board.componen
 import { AboutComponent } from './about/about.component';
 import { UpdateKnowledgeComponent } from './update-knowledge/update-knowledge.component';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
+import { MessageComponent } from './message/message.component';
+import { SuggestionBoxComponent } from './suggestion-box/suggestion-box.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +26,9 @@ import { ReactiveFormsModule, FormsModule } from '@angular/forms';
     LoaderComponent,
     AnalysisBoardComponent,
     AboutComponent,
-    UpdateKnowledgeComponent
+    UpdateKnowledgeComponent,
+    MessageComponent,
+    SuggestionBoxComponent
   ],
   imports: [
     BrowserModule,

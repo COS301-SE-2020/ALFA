@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { UploadServiceService } from '../upload-service.service';
 import { Logfile } from '../logfile';
+import { MessageService } from '../message.service';
 
 @Component({
   selector: 'app-upload-box',
@@ -21,7 +22,7 @@ export class UploadBoxComponent implements OnInit {
      * ]
      */
 
-  constructor(private uploadService: UploadServiceService) { }
+  constructor(private uploadService: UploadServiceService, private messageService: MessageService) { }
 
   ngOnInit(): void {
   }
@@ -41,7 +42,7 @@ export class UploadBoxComponent implements OnInit {
     [... files].forEach( (file, index) => {
         // reader.readAsArrayBuffer(file);
         reader = new FileReader();
-        reader.readAsText(file);
+        reader.readAsDataURL(file);
 
         reader.onload = evt => {
             fileData = {
@@ -50,11 +51,10 @@ export class UploadBoxComponent implements OnInit {
                 content: evt.target.result
             }
             this.filesToUpload.push( fileData );
-            // this.articles[index].filename = (file.name.replace(' ', '-') + '-' + index);
         }
     });
 
-    // console.log(this.filesToUpload);
+    console.log(this.filesToUpload);
     this.filesReady = true;
   }
 
@@ -69,6 +69,13 @@ export class UploadBoxComponent implements OnInit {
    */
     analyzeFiles(evt): void{
         evt.preventDefault();
+
+        if(this.filesToUpload.length == 0){
+            this.messageService.setMessage("error", "Please select atleast one file for analysis");
+            this.messageService.toggleVisibility();
+            return;
+        }
+
         this.isAnalyzing = true;
         
         this.filesToUpload.forEach( (file, index) => {
@@ -79,8 +86,6 @@ export class UploadBoxComponent implements OnInit {
                     ),
                     "data": data
                 }
-                // console.log(this.articles);
-                // console.log("Articles: " + JSON.stringify(this.articles));
                 if(index == this.filesToUpload.length - 1) this.isAnalyzing = false;
             });
         })

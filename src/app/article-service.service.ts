@@ -9,6 +9,7 @@ import { Article } from './article';
 })
 export class ArticleServiceService {
     URL: string = "https://project-alfa.herokuapp.com/articles";
+    suggestionFormPayload: any = null;
 
   constructor(private http: HttpClient) { }
 
@@ -39,5 +40,17 @@ export class ArticleServiceService {
 
       return of(result as T);
     };
+  }
+
+  /**
+   * Handle the suggestion form
+   */
+  setSuggestionFormData(payload: any): void {
+    // console.log(JSON.stringify(payload));
+    this.suggestionFormPayload = payload;
+  }
+
+  getSuggestionFormData(): any{
+      return this.suggestionFormPayload;
   }
 }

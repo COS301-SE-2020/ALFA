@@ -13,27 +13,61 @@
     opacity: .5;
 }
 .article-description{
-    /* height: 3rem; */
     overflow: hidden;
     display: -webkit-box;
     -webkit-line-clamp: 2;
     -webkit-box-orient: vertical;
     font-weight: bold;
 }
+.list-group{
+    border: 1px solid #ecf3ff;
+    background-color: #ecf3ff;
+}
+.list-group-item{
+    border: none;
+    background: none;
+    margin: 0px;
+    padding: 5px 15px;
+    display: grid;
+    grid-template-columns: 8.7fr 3.3fr;
+}
+.list-group-item:nth-child(odd){
+    background-color: #fff;
+}
+.error-definition{
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+}
+.article-suggest{
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+    justify-content: center;
+}
+.article-suggest a.btn{
+    max-height: 35px;
+}
+
 .btn-group{
     border: 1px solid #ccc;
     border-radius: 30px;
     display: inline-block;
 }
-.article-open:hover{
-    box-shadow: 0px 1px 2px 0px rgba(0, 0, 0, .3);
-    box-shadow: 0px 1px 3px 1px rgba(0, 0, 0, .15);
-}
-.article-feedback a, .article-open a{
+.article-suggest a, .article-feedback a, .article-open a{
     outline: none !important;
     box-shadow: none !important;
     transition: all .2s ease-out;
 }
-.article-feedback a:hover, .article-open a i:hover{
+.article-suggest:hover, .article-open:hover{
+    box-shadow: 0px 1px 2px 0px rgba(0, 0, 0, .3);
+    box-shadow: 0px 1px 3px 1px rgba(0, 0, 0, .15);
+}
+.article-feedback a:hover{
     transform: scale(1.1);
+}
+
+.btn-link{
+    box-shadow: none !important;
 }
