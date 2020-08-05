@@ -1,16 +1,16 @@
-<section class="row" id="articles-section">
+<section class="row pb-4" id="articles-section">
     <div *ngIf="isLoading == true" class="col-sm-10 col-md-7 mx-auto m-5 p-5" style="min-height: 250px; background: none;">
         <div class="loaders-container">
             <app-loader></app-loader>
         </div>
     </div>
     <div class="col-sm-10 col-md-7" style="position: relative;">
-        <div *ngIf="isLoading == false" class="col-sm-9 col-md-6 pt-1 text-right add-article-section">
-            <a routerLink="/update_knowledge" class="btn btn-default btn-lg" id="add-article-btn">
+        <div *ngIf="isLoading == false" class="col-sm-9 col-md-6 pt-1 px-0 text-right add-article-section">
+            <a routerLink="/update_knowledge" class="btn btn-default btn-lg px-4" id="add-article-btn">
                 <i class="fa fa-plus"></i> Add Article
             </a>
         </div>
-        <div class="p-0" style="margin-top: 60px; z-index: 3;">
+        <div class="p-0" style="margin-top: 65px; z-index: 3;">
             <app-article *ngFor="let article of articles" [article]="article"></app-article>
         </div>
     </div>
