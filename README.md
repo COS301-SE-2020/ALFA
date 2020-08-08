@@ -6,6 +6,7 @@ ALFA, an acronym for Automated Log File Analyzer, is a web application that scan
 ### [Demo 2 Video](https://drive.google.com/file/d/1WJIHGYdTuHnZsDhMGKKkI6v4e8zuh1nv/view?usp=sharing)
 ### [SRS Document version 1](https://www.overleaf.com/read/xrpbgbbvhhjv)
 ### [SRS Document version 2](https://www.overleaf.com/read/tqxcyrdwrxnw)
+### [SRS Document version 3](https://www.overleaf.com/2389692214ryjmkvzhktbc)
 ### [User Manual](https://drive.google.com/file/d/1RbW9kFbCcJnjq3gRwNXOY5AcdTnW8wkG/view?usp=sharing)
 ### [Coding Standards](https://drive.google.com/file/d/1eH7Ouj1ZUr9smyn_LCdSCF3GPNRAy3tv/view?usp=sharing)
 ### [Project Management Tool](https://app.clickup.com/2546744/v/b/li/21408284)
