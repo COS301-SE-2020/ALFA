@@ -37,7 +37,8 @@ mongo.connect(
     process.env.DB_CONNECTION,
     { 
         useUnifiedTopology: true,  
-        useNewUrlParser: true  
+        useNewUrlParser: true,
+        useFindAndModify: false  
     },
     ()=> console.log("Product DB connection successful")
 )
