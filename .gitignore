@@ -2,3 +2,5 @@
 /src
 .env
 README.md
+KBO_backup.json
+kb_backup.csv
