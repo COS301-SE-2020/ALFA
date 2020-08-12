@@ -2,11 +2,7 @@
 const mongoose = require('mongoose')
 
 const suggestionSchema = mongoose.Schema({
-	//tried to manually handle indices
-	// sug_index:{
-	// 	type: Number,
-	// 	required: true
-	// },
+	
 	votes:{
 		type: Number,
 		required: true
