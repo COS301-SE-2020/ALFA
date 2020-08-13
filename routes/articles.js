@@ -1,7 +1,6 @@
 const express = require('express')
 const router = express.Router()
 const KB_Article = require('../models/kb_article')
-const Counter = require("../models/counter")
 const { mongo } = require('mongoose')
 /**
  * NB: the 'link' attribute should be unique, sending duplicates will return error with code 100
@@ -19,18 +18,9 @@ router.post('/', async(req,res)=>{
         //get the maximum index out of all KB articles
         const maxIndexDoc = await KB_Article.findOne().sort("-kb_index");
 
-        //GENERATE MANUAL INDICES FOR SUGGESTION OBJECTS
-        const query = {key:"sug_index"}
-        let temp = await Counter.findOne()
-        let counter = await Counter.findOneAndUpdate(query,{
-            $set: {sequence_value:temp.sequence_value+1},
-        })
-
-        let ix = counter.sequence_value 
         const file = new KB_Article({
             kb_index: maxIndexDoc!=null?(maxIndexDoc.kb_index + 1):0,
             suggestions:{
-                sug_index: ix,
                 votes:0,
                 description: data.description,
                 link: data.link
@@ -66,20 +56,10 @@ router.put('/', async(req, res)=>{
         //get data from DB
         let searckKey={"kb_index":data.kb_index}
         const Article = await KB_Article.findOne(searckKey)
-        
-        //GENERATE MANUAL INDICES FOR SUGGESTION OBJECTS
-        const query = {key:"sug_index"}
-        let temp = await Counter.findOne()
-        let counter = await Counter.findOneAndUpdate(query,{
-            $set: {sequence_value:temp.sequence_value+1},
-        })
-
-        let ix = counter.sequence_value 
-
+      
         if(Article !=null){
             //add new info to article's suggestion array
             Article.suggestions.push({
-                sug_index: ix,
                 votes:0,
                 description: data.description,
                 link: data.link
@@ -99,7 +79,6 @@ router.put('/', async(req, res)=>{
             console.log({message: `No KB Article with index ${searckKey.kb_index} was found!`})
             res.json({message: `No KB Article with index ${searckKey.kb_index} was found!`})
         }
-
     } catch (error) {
        handleErrors(error, res)
     }
