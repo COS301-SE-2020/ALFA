@@ -48,7 +48,7 @@ router.get('/', async(req, res)=>{
 })
 
 // Endpoint to append KB article to existing articles
-router.put('/', async(req, res)=>{
+router.put('/suggestion', async(req, res)=>{
     try {
         //get data from request
         let data = req.body
@@ -67,6 +67,43 @@ router.put('/', async(req, res)=>{
             
             // updating 
             const updated = await KB_Article.findOneAndUpdate(searckKey, {
+                $set: {
+                    kb_index:Article.kb_index,
+                    suggestions: Article.suggestions
+                }
+            })
+
+            console.info({message: "Update Successful!"})
+            res.json({message: "Update Successful!"})
+        }else{
+            console.log({message: `No KB Article with index ${searckKey.kb_index} was found!`})
+            res.json({message: `No KB Article with index ${searckKey.kb_index} was found!`})
+        }
+    } catch (error) {
+       handleErrors(error, res)
+    }
+})
+
+// Endpoint to up or dowm vote suggestions from a specific KB article 
+router.put('/rate_article', async(req, res)=>{
+    try {
+        //get data from request
+        let data = req.body
+        
+        //get specific KB with the suggestion up or down voted by user
+        let articleKey={"kb_index":data.kb_index}
+        const Article = await KB_Article.findOne(articleKey)
+       
+        if(Article !=null){
+            //update vote for specific suggestion of a specifc KB
+            Article.suggestions.forEach(element => {
+                if(element._id==data._id){
+                    element.votes+=data.vote;
+                }
+            });
+
+            // updating 
+            const updated = await KB_Article.findOneAndUpdate(articleKey, {
                 $set: {
                     kb_index:Article.kb_index,
                     suggestions: Article.suggestions
