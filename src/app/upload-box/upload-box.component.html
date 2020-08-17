@@ -45,7 +45,7 @@
                     </div>
                 </div>
                 <div class="col-sm-12" *ngIf="isAnalyzing === false">
-                    <app-analysis-board *ngIf="isAnalyzing === false && articlesReady()" [articles]="articles"></app-analysis-board>
+                    <app-analysis-board *ngIf="isAnalyzing === false && resultsReady()" [analysisResults]="analysisResults"></app-analysis-board>
                 </div>
             </div>
         </div>
@@ -59,7 +59,7 @@
                 <h4 class="m0">Suggestion Form</h4>
             </div>
             <div class="modal-body">
-                <app-suggestion-box></app-suggestion-box>
+                <!-- <app-suggestion-box></app-suggestion-box> -->
             </div>
         </div>
     </div>

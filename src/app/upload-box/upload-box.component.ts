@@ -12,15 +12,7 @@ export class UploadBoxComponent implements OnInit {
     filesToUpload: Logfile[] = [];
     filesReady: boolean = true;
     isAnalyzing: boolean = true;
-    articles: any[] = [];
-    /**
-     * articles: [
-     *      article: {
-     *          file: string,
-     *          data: []
-     *      }
-     * ]
-     */
+    analysisResults: any[] = [];
 
   constructor(private uploadService: UploadServiceService, private messageService: MessageService) { }
 
@@ -34,7 +26,7 @@ export class UploadBoxComponent implements OnInit {
   handleUploadFiles(files): void{
     this.filesReady = false;
     this.isAnalyzing = true;
-    this.articles = Array(files.length);
+    this.analysisResults = Array(files.length);
 
     // read files
     let reader: any;
@@ -54,7 +46,6 @@ export class UploadBoxComponent implements OnInit {
         }
     });
 
-    console.log(this.filesToUpload);
     this.filesReady = true;
   }
 
@@ -71,8 +62,8 @@ export class UploadBoxComponent implements OnInit {
         evt.preventDefault();
 
         if(this.filesToUpload.length == 0){
-            this.messageService.setMessage("error", "Please select atleast one file for analysis");
-            this.messageService.toggleVisibility();
+            this.messageService.notify("No file selected. Please select atleast one logfile");
+            // console.log("Please select atleast one logfile");
             return;
         }
 
@@ -80,7 +71,8 @@ export class UploadBoxComponent implements OnInit {
         
         this.filesToUpload.forEach( (file, index) => {
             this.uploadService.uploadLogFile(file).subscribe( data => {
-                this.articles[index] = {
+                console.log(data);
+                this.analysisResults[index] = {
                     "filename" : (
                         "lf-"+file.filename.split('.').join('-').split('_').join('-')
                     ),
@@ -91,10 +83,10 @@ export class UploadBoxComponent implements OnInit {
         })
   }
 
-  articlesReady(): boolean{
-      if((this.articles.length === this.filesToUpload.length)){
-          for(let i = 0; i < this.articles.length; i++){
-            if( !( this.articles[i] && this.articles[i].filename && this.articles[i].data ) ){
+  resultsReady(): boolean{
+      if((this.analysisResults.length === this.filesToUpload.length)){
+          for(let i = 0; i < this.analysisResults.length; i++){
+            if( !( this.analysisResults[i] && this.analysisResults[i].filename && this.analysisResults[i].data ) ){
                 return false;
             }
           }

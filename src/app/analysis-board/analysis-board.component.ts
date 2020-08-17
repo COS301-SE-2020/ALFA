@@ -7,12 +7,12 @@ import { Article } from '../article';
   styleUrls: ['./analysis-board.component.css']
 })
 export class AnalysisBoardComponent implements OnInit {
-    @Input() articles: any[];
+    @Input() analysisResults: any[];
 
   constructor() { }
 
   ngOnInit(): void {
-    //   console.log(this.articles);
+      console.log(this.analysisResults);
   }
 
 }
