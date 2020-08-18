@@ -1,7 +1,10 @@
 const express = require('express')
 const router = express.Router()
 const KB_Article = require('../models/kb_article')
-const { mongo } = require('mongoose')
+// const History = require('../models/history')
+// const  mongo  = require('mongoose')
+const MongoClient = require('mongodb').MongoClient;
+
 /**
  * NB: the 'link' attribute should be unique, sending duplicates will return error with code 100
  */
@@ -10,7 +13,6 @@ const { mongo } = require('mongoose')
     console.log(error!=null?error:"Check API Console For more Info")
     // error!=null? res.json({message:error}): res.json({message:"Check API Console For more Info"}) 
  }
-// var counterAdded=false;
 router.post('/', async(req,res)=>{
     try {
         let data = req.body
@@ -36,12 +38,56 @@ router.post('/', async(req,res)=>{
     }
 })
 
+router.post('/history', async(req,res)=>{
+    try {
+        let data = req.body
+
+        //get the maximum index out of all KB articles
+        // const maxIndexDoc = await KB_Article.findOne().sort("-kb_index");
+
+        const file = new History({
+            // kb_index: maxIndexDoc!=null?(maxIndexDoc.kb_index + 1):0,
+            suggestions:{
+                votes:0,
+                description: data.description,
+                link: data.link
+            }
+        })
+
+        const newFile = await KB_Article.create(file);
+        res.json({message:"New Record Saved!"})
+        console.log("New Record Saved!")
+        // console.log(file)
+    } catch (error) {
+       handleErrors(error,res)
+    }
+})
+
 // Endpoint to retrieve all KB articles
 router.get('/', async(req, res)=>{
     try {
         const AllArticles = await KB_Article.find()
         console.log("Data recieved!")
         res.json(AllArticles)
+    } catch (error) {
+        handleErrors(error)
+    }
+})
+
+// Endpoint to retrieve analysis history
+router.get('/history', async(req, res)=>{
+    try {
+        let Histories =[];
+        MongoClient.connect(process.env.DB_CONNECTION, async(error, client)=>{
+            if(error){
+                handleErrors(error, res);
+            }
+            Histories = await client.db('ALFA_DB').collection('analysis_history').find().toArray()
+            console.log("Data recieved!")
+            // console.log(Histories)
+            res.json( Histories)
+        })
+        
     } catch (error) {
         handleErrors(error)
     }
