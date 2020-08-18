@@ -71,7 +71,6 @@ export class UploadBoxComponent implements OnInit {
         
         this.filesToUpload.forEach( (file, index) => {
             this.uploadService.uploadLogFile(file).subscribe( data => {
-                console.log(data);
                 this.analysisResults[index] = {
                     "filename" : (
                         "lf-"+file.filename.split('.').join('-').split('_').join('-')

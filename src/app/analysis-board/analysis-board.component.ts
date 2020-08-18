@@ -12,7 +12,6 @@ export class AnalysisBoardComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
-      console.log(this.analysisResults);
   }
 
 }
