@@ -1,0 +1,87 @@
+<div class="my-2 p-3 pb-0" id="analysis-result">
+    <div class="article-header">
+        <div href="javascript: void(0)" class="text-dark article-description" title="description">
+            Line {{analysisResult.line_no}}: {{analysisResult.log_entry}}
+        </div>
+
+        <div class="solution-list-div mt-2 small mb-0">
+            <ul class="list-group">
+                <li class="list-group-item">
+                    <div class="small text-muted article-origin pt-2 mb-0">{{firstSuggestion.link.split('/')[2]}}</div>
+                    <div class="p-0 pt-1 m-0 solution-description">
+                        {{firstSuggestion.description}}
+                    </div>
+                   <!-- 
+                       - Buttons for:
+                       1. voting
+                       2. viewing/opening the solution                       
+                    -->
+                    <div class="row">
+                        <div class="col-12 m-0 mt-3 bottom-section">
+                            <div class="btn-group btn-group-sm article-feedback">
+                                <a  href="javascript: void(0)" (click)="upVote(analysisResult.kb_index, firstSuggestion._id)"  class="btn btn-default text-success">
+                                    <i class="fa fa-arrow-up"></i> Yes
+                                </a>
+                                <span class="btn btn-default">
+                                    helpful?
+                                </span>
+                                <a href="javascript: void(0)" (click)="downVote(analysisResult.kb_index, firstSuggestion._id)" class="btn btn-default text-danger btn-sm">
+                                    <i class="fa fa-arrow-down"></i> No
+                                </a>
+                            </div>
+                            <div class="btn-group btn-group-sm article-open ml-3">
+                                <a [href]="firstSuggestion.link" class="btn btn-default text-muted btn-sm" target="_blank">
+                                    <i class="fa fa-eye"></i> View solution
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+                <button *ngIf="analysisResult.suggestions.length > 0" class="btn btn-link btn-sm bg-white" data-toggle="collapse" [attr.data-target]="'#solution-list-for-' + analysisResult.kb_index">
+                    View {{analysisResult.suggestions.length}} more solutions mapped to this error
+                </button>
+                <ul *ngIf="analysisResult.suggestions.length > 0" class="list-group collapse" id="solution-list-for-{{analysisResult.kb_index}}">
+                    <li class="collapse"></li>
+                    <li class="list-group-item" *ngFor="let suggestion of analysisResult.suggestions">
+                        <div class="small text-muted article-origin pt-2 mb-0">{{suggestion.link.split('/')[2]}}</div>
+                        <div class="p-0 pt-1 m-0 solution-description">
+                            {{suggestion.description}}
+                        </div>
+                       <!-- 
+                           - Buttons for:
+                           1. voting
+                           2. viewing/opening the solution                       
+                        -->
+                        <div class="row">
+                            <div class="col-12 m-0 mt-3 bottom-section">
+                                <div class="btn-group btn-group-sm article-feedback">
+                                    <a  href="javascript: void(0)" (click)="upVote(analysisResult.kb_index, suggestion._id)"  class="btn btn-default text-success">
+                                        <i class="fa fa-arrow-up"></i> Yes
+                                    </a>
+                                    <span class="btn btn-default">
+                                        helpful?
+                                    </span>
+                                    <a href="javascript: void(0)" (click)="downVote(analysisResult.kb_index, suggestion._id)" class="btn btn-default text-danger btn-sm">
+                                        <i class="fa fa-arrow-down"></i> No
+                                    </a>
+                                </div>
+                                <div class="btn-group btn-group-sm article-open ml-3">
+                                    <a [href]="suggestion.link" class="btn btn-default text-muted btn-sm" target="_blank">
+                                        <i class="fa fa-eye"></i> View solution
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+            </ul>
+        </div>
+    </div>
+    <div class="text-right" style="transform: translateY(10px)">
+        <!-- invokes the add suggestion modal a modal -->
+        <button class="btn btn-default btn-sm article-suggest text-muted" (click)="emmitKbIndex(analysisResult.kb_index)" data-toggle="modal" data-target="#suggestion-modal">
+            <i class="fa fa-plus"></i>
+            Suggest solution
+        </button>
+    </div>
+</div>
