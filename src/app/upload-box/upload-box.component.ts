@@ -17,6 +17,7 @@ export class UploadBoxComponent implements OnInit {
   constructor(private uploadService: UploadServiceService, private messageService: MessageService) { }
 
   ngOnInit(): void {
+      this.messageService.notify("Due to some constraints, The system can handle files up to 2 KB in size. Thank you for using ALFA.");
   }
 
     /**
