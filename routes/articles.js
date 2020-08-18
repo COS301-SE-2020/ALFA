@@ -94,7 +94,7 @@ router.get('/history', async(req, res)=>{
 })
 
 // Endpoint to append KB article to existing articles
-router.put('/suggestion', async(req, res)=>{
+router.post('/suggestion', async(req, res)=>{
     try {
         //get data from request
         let data = req.body
@@ -131,7 +131,7 @@ router.put('/suggestion', async(req, res)=>{
 })
 
 // Endpoint to up or dowm vote suggestions from a specific KB article 
-router.put('/rate_article', async(req, res)=>{
+router.post('/rate_article', async(req, res)=>{
     try {
         //get data from request
         let data = req.body
