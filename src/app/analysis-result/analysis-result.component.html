@@ -1,6 +1,6 @@
 <div class="my-2 p-3 pb-0" id="analysis-result">
     <div class="article-header">
-        <div href="javascript: void(0)" class="text-dark article-description" title="description">
+        <div class="text-dark article-description" [title]="analysisResult.log_entry">
             Line {{analysisResult.line_no}}: {{analysisResult.log_entry}}
         </div>
 
@@ -8,7 +8,7 @@
             <ul class="list-group">
                 <li class="list-group-item">
                     <div class="small text-muted article-origin pt-2 mb-0">{{firstSuggestion.link.split('/')[2]}}</div>
-                    <div class="p-0 pt-1 m-0 solution-description">
+                    <div class="p-0 pt-1 m-0 solution-description" [title]="firstSuggestion.description">
                         {{firstSuggestion.description}}
                     </div>
                    <!-- 
@@ -39,12 +39,13 @@
                 </li>
                 <button *ngIf="analysisResult.suggestions.length > 0" class="btn btn-link btn-sm bg-white" data-toggle="collapse" [attr.data-target]="'#solution-list-for-' + analysisResult.kb_index">
                     View {{analysisResult.suggestions.length}} more solutions mapped to this error
+                    <!-- <i class="fa fa-caret-down"></i> -->
                 </button>
                 <ul *ngIf="analysisResult.suggestions.length > 0" class="list-group collapse" id="solution-list-for-{{analysisResult.kb_index}}">
                     <li class="collapse"></li>
                     <li class="list-group-item" *ngFor="let suggestion of analysisResult.suggestions">
                         <div class="small text-muted article-origin pt-2 mb-0">{{suggestion.link.split('/')[2]}}</div>
-                        <div class="p-0 pt-1 m-0 solution-description">
+                        <div class="p-0 pt-1 m-0 solution-description" [title]="suggestion.description">
                             {{suggestion.description}}
                         </div>
                        <!-- 

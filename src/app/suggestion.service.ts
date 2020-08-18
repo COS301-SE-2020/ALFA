@@ -59,6 +59,13 @@ export class SuggestionService {
         );
     }
 
+    getHistory(): Observable<any> {
+        return this.http.get(`${this.URL}articles/history`).pipe(
+            tap(),
+            catchError( this.handleError("Fetching history", []))
+        );
+    }
+
      /**
      * 
      * @param _index kb_index to emmit to the add suggestion component

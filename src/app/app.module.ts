@@ -14,6 +14,7 @@ import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { MessageComponent } from './message/message.component';
 import { AnalysisResultComponent } from './analysis-result/analysis-result.component';
 import { SuggestionBoxComponent } from './suggestion-box/suggestion-box.component';
+import { HistoryComponent } from './history/history.component';
 
 @NgModule({
   declarations: [
@@ -27,6 +28,7 @@ import { SuggestionBoxComponent } from './suggestion-box/suggestion-box.componen
     MessageComponent,
     AnalysisResultComponent,
     SuggestionBoxComponent,
+    HistoryComponent,
   ],
   imports: [
     BrowserModule,
