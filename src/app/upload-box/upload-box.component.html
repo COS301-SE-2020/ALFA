@@ -8,7 +8,7 @@
                     <p class="text-center py-3">
                         <span class="fa fa-file-code-o m-3" style="font-size: 5rem"></span>
                         <strong>Drag log file here to analyze</strong><br>
-                        Or <a href="javascript: void()">choose your file</a>
+                        Or <a href="javascript: void()">choose your file</a><br>
                     </p>
                     <div class="loaders-container" *ngIf="filesReady == false">
                         <app-loader></app-loader>
@@ -45,8 +45,21 @@
                     </div>
                 </div>
                 <div class="col-sm-12" *ngIf="isAnalyzing === false">
-                    <app-analysis-board *ngIf="isAnalyzing === false && articlesReady()" [articles]="articles"></app-analysis-board>
+                    <app-analysis-board *ngIf="isAnalyzing === false && resultsReady()" [analysisResults]="analysisResults"></app-analysis-board>
                 </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="suggestion-box-modal">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content" style="box-shadow: 0px 0px 4px 2px rgba(0, 0, 0, .3);">
+            <div class="card-header" style="color: #7851A9;">
+                <h4 class="m0">Suggestion Form</h4>
+            </div>
+            <div class="modal-body">
+                <!-- <app-suggestion-box></app-suggestion-box> -->
             </div>
         </div>
     </div>

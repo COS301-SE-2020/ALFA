@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { UploadServiceService } from '../upload-service.service';
 import { Logfile } from '../logfile';
+import { MessageService } from '../message.service';
 
 @Component({
   selector: 'app-upload-box',
@@ -11,19 +12,12 @@ export class UploadBoxComponent implements OnInit {
     filesToUpload: Logfile[] = [];
     filesReady: boolean = true;
     isAnalyzing: boolean = true;
-    articles: any[] = [];
-    /**
-     * articles: [
-     *      article: {
-     *          file: string,
-     *          data: []
-     *      }
-     * ]
-     */
+    analysisResults: any[] = [];
 
-  constructor(private uploadService: UploadServiceService) { }
+  constructor(private uploadService: UploadServiceService, private messageService: MessageService) { }
 
   ngOnInit(): void {
+      this.messageService.notify("Due to some constraints, The system can handle files up to 2 KB in size. Thank you for using ALFA.");
   }
 
     /**
@@ -33,7 +27,7 @@ export class UploadBoxComponent implements OnInit {
   handleUploadFiles(files): void{
     this.filesReady = false;
     this.isAnalyzing = true;
-    this.articles = Array(files.length);
+    this.analysisResults = Array(files.length);
 
     // read files
     let reader: any;
@@ -41,7 +35,7 @@ export class UploadBoxComponent implements OnInit {
     [... files].forEach( (file, index) => {
         // reader.readAsArrayBuffer(file);
         reader = new FileReader();
-        reader.readAsText(file);
+        reader.readAsDataURL(file);
 
         reader.onload = evt => {
             fileData = {
@@ -50,11 +44,9 @@ export class UploadBoxComponent implements OnInit {
                 content: evt.target.result
             }
             this.filesToUpload.push( fileData );
-            // this.articles[index].filename = (file.name.replace(' ', '-') + '-' + index);
         }
     });
 
-    // console.log(this.filesToUpload);
     this.filesReady = true;
   }
 
@@ -69,27 +61,32 @@ export class UploadBoxComponent implements OnInit {
    */
     analyzeFiles(evt): void{
         evt.preventDefault();
+
+        if(this.filesToUpload.length == 0){
+            this.messageService.notify("No file selected. Please select atleast one logfile");
+            // console.log("Please select atleast one logfile");
+            return;
+        }
+
         this.isAnalyzing = true;
         
         this.filesToUpload.forEach( (file, index) => {
             this.uploadService.uploadLogFile(file).subscribe( data => {
-                this.articles[index] = {
+                this.analysisResults[index] = {
                     "filename" : (
                         "lf-"+file.filename.split('.').join('-').split('_').join('-')
                     ),
                     "data": data
                 }
-                // console.log(this.articles);
-                // console.log("Articles: " + JSON.stringify(this.articles));
                 if(index == this.filesToUpload.length - 1) this.isAnalyzing = false;
             });
         })
   }
 
-  articlesReady(): boolean{
-      if((this.articles.length === this.filesToUpload.length)){
-          for(let i = 0; i < this.articles.length; i++){
-            if( !( this.articles[i] && this.articles[i].filename && this.articles[i].data ) ){
+  resultsReady(): boolean{
+      if((this.analysisResults.length === this.filesToUpload.length)){
+          for(let i = 0; i < this.analysisResults.length; i++){
+            if( !( this.analysisResults[i] && this.analysisResults[i].filename && this.analysisResults[i].data ) ){
                 return false;
             }
           }

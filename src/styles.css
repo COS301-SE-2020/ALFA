@@ -1,8 +1,8 @@
 /* You can add global styles to this file, and also import other style files */
 body{
     overflow-x: hidden !important;
-    /* background-color: #eee; */
     background-color: #ecf3ff;
+    /* background-color: #eee; */
     /* background-color: #fff; */
 }
 .primary-bg-color{
@@ -23,9 +23,46 @@ body{
     justify-content: center;
 }
 
+/* input fields */
 input:hover, input:focus, input:active, textarea:hover, textarea:focus, textarea:active{
     border-color: #7851A9 !important;
 }
+
+.custom-input{
+    background-color: #ecf3ff;
+    position: relative;
+    width: 100%;
+    height: auto;
+    /* height: 55px; */
+    overflow: hidden;
+    padding: 8px;
+    border-radius: 4px;
+    display: flex;
+    flex-direction: column;
+}
+.custom-input label{
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    padding-left: 8px;
+    width: 100%;
+    font-size: .8rem;
+    font-weight: bold;
+}
+.custom-input input, .custom-input textarea{
+    width: 100% !important; 
+    background: none !important;
+    padding-top: 15px;
+    border: none;
+    outline: none;
+    box-shadow: none !important;
+}
+.custom-input input{
+    height: 40px;
+}
+/* textarea:invalid, input:invalid{
+    border-color: red;
+} */
 
 /* scrollbar */
 *::-webkit-scrollbar{

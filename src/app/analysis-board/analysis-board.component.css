@@ -4,7 +4,6 @@
     border-radius: 8px;
     overflow: hidden;
 }
-
 #analysis-board ul{
     display: flex;
     padding: 0px;
@@ -22,7 +21,10 @@
     text-overflow: ellipsis;
     max-width: 82%; */
 }
-
 #analysis-board ul li a:hover, #analysis-board ul li a.active{
     background-color: rgba(0, 0, 0, .22);
+}
+.results{
+    max-height: 80vh;
+    overflow-y: scroll;
 }
