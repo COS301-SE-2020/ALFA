@@ -7,6 +7,7 @@ import { ArticleServiceService } from './article-service.service';
 import { Logfile } from './logfile';
 import { Article } from './article';
 import { AnalysisResult } from './analysis-result';
+import { MessageService } from './message.service';
 
 @Injectable({
   providedIn: 'root'
@@ -14,7 +15,7 @@ import { AnalysisResult } from './analysis-result';
 export class UploadServiceService {
     URL: string = "https://alfa-ml-api.herokuapp.com/analyse";
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient, private messageService: MessageService) { }
 
   /**
    * @brief this function uploads a single file by sending a post request to the API
@@ -37,10 +38,9 @@ export class UploadServiceService {
    */
     private handleError<T>(operation = 'operation', result?: T){
         return (err: any): Observable<T> =>{
-            console.log(err);
+            // console.log(err);
 
-            // TODO: show msg error to user
-            // `${operation} failed: $(error.message}`)
+            this.messageService.notify(`Operation failed, an unexpected error occured.Please try again on contact the system administrator at pyraspace301@gmail.com`);
 
             return of(result as T);
         };
