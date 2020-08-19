@@ -25,7 +25,9 @@ describe('UploadBoxComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+  it('should validate file entry', () => {
 
+  })
   // it('should validate file upload', ()=>{
   //   expect(component.filesToUpload.length).toEqual(0)
   //   //how to represent/get lifes to upload
