@@ -119,6 +119,10 @@
           }
         }
       }
-    }},
-  "defaultProject": "alfa-ui"
+    }
+  },
+  "defaultProject": "alfa-ui",
+  "cli": {
+    "analytics": "4970a649-9c3a-44bc-aec8-a30b927f7789"
+  }
 }

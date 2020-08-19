@@ -9,7 +9,7 @@ import { UploadBoxComponent } from './upload-box/upload-box.component';
 import { LoaderComponent } from './loader/loader.component';
 import { AnalysisBoardComponent } from './analysis-board/analysis-board.component';
 import { AboutComponent } from './about/about.component';
-import { UpdateKnowledgeComponent } from './update-knowledge/update-knowledge.component';
+// import { UpdateKnowledgeComponent } from './update-knowledge/update-knowledge.component';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { MessageComponent } from './message/message.component';
 import { AnalysisResultComponent } from './analysis-result/analysis-result.component';
@@ -23,7 +23,7 @@ import { SuggestionBoxComponent } from './suggestion-box/suggestion-box.componen
     LoaderComponent,
     AnalysisBoardComponent,
     AboutComponent,
-    UpdateKnowledgeComponent,
+    // UpdateKnowledgeComponent,
     MessageComponent,
     AnalysisResultComponent,
     SuggestionBoxComponent,

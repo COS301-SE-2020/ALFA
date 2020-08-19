@@ -33,7 +33,6 @@ export class UploadBoxComponent implements OnInit {
     let reader: any;
     let fileData: any;
     [... files].forEach( (file, index) => {
-        // reader.readAsArrayBuffer(file);
         reader = new FileReader();
         reader.readAsDataURL(file);
 

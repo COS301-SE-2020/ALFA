@@ -1,5 +1,5 @@
 import { Component, OnInit, Input, ViewChild } from '@angular/core';
-import { FormGroup, FormControl } from '@angular/forms';
+import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { MessageService } from '../message.service';
 import { SuggestionService } from '../suggestion.service';
 
@@ -10,18 +10,14 @@ import { SuggestionService } from '../suggestion.service';
 })
 export class SuggestionBoxComponent implements OnInit {
     form = new FormGroup({
-        link: new FormControl(''),
-        description: new FormControl('')
+        link: new FormControl('', Validators.required),
+        description: new FormControl('', Validators.required)
     });
     kb_index: number;
 
     constructor(private suggestionService: SuggestionService, private messageService: MessageService) { }
 
     ngOnInit(): void {
-        // this.suggestionService.indexEmmiter.subscribe( data =>{
-        //     this.kb_index = data;
-        //     console.log(`Emmiting index ${this.kb_index}`);
-        // });
         this.suggestionService.indexEmmiter.subscribe( data => {
             this.kb_index = data;
         });
