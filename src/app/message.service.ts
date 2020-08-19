@@ -6,6 +6,7 @@ import { of, Observable } from 'rxjs';
 })
 export class MessageService {
     // message: string;
+
     notifier: EventEmitter<string> = new EventEmitter();
 
     constructor() { }
