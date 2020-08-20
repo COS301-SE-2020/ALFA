@@ -1,6 +1,6 @@
-# ALFA
+# [ALFA](https://alfa-automated-log-analyzer.firebaseapp.com/)
 
-ALFA, an acronym for Automated Log File Analyzer, is a web application that scans any given log file and uses artificial intelligence to intelligently suggest solutions to problems encountered.
+ALFA, an acronym for Automated Log File Analyzer, is a web application that scans any given log file and uses artificial intelligence to intelligently suggest solutions to problems encountered. Click [here](https://alfa-automated-log-analyzer.firebaseapp.com/) to Launch the system online.
 
 ### [Demo 1 Video](https://drive.google.com/file/d/1clEgzXxKfKW1Gb1IvowvJiMREUof8Az/view?usp=sharing)
 ### [Demo 2 Video](https://drive.google.com/file/d/1WJIHGYdTuHnZsDhMGKKkI6v4e8zuh1nv/view?usp=sharing)
