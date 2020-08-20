@@ -1,0 +1,27 @@
+<section class="row" id="analysis-board">
+    <div class="col-sm-12 col-md-4 primary-bg-color text-white pr-0 p-3">
+        <h4>Files</h4>
+        <ul class="nav nav-pills">
+            <li class="nav-item my-1" *ngFor="let result of analysisResults; let index = index">
+                <a [href]="('#') + (result.filename + index)" data-toggle="pill" [class.active]="index == 0" class="nav-link py-2">
+                    {{result.filename.substr(3, result.filename.length - 2)}}
+                </a>
+            </li>
+        </ul>
+    </div>
+    <div class="col-sm-12 col-md-8 p-3 pl-1 results">
+        <h4>Results</h4>
+        <div class="tab-content">
+            <div class="tab-pane" [class.active]="index == 0" [id]="result.filename + index" *ngFor="let result of analysisResults; let index = index">
+                <Strong>Data For {{result.filename.substr(3, result.filename.length - 2)}}</Strong>
+                <ul class="list-unstyled">
+                    <li *ngFor="let data of result.data" class="px-3">
+                        <!-- <app-result [result]="data"></app-result> -->
+                        <app-analysis-result [analysisResult]="data"></app-analysis-result>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</section>
+<app-suggestion-box></app-suggestion-box>

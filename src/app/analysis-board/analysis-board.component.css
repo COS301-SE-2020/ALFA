@@ -1,0 +1,30 @@
+#analysis-board{
+    border: 1px solid #aaa;
+    background-color: #fff;
+    border-radius: 8px;
+    overflow: hidden;
+}
+#analysis-board ul{
+    display: flex;
+    padding: 0px;
+    flex-direction: column;
+    transform: translateX(-.9rem);
+}
+#analysis-board ul li a{
+    padding-left: 2rem;
+    border-radius: 0px 18px 18px 0px;
+    color: #fff;
+    transition: all .25s ease-out;
+    overflow: hidden;
+    /* white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 82%; */
+}
+#analysis-board ul li a:hover, #analysis-board ul li a.active{
+    background-color: rgba(0, 0, 0, .22);
+}
+.results{
+    max-height: 80vh;
+    overflow-y: scroll;
+}
