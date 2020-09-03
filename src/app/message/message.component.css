@@ -31,6 +31,7 @@
 #snackbar .action{
     display: flex;
     text-align: right;
+    float: right;
 }
 #snackbar .action button{
     box-shadow: none;

@@ -37,8 +37,10 @@
     font-size: .9rem;
     border-radius: 30px;
     transform: translateY(.3rem);
-    background: #444;
+    background: #7851a9;
+    color: #fff !important;
+    transition: all .1s ease-out;
 }
 #sign-in-btn:hover{
-    background: #555;
+    opacity: .7;
 }
