@@ -9,14 +9,23 @@ import { Observable } from 'rxjs';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'ALFA: Automated Log File Analyzer';
+    title = 'ALFA: Automated Log File Analyzer';
 
-  constructor(route: ActivatedRoute) {
+    constructor(route: ActivatedRoute) {
     // const url: Observable<string> = route.url.pipe( map(segments => segments.join('')) ) ;
     // console.log(url);
-  }
-  ngOnInit(): void {
+    }
+    ngOnInit(): void {
     //   console.log(this.route.snapshot.data['path']);
-  }
+    }
+
+    ignoreDrop(evt): void{
+        if(evt.toElement.type !== "file"){
+            evt.preventDefault();
+        }
+    }
+    ignoreDragOver(evt): void{
+        evt.preventDefault();
+    }
 
 }

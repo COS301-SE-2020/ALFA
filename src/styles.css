@@ -1,7 +1,9 @@
 /* You can add global styles to this file, and also import other style files */
 body{
     overflow-x: hidden !important;
-    background-color: #ecf3ff;
+    background-color: #121212;
+    color: #ddd;
+    /* background-color: #ecf3ff; */
     /* background-color: #eee; */
     /* background-color: #fff; */
 }
@@ -11,7 +13,7 @@ body{
 
 /* loader container */
 .loaders-container{
-    background: rgba(255, 255, 255, .8);
+    background: rgba(0, 0, 0, .22);
     position: absolute;
     left: 0px;
     top: 0px;
@@ -29,11 +31,9 @@ input:hover, input:focus, input:active, textarea:hover, textarea:focus, textarea
 }
 
 .custom-input{
-    background-color: #ecf3ff;
     position: relative;
     width: 100%;
     height: auto;
-    /* height: 55px; */
     overflow: hidden;
     padding: 8px;
     border-radius: 4px;
@@ -56,6 +56,7 @@ input:hover, input:focus, input:active, textarea:hover, textarea:focus, textarea
     border: none;
     outline: none;
     box-shadow: none !important;
+    color: #fff !important;
 }
 .custom-input input{
     height: 40px;
@@ -78,7 +79,7 @@ input:hover, input:focus, input:active, textarea:hover, textarea:focus, textarea
     box-shadow: inset 0px 0px 5px rgba(60, 64, 67, .6);
 }
 *::-webkit-scrollbar-thumb{
-    background-color: #7851a9;
+    background-color: #121212;
     border: 1px solid #ccc;
     border-radius: 8px;
 }

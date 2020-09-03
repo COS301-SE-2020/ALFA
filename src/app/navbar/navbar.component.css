@@ -1,6 +1,6 @@
 #navbar{
-    background-color: #7851a9;
-    /* box-shadow: 0px 1px 4px 2px rgba(60, 64, 67, .3); */
+    background-color: #333;
+    border-bottom: 1px solid #121212;
     overflow: hidden;
     max-height: 68px;
 }
@@ -22,14 +22,23 @@
     transition: all .05s ease-out;
     min-width: 80px;
     text-align: center;
-    /* transform: translateY(2px); */
+
     transition: all .15s ease-out;
 }
 #navbar .navbar-nav a:hover{
-    /* transform: translateY(-2px); */
     color: #fff;
 }
 
 #navbar .active-link a{
     color: #fff;
+}
+
+#sign-in-btn{
+    font-size: .9rem;
+    border-radius: 30px;
+    transform: translateY(.3rem);
+    background: #444;
+}
+#sign-in-btn:hover{
+    background: #555;
 }

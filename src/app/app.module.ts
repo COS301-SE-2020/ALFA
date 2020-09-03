@@ -15,6 +15,9 @@ import { MessageComponent } from './message/message.component';
 import { AnalysisResultComponent } from './analysis-result/analysis-result.component';
 import { SuggestionBoxComponent } from './suggestion-box/suggestion-box.component';
 import { HistoryComponent } from './history/history.component';
+import { AnalysisFormComponent } from './analysis-form/analysis-form.component';
+import { PopularLogsComponent } from './popular-logs/popular-logs.component';
+import { StatsPanelComponent } from './stats-panel/stats-panel.component';
 
 @NgModule({
   declarations: [
@@ -29,6 +32,9 @@ import { HistoryComponent } from './history/history.component';
     AnalysisResultComponent,
     SuggestionBoxComponent,
     HistoryComponent,
+    AnalysisFormComponent,
+    PopularLogsComponent,
+    StatsPanelComponent,
   ],
   imports: [
     BrowserModule,

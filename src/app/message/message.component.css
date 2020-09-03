@@ -4,28 +4,39 @@
     height: 100vh;
     left: 0px;
     top: 0px;
-    background: rgba(0, 0, 0, .3);
-    z-index: 2050;
+    background: none;
+    z-index: 2050 !important;
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: flex-end;
     align-content: center;
-    /* pointer-events: none; */
+    pointer-events: none;
 }
-.card{
+#snackbar{
+    opacity: 0;
+    transform: translateY(-15px);
+    transition: opacity .8s ease-out;
+    transition: transform .5s ease-out;
+}
+#snackbar.show{
+    opacity: 1;
+    background: #373737;
+    border: 1px solid #555;
     border-radius: 8px;
+    display: flex;
+    flex-direction: row;
     pointer-events: all;
+    transition: all .5s ease-out;
 }
-.btn-link{
+#snackbar .action{
+    display: flex;
+    text-align: right;
+}
+#snackbar .action button{
     box-shadow: none;
-    font-weight: bold;
-    color: #212529;
+    color: rgba(255, 255, 255, .5);
 }
-.btn-link:hover{
-    opacity: .85;
+#snackbar .action button:hover{
+    color: rgba(255, 255, 255, 1);
 }
 
-/* .show{
-    background: rgba(0, 0, 0, .3);
-    pointer-events: all;
-} */

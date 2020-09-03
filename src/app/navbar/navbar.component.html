@@ -1,6 +1,6 @@
 <nav class="navbar navbar-expand-sm fixed-top navbar-dark" id="navbar">
     <div class="container">
-        <a href="javascript: void()" class="navbar-brand" title="Autamated Log File Analyzer">
+        <a routerLink="/" class="navbar-brand" title="Autamated Log File Analyzer">
             <span class="alpha-icon">&alpha;</span>
             ALFA
         </a>
@@ -14,6 +14,9 @@
                 </div>
                 <div class="nav-item" routerLinkActive="active-link" [routerLinkActiveOptions]="{exact: true}">
                     <a routerLink="/history" class="nav-link">Analysis History</a>
+                </div>
+                <div class="nav-item px-2">
+                    <a routerLink="/sign-in" class="nav-link py-1" id="sign-in-btn">Sign In</a>
                 </div>
             </div>
         </div>

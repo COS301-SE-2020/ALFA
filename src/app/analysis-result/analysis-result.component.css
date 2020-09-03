@@ -1,16 +1,16 @@
 #analysis-result{
-    border: 1px solid #ccc;
+    border: 1px solid #555;
     border-radius: 8px;
-    background: #fff;
+    background: #333;
     transition: all .2s ease-out;
 }
-#analysis-result:hover{
-    box-shadow: 0px 1px 2px 0px rgba(0, 0, 0, .3);
-    box-shadow: 0px 1px 3px 1px rgba(0, 0, 0, .15);
+.results-toggler{
+    background: #333;
 }
 .article-origin{
     transform: translateY(-10px);
     opacity: .5;
+    color: #ddd;
 }
 .article-description{
     overflow: hidden;
@@ -20,8 +20,8 @@
     font-weight: bold;
 }
 .list-group{
-    border: 1px solid #ecf3ff;
-    background-color: #ecf3ff;
+    border: 1px solid #555;
+    background-color: #222;
 }
 li.list-group-item{
     border: none;
@@ -30,9 +30,10 @@ li.list-group-item{
     padding: 5px 15px;
 }
 li.list-group-item:nth-child(odd){
-    background-color: #fff;
+    background-color: #333;
 }
 .solution-description{
+    color: #fff;
     overflow: hidden;
     display: -webkit-box;
     -webkit-line-clamp: 2;
@@ -40,26 +41,36 @@ li.list-group-item:nth-child(odd){
 }
 
 .btn-group{
-    border: 1px solid #ccc;
+    border: 1px solid #555;
     border-radius: 30px;
     display: inline-block;
+    background-color: #444;
+    overflow: hidden;
+}
+.btn-group>span{
+    color: #ddd;
 }
 .article-feedback a, .article-open a{
+    color: #ddd;
+    background-color: #444;
     outline: none !important;
     box-shadow: none !important;
-    transition: all .2s ease-out;
+    transition: all .1s ease-out;
 }
 .article-suggest{
-    border: 1px solid #ccc;
+    color: #ddd;
+    background-color: #444;
+    border: 1px solid #555;
     border-radius: 30px;
     box-shadow: none;
+    transition: all .1s ease-out;
 }
-.article-suggest:hover, .article-open:hover{
-    box-shadow: 0px 1px 2px 0px rgba(0, 0, 0, .3);
-    box-shadow: 0px 1px 3px 1px rgba(0, 0, 0, .15);
+.article-suggest:hover, .article-open a:hover{
+    background-color: #555;
 }
 .article-feedback a:hover{
-    transform: scale(1.03);
+    color: #ddd !important;
+    background-color: #555;
 }
 
 .btn-link{

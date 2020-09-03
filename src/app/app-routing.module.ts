@@ -1,12 +1,12 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { UploadBoxComponent } from './upload-box/upload-box.component';
+import { AnalysisFormComponent } from './analysis-form/analysis-form.component';
 import { AboutComponent } from './about/about.component';
 import { HistoryComponent } from './history/history.component';
 
 
 const routes: Routes = [
-  { path: '', component: UploadBoxComponent },
+  { path: '', component: AnalysisFormComponent },
   { path: 'about', component: AboutComponent },
   { path: 'history', component: HistoryComponent },
 ];

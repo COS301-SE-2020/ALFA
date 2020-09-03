@@ -24,7 +24,6 @@ export class UploadServiceService {
    * @returns returns an array of analysisResult objects that the api identifies as helpful
    */
   uploadLogFile(logfile: Logfile): Observable<AnalysisResult[]>{
-      logfile.content = logfile.content.split("base64,")[1];
       return this.http.post<AnalysisResult[]>( this.URL, logfile/* , this.httpOptions */).pipe(
           tap( () => {}),
           catchError( this.handleError<AnalysisResult[]>('Logfile upload') )

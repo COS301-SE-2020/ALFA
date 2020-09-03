@@ -1,5 +1,5 @@
 <section class="row" id="analysis-board">
-    <div class="col-sm-12 col-md-4 primary-bg-color text-white pr-0 p-3">
+    <div class="col-sm-12 col-md-4 text-white pr-0 p-3" id="filenames-div">
         <h4>Files</h4>
         <ul class="nav nav-pills">
             <li class="nav-item my-1" *ngFor="let result of analysisResults; let index = index">
@@ -8,6 +8,7 @@
                 </a>
             </li>
         </ul>
+        <button class="btn btn-default float-right btn-block mt-auto mx-2" id="analyze-more-btn" data-toggle="collapse" data-target=".alternating-views">Analyze more files</button>
     </div>
     <div class="col-sm-12 col-md-8 p-3 pl-1 results">
         <h4>Results</h4>
@@ -16,7 +17,6 @@
                 <Strong>Data For {{result.filename.substr(3, result.filename.length - 2)}}</Strong>
                 <ul class="list-unstyled">
                     <li *ngFor="let data of result.data" class="px-3">
-                        <!-- <app-result [result]="data"></app-result> -->
                         <app-analysis-result [analysisResult]="data"></app-analysis-result>
                     </li>
                 </ul>

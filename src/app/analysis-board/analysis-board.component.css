@@ -1,8 +1,12 @@
 #analysis-board{
-    border: 1px solid #aaa;
-    background-color: #fff;
+    background-color: #222;
     border-radius: 8px;
     overflow: hidden;
+}
+#filenames-div{
+    background: #333;
+    display: flex;
+    flex-direction: column;
 }
 #analysis-board ul{
     display: flex;
@@ -16,10 +20,6 @@
     color: #fff;
     transition: all .25s ease-out;
     overflow: hidden;
-    /* white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    max-width: 82%; */
 }
 #analysis-board ul li a:hover, #analysis-board ul li a.active{
     background-color: rgba(0, 0, 0, .22);
@@ -27,4 +27,17 @@
 .results{
     max-height: 80vh;
     overflow-y: scroll;
+    background: none;
+}
+
+#analyze-more-btn{
+    border-radius: 8px;
+    color: #ddd;
+    background: #7851a9;
+    font-size: 1.2rem;
+    font-weight: bold;
+    transition: all .1s ease-out;
+    box-shadow: none;
+    align-self: flex-end;
+    justify-self: flex-end;
 }
