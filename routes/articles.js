@@ -9,13 +9,15 @@ const KB_Article = require('../models/kb_article')
 
  function handleErrors(error, res) {
     console.log(error!=null?error:"Check API Console For more Info")
-    // error!=null? res.json({message:error}): res.json({message:"Check API Console For more Info"}) 
+    error!=null? res.json({message:error}): res.json({message:"Check API Console For more Info"})
  }
  
  // Endpoint to add articles to the DB
 router.post('/', async(req,res)=>{
     try {
         let data = req.body
+
+        console.log(data);
 
         //get the maximum index out of all KB articles
         const maxIndexDoc = await KB_Article.findOne().sort("-kb_index");
@@ -34,6 +36,7 @@ router.post('/', async(req,res)=>{
         console.log("New Record Saved!")
         // console.log(file)
     } catch (error) {
+    console.log(error);
        handleErrors(error,res)
     }
 })
