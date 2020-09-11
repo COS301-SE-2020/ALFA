@@ -1,0 +1,84 @@
+.card{
+    background: #222;
+    border-radius: 8px;
+}
+
+#logfile-inp-container{
+    background: #333;
+    overflow: hidden;
+    position: relative;
+    border-radius: 8px;
+    transition: all .1s ease-out;
+}
+#logfile-inp-container:hover{
+    background-color: #373737;
+}
+#logfile-inp-container input{
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    opacity: 0;
+    cursor: pointer;
+}
+#logfile-inp-container p{
+    pointer-events: none;
+}
+#logfile-inp-container p span.fa{
+    font-size: 2.8rem;
+    display: block;
+}
+
+.analyze-btn{
+    border-radius: 30px;
+    color: #ddd;
+    background: #7851a9;
+    font-size: 1.2rem;
+    font-weight: bold;
+    transition: all .1s ease-out;
+    box-shadow: none;
+}
+.analyze-btn[disabled]{
+    background: #333 !important;
+}
+
+.action-seperator{
+    margin: 25px 0px 10px;
+    position: relative;
+    border-top:1px solid #ccc;
+}
+.action-seperator span{
+    position: relative;
+    top: -.8rem;
+    padding: 4px 15px;
+    background: #222;
+}
+
+.custom-input{
+    background-color: #333;
+    transition: all .1s ease-out;
+}
+.custom-input:hover{
+    background-color: #373737;
+}
+
+#selected-files-div span{
+    background: #cc0000;
+    border-radius: 30px;
+}
+
+#analysis-results{
+    min-height: 200px;
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+#try-again-btn{
+    border-radius: 8px;
+    color: #ddd;
+    background: #7851a9;
+    font-size: 1.2rem;
+    font-weight: bold;
+    transition: all .1s ease-out;
+}

@@ -1,0 +1,65 @@
+<section class="row alternating-views collapse show" id="analysis-form-section">
+    <div class="col-sm-12 col-md-8 mt-3">
+        <div class="card">
+            <div class="card-body pt-1 text-center">
+                <h4 class="mb-3">Analyze Logfiles</h4>
+    
+                <form [formGroup]="analyzeFileForm" (ngSubmit)="analyzeFile()">
+                    <div id="logfile-inp-container">
+                        <input type="file" formControlName="logfiles" id="logfile-inp" (change)="handleFiles($event.target.files)" title=" " multiple required>
+                        <p class="text-center py-3">
+                            <span class="fa fa-file-code-o m-3" style="font-size: 5rem"></span>
+                            <strong>Drag logfiles here to analyze</strong><br>
+                            Or <a href="javascript: void()">choose your files</a><br>
+                        </p>
+                    </div>
+    
+                    <div id="selected-files-div" class="mt-3">
+                        <span *ngFor="let file of filesToUpload; let index = index" class="badge badge-pill badge-success py-1 px-2 mx-1">
+                            {{file.filename}} &nbsp;
+                            <span (click)="removeFile(index)" class="text-light" style="cursor: pointer;">&times;</span>
+                        </span>
+                    </div>
+    
+                    <button type="submit" class="btn btn-default btn-block mt-3 analyze-btn" [attr.disabled]="(filesToUpload.length === 0)? true:null" [attr.data-toggle]="(filesToUpload.length > 0)? 'collapse':''" data-target=".alternating-views">
+                        Analyze logfiles
+                    </button>
+                </form>
+    
+                <div class="action-seperator">
+                    <span>OR</span>
+                </div>
+    
+                <form [formGroup]="analyzeTextForm" (ngSubmit)="analyzeText()" autocomplete="off">
+                    <div class="custom-input text-left">
+                        <label for="error-inp">Paste error here</label>
+                        <input type="text" formControlName="errors" #errors id="error-inp" (focus)="handleTextInput()" class="form-control" required>
+                    </div>
+                    <button type="submit" class="btn btn-default btn-block mt-3 analyze-btn" [attr.disabled]="(errors.value.length > 0)? null:true"  [attr.data-toggle]="(errors.value.length > 0)? 'collapse':''" data-target=".alternating-views">
+                        Solve error
+                    </button>
+                </form>
+            </div>
+        </div>
+    </div>
+    <div class="col-sm-12 col-md-4 mt-3">
+        <app-popular-logs></app-popular-logs>
+        <app-stats-panel></app-stats-panel>
+    </div>
+</section>
+<section class="row alternating-views collapse" id="results-section">
+    <div class="col-sm-12 col-md-12 mx-3 mt-3" id="analysis-results">
+        <div class="error-report text-center" *ngIf="isAnalyzing === false && resultsReady() === false">
+            <p class="muted">
+                Logfile analysis failed due to server error, logfile may be too big or unsupported. The error has been reported to the administrator.
+            </p>
+            <button class="btn btn-default" id="try-again-btn" data-toggle="collapse" data-target=".alternating-views">Try Different Logfile</button>
+        </div>
+        <div class="loaders-container flex-column" *ngIf="isAnalyzing == true">
+            <h4 class="mb-5"><strong>Analyzing Logfiles</strong></h4>
+            <app-loader></app-loader>
+            <p class="small text-muted mt-5">*This may take a while depending on the size and number of your logfiles</p>
+        </div>
+        <app-analysis-board *ngIf="isAnalyzing === false && resultsReady()" [analysisResults]="analysisResults"></app-analysis-board>
+    </div>
+</section>

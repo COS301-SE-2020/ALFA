@@ -1,0 +1,13 @@
+.card{
+    background-color: #222;
+    border-radius: 8px;
+}
+.badge{
+    border-radius: 30px;
+    font-size: 1.1rem;
+    transition: all .1s ease-out;
+}
+.badge:hover{
+    cursor: pointer;
+    transform: scale(1.04);
+}
