@@ -8,47 +8,47 @@
                 <div class="card-header"> <h1 class="text-center">sign up </h1></div>
                 <div class="card-body">
                     <form [formGroup]="formData" ngSubmit="onSubmit(formData)" novalidate>
-                        <div class="form-group">
-                            <label class="ml-4" for="userFullname">Full Name</label>
-                             <div class="input-group mb-3">
+                        <div class="custom-input form-group mt-4 mb-4">
+                            <label class="label-text" for="userFullname">Full Name</label>
+                             <!-- <div class="input-group mb-3">
                                 <div class="input-group-prepend">
                                     <span class="input-group-text" id="fullname-icon">
                                        <i class="fa fa-user"></i>
                                     </span>
-                                </div>
-                                <input type="text" class="form-control inField" formControlName="userFullname" id="userFullname" placeholder="Enter full name">
-                            </div>
+                                </div> -->
+                            <input type="text" class="form-control inField" formControlName="userFullname" id="userFullname" placeholder="Enter full name">
+                            <!-- </div> -->
                         </div>
 
-                        <div class="form-group">
-                            <label class="ml-4" for="userEmail">Email </label>
-                             <div class="input-group mb-3">
+                        <div class="custom-input form-group mt-4 mb-4">
+                            <label class="label-text" for="userEmail">Email </label>
+                             <!-- <div class="input-group mb-3">
                                 <div class="input-group-prepend">
                                     <span class="input-group-text" id="email-icon">
                                        <i class="fa fa-envelope"></i>
                                     </span>
-                                </div>
-                                <input type="email" class="form-control inField" formControlName="userEmail" id="userEmail" placeholder="Enter email">
-                            </div>
+                                </div> -->
+                            <input type="email" class="form-control inField" formControlName="userEmail" id="userEmail" placeholder="Enter email">
+                            <!-- </div> -->
                         </div>
                         
-                        <div class="form-group">
-                            <label class="ml-4" for="userPassword">Password</label>
-                            <div class="input-group mb-3">
+                        <div class="custom-input form-group mt-4">
+                            <label class="label-text" for="userPassword">Password</label>
+                            <!-- <div class="input-group mb-3">
                                 <div class="input-group-prepend">
                                     <span class="input-group-text" id="password-icon">
                                         <i class="fa fa-unlock-alt" aria-hidden="true"></i>
                                     </span>
-                                </div>
-                                <input type="password"  formControlName="userPassword" class="form-control inField" id="userPassword" placeholder="Password">
-                            </div>
+                                </div> -->
+                            <input type="password"  formControlName="userPassword" class="form-control inField" id="userPassword" placeholder="Password">
+                            <!-- </div> -->
                         </div>
                         
                         <div class="text-center">
                             <button id="signup-btn" type="submit" class="btn btn-block">Sign Up</button>
                             
                             <div class="form-group mt-4">
-                               Already Have an Account? Sign in <a href="login">here</a>
+                               Already Have an Account? Sign in <a href="/signin">here</a>
                             </div>
                         </div>
                     </form>

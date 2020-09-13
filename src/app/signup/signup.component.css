@@ -7,20 +7,32 @@
 }
 
 .card{
+    /* height: 31em; */
     background: #222;
     border-radius: 8px;
 }
 
 .inField{
     max-width: 33rem;
-    height: 3.5em;
-
+    font-size: 1.2rem;  
+    height: 2.5em;
     background-color: #333;
     transition: all .1s ease-out;
     border-color: #333;
     color: #fff;
 }
 
+.custom-input{
+    background-color: #333;
+    transition: all .1s ease-out;
+}
+.custom-input:hover{
+    background-color: #373737;
+}
+
+.label-text{
+    font-size: 1rem;
+}
 /* 
 .inField:hover{
     background-color: rgb(238, 238, 238);
@@ -53,7 +65,7 @@
 }
 
 #logo{
-    height: 34em;
+    height: 33em;
 }
 
 /* .alpha-icon{
