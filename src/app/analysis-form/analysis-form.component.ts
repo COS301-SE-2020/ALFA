@@ -49,6 +49,15 @@ export class AnalysisFormComponent implements OnInit {
             if( this.fileExists(file) === true ){
                 return;
             }
+
+            //check if uploaded file is a valid log file
+            let filename = file.name;
+            if( filename.indexOf("txt")==-1 &&  filename.indexOf("log")==-1   ){
+                this.messageService.notify("Invalid file! Please upload a valid log file (file wiht .log or .txt  extention)");
+                this.analyzeFileForm.reset();
+                return;
+            }
+
             reader = new FileReader();
             reader.readAsText(file);
 

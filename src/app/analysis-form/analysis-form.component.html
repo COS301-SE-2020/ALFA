@@ -6,7 +6,7 @@
     
                 <form [formGroup]="analyzeFileForm" (ngSubmit)="analyzeFile()">
                     <div id="logfile-inp-container">
-                        <input type="file" formControlName="logfiles" id="logfile-inp" (change)="handleFiles($event.target.files)" title=" " multiple required>
+                        <input type="file" formControlName="logfiles" id="logfile-inp" accept=".log, .txt" (change)="handleFiles($event.target.files)" title=" " multiple required>
                         <p class="text-center py-3">
                             <span class="fa fa-file-code-o m-3" style="font-size: 5rem"></span>
                             <strong>Drag logfiles here to analyze</strong><br>

@@ -1,0 +1,63 @@
+<div class="container">
+    <div class="row">
+       
+        <div class="col-1"></div>
+        <!-- the log in form -->
+        <div class="col-10 lower card-group">
+            <div class="card text-white size">
+                <div class="card-header"> <h1 class="text-center">sign in </h1></div>
+                <div class="card-body">
+                    <form [formGroup]="formData" ngSubmit="onSubmit(formData)" novalidate>
+                        <div class="form-group">
+                            
+                            <label class="ml-4" for="userEmail">Email </label>
+                             <div class="input-group mb-3">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text" id="email-icon">
+                                       <i class="fa fa-envelope"></i>
+                                    </span>
+                                </div>
+                                <input type="email" class="custom-input form-control inField" formControlName="userEmail" id="userEmail" placeholder="Enter email">
+                            </div>
+                            
+                        </div>
+                        
+                        <div class="form-group">
+                            <label class="ml-4" for="userPassword">Password</label>
+                            <div class="input-group mb-3">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text" id="password-icon">
+                                        <i class="fa fa-lock"></i>
+                                    </span>
+                                </div>
+                                <input type="password"  formControlName="userPassword" class="form-control inField" id="userPassword" placeholder="Password">
+                            </div>
+                        </div>
+                        
+                        <div class="text-center">
+                            <button id="login-btn" type="submit" class="btn btn-block">sign in</button>
+                            
+                            <div class="form-group mt-4">
+                                Don't Have an Account? Sign Up <a href="/signup">here</a>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+
+            <div class="card bg-purple">
+                <img id="logo"class="card-img-top" src="../../assets/img/logo.png" alt="ALFA LOGO">
+                <!-- attempt to use css to draw out the alfa logo -->
+                <!-- <div class="card-body text-center">
+                    <span class="alpha-icon">&alpha;</span>
+                    <div id="logoName">ALFA</div>
+                    <div id="title=">Autamated Log File Analyzer</div>
+                </div> -->
+            </div>
+
+        </div>
+        <div class="col-1"></div>
+    </div>
+</div>
+
+
