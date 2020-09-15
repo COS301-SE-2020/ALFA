@@ -22,7 +22,7 @@ router.post('/login', async(req, res) => {
 			else{
 				res.status(200).json({
                 	message : 'login successful',
-                	token : potentialLogin._id
+                	user_id : potentialLogin._id
                 });
 			}
 		}
@@ -64,7 +64,7 @@ router.post('/register', async(req, res) =>{
 
 			const newUser = new User({
 				email: data.email,
-				password: saltedPassword,
+				password: hashedSaltedPassword,
 				salt: salt
 			});
 
