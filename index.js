@@ -4,6 +4,7 @@ const mongo = require('mongoose')
 const parser = require('body-parser')
 const articleRoute = require('./routes/articles')
 const logFileRoute = require('./routes/logfiles')
+const userRoute = require('./routes/user');
 require('dotenv/config')
 
 //FOR DB CONNECTION
@@ -47,6 +48,7 @@ mongo.connect(
 app.use(parser.json())
 app.use('/articles',articleRoute)
 app.use('/logfiles',logFileRoute)
+app.use('/user',userRoute);
 
 app.get('/', (req, res)=>{
     res.send("API IS Running")
