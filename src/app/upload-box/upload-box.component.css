@@ -1,0 +1,73 @@
+.row#form-section{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.row#form-section>div{
+    min-height: calc(90vh - 68px);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+#logfile-inp-container{
+    border-radius: 4px;
+    border: 2px dotted #ccc;
+    position: relative;
+    transition: all .2s ease-out;
+} 
+#logfile-inp-container:hover{
+    box-shadow: 0px 1px 2px 0px rgba(0, 0, 0, .3);
+    box-shadow: 0px 1px 3px 1px rgba(0, 0, 0, .15);
+}
+#logfile-inp-container input{
+    position: absolute;
+    opacity: 0;
+    width: 100%;
+    height: 100%;
+    border: 1px solid red;
+}
+#logfile-inp-container p{
+    pointer-events: none;
+}
+#logfile-inp-container p span.fa{
+    font-size: 2.8rem;
+    display: block;
+}
+
+#file-list{
+    display: grid;
+    grid-template-columns: 3fr 9fr;
+}
+#file-list ul, #file-list span{
+    grid-column: 2/3;
+    grid-row: 1/2;
+}
+#form-btn-group{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+}
+#form-btn-group button{
+    border-radius: 30px;
+    transition: all .1s ease-out;
+    font-weight: bold;
+    min-height: 60px;
+}
+#analyze-btn{
+    color: #fff;
+    background-color: #7851a9;
+}
+#reset-form-btn{
+    /* color: #484149; */
+    color: rgb(72, 65, 73, 0.8);
+    border: 1px solid #ccc;
+}
+#form-btn-group button:hover{
+    box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, .15);
+    box-shadow: 0px 4px 4px 2px rgba(0, 0, 0, .3);
+}
+
+.modal-content, .modal-body{
+    background-color: #fff;
+    border: none !important;
+    border-radius: 8px !important;
+}

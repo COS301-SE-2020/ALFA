@@ -4,8 +4,12 @@
   "description": "Unit tests for the alfa api (vote, add suggestion, and history)",
   "main": "app.js",
   "scripts": {
+<<<<<<< HEAD
     "test": "mocha || true",
     "start": "nodemon index.js"
+=======
+    "test": "mocha || true"
+>>>>>>> 9890ac99e74b20b72adb0b444c76aadd8442f0db
   },
   "author": "Pyraspace Dev Team",
   "license": "ISC",
@@ -15,6 +19,7 @@
     "mocha": "^8.1.1"
   },
   "dependencies": {
+<<<<<<< HEAD
     "bcrypt": "^5.0.0",
     "body-parser": "^1.19.0",
     "dotenv": "^8.2.0",
@@ -22,5 +27,8 @@
     "jest-preset-angular": "^8.3.1",
     "mongoose": "^5.9.18",
     "nodemon": "^2.0.4"
+=======
+    "bcrypt": "^5.0.0"
+>>>>>>> 9890ac99e74b20b72adb0b444c76aadd8442f0db
   }
 }
