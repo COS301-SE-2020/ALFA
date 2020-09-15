@@ -3,9 +3,50 @@ const express = require('express')
 const router = express.Router()
 const Logfile = require('../models/log_file')
 const KB_Article = require('../models/kb_article')
+const User = require('../model/user');
+
+router.post('/retrieve' async(req, res) => {
+	try{
+		let data = req.body;
+
+		if(data.user_id == null){
+			throw '401';
+		}
+		else{
+			let isUser = await User.findByID(data.user_id).exec();
+			if(isUser == null){
+				throw '401';
+			}
+			else{
+				if(data.num_retrieve == null){
+					let limit = 25;
+				}
+				else{
+					let limit = data.num_retrieve;
+				}
+				let logfiles = await Logfile.find(user_id : data.user_id)
+					.limit(limit)
+					.exec();
+
+				res.status(200)
+					.json(logfiles);
+			}
+		}
+	}
+	catch(error){
+		if(error == '401'){
+			res.status(401)
+				.json(message : 'unauthorised attempt to retrieve logfiles');
+		}
+		else{
+			res.status(500)
+        		.json(message : error);
+        }
+	}
+});
 
 //Endpoint to save uploded file contents to db
-router.post('/', async(req,res)=>{
+router.post('/upload', async(req,res)=>{
     try {
         let data = req.body
 
