@@ -22,7 +22,8 @@ router.post('/', async(req,res)=>{
         const file = new Logfile({
             filename: data.filename,
             date: dateFormat,
-            content: data.content
+            content: data.content,
+            user_id: data.user_id
         })
 
         const newFile = await file.save()
