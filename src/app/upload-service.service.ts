@@ -15,26 +15,26 @@ import { MessageService } from './message.service';
 export class UploadServiceService {
     URL: string = "https://alfa-ml-api.herokuapp.com/analyse";
 
-  constructor(private http: HttpClient, private messageService: MessageService) { }
+    constructor(private http: HttpClient, private messageService: MessageService) { }
 
-  /**
-   * @brief this function uploads a single file by sending a post request to the API
-   * returns an array of analysisResults
-   * @param logfile json object: { filename, date, data }
-   * @returns returns an array of analysisResult objects that the api identifies as helpful
-   */
-  uploadLogFile(logfile: Logfile): Observable<AnalysisResult[]>{
-      return this.http.post<AnalysisResult[]>( this.URL, logfile/* , this.httpOptions */).pipe(
-          tap( () => {}),
-          catchError( this.handleError<AnalysisResult[]>('Logfile upload') )
-      )
-  }
+    /**
+     * @brief this function uploads a single file by sending a post request to the API
+     * returns an array of analysisResults
+     * @param logfile json object: { filename, date, data }
+     * @returns returns an array of analysisResult objects that the api identifies as helpful
+     */
+    uploadLogFile(logfile: Logfile): Observable<AnalysisResult[]>{
+        return this.http.post<AnalysisResult[]>( this.URL, logfile/* , this.httpOptions */).pipe(
+            tap( () => {}),
+            catchError( this.handleError<AnalysisResult[]>('Logfile upload') )
+        )
+    }
 
-  /**
-   * @brief this function handles errors encountered during Http operations
-   * @param operation the operation that failed
-   * @param result optional value, returned as the observable result
-   */
+    /**
+     * @brief this function handles errors encountered during Http operations
+     * @param operation the operation that failed
+     * @param result optional value, returned as the observable result
+     */
     private handleError<T>(operation = 'operation', result?: T){
         return (err: any): Observable<T> =>{
             // console.log(err);

@@ -1,15 +1,15 @@
 <div class="my-2 p-3 pb-0" id="analysis-result">
     <div class="article-header">
         <div class="article-description" [title]="analysisResult.log_entry">
-            Line {{analysisResult.line_no}}: {{analysisResult.log_entry}}
+            {{analysisResult.log_entry}}
         </div>
 
         <div class="solution-list-div mt-2 small mb-0">
             <ul class="list-group">
                 <li class="list-group-item">
-                    <div class="small  article-origin pt-2 mb-0">{{firstSuggestion.link.split('/')[2]}}</div>
-                    <div class="p-0 pt-1 m-0 solution-description" [title]="firstSuggestion.description">
-                        {{firstSuggestion.description}}
+                    <div class="small  article-origin pt-2 mb-0">{{analysisResult.link.split('/')[2]}}</div>
+                    <div class="p-0 pt-1 m-0 solution-description" [title]="analysisResult.description">
+                        {{analysisResult.description}}
                     </div>
                    <!-- 
                        - Buttons for:
@@ -18,7 +18,7 @@
                     -->
                     <div class="row">
                         <div class="col-12 m-0 mt-3 bottom-section">
-                            <div class="btn-group btn-group-sm article-feedback">
+                            <!-- <div class="btn-group btn-group-sm article-feedback">
                                 <a  href="javascript: void(0)" (click)="upVote(analysisResult.kb_index, firstSuggestion._id)"  class="btn btn-default text-success">
                                     <i class="fa fa-arrow-up"></i> Yes
                                 </a>
@@ -28,9 +28,9 @@
                                 <a href="javascript: void(0)" (click)="downVote(analysisResult.kb_index, firstSuggestion._id)" class="btn btn-default text-danger btn-sm">
                                     <i class="fa fa-arrow-down"></i> No
                                 </a>
-                            </div>
-                            <div class="btn-group btn-group-sm article-open ml-3">
-                                <a [href]="firstSuggestion.link" class="btn btn-default  btn-sm" target="_blank">
+                            </div> -->
+                            <div class="btn-group btn-group-sm article-open">
+                                <a [href]="analysisResult.link" class="btn btn-default  btn-sm" target="_blank">
                                     <i class="fa fa-eye"></i> View solution
                                 </a>
                             </div>
@@ -53,7 +53,7 @@
                            1. voting
                            2. viewing/opening the solution                       
                         -->
-                        <div class="row">
+                        <!-- <div class="row">
                             <div class="col-12 m-0 mt-3 bottom-section">
                                 <div class="btn-group btn-group-sm article-feedback">
                                     <a  href="javascript: void(0)" (click)="upVote(analysisResult.kb_index, suggestion._id)"  class="btn btn-default text-success">
@@ -72,7 +72,7 @@
                                     </a>
                                 </div>
                             </div>
-                        </div>
+                        </div> -->
                     </li>
                 </ul>
             </ul>

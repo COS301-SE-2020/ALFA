@@ -33,7 +33,8 @@
                 <form [formGroup]="analyzeTextForm" (ngSubmit)="analyzeText()" autocomplete="off">
                     <div class="custom-input text-left">
                         <label for="error-inp">Paste error here</label>
-                        <input type="text" formControlName="errors" #errors id="error-inp" (focus)="handleTextInput()" class="form-control" required>
+                        <textarea  rows="3" formControlName="errors" #errors id="error-inp" (focus)="handleTextInput()" class="form-control" required>
+                        </textarea>
                     </div>
                     <button type="submit" class="btn btn-default btn-block mt-3 analyze-btn" [attr.disabled]="(errors.value.length > 0)? null:true"  [attr.data-toggle]="(errors.value.length > 0)? 'collapse':''" data-target=".alternating-views">
                         Solve error
@@ -43,7 +44,7 @@
         </div>
     </div>
     <div class="col-sm-12 col-md-4 mt-3">
-        <app-popular-logs></app-popular-logs>
+        <!-- <app-popular-logs></app-popular-logs> -->
         <app-stats-panel></app-stats-panel>
     </div>
 </section>

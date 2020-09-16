@@ -12,13 +12,14 @@ import { Article } from '../article';
 })
 export class AnalysisResultComponent implements OnInit {
     @Input() analysisResult: AnalysisResult;
-    firstSuggestion: Article;
+    firstSuggestion: any;
 
     constructor(private suggestionService: SuggestionService) { }
 
     ngOnInit(): void {
-        this.firstSuggestion = this.analysisResult.suggestions[0];
-        this.analysisResult.suggestions = this.analysisResult.suggestions.slice(1, this.analysisResult.suggestions.length);
+        this.analysisResult.suggestions = [];
+        /* this.firstSuggestion = this.analysisResult.suggestions[0];
+        this.analysisResult.suggestions = this.analysisResult.suggestions.slice(1, this.analysisResult.suggestions.length); */
     }
 
     upVote(_index: number, _id: string): void {

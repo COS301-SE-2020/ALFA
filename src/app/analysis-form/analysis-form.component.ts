@@ -59,7 +59,7 @@ export class AnalysisFormComponent implements OnInit {
             }
 
             reader = new FileReader();
-            reader.readAsText(file);
+            reader.readAsDataURL(file);
 
             reader.onload = evt => {
                 // if(evt.target.result.indexOf("data:text/") !== 0){
@@ -69,7 +69,7 @@ export class AnalysisFormComponent implements OnInit {
                 fileData = {
                     filename: file.name,
                     date: "",
-                    content: evt.target.result
+                    content: evt.target.result.split("base64,")[1]
                 }
                 this.filesToUpload.push( fileData );
                 this.analyzeFileForm.reset();
@@ -90,6 +90,7 @@ export class AnalysisFormComponent implements OnInit {
     removeFile(index: number): void{
         this.filesToUpload.splice(index, 1);
         [this.analyzeFileForm.controls.logfiles].splice(index, 1);
+        this.isAnalyzing = true;
     }
 
     /**
@@ -141,7 +142,7 @@ export class AnalysisFormComponent implements OnInit {
             date: "",
             content: ""
         }        
-        fileData.content = this.analyzeTextForm.controls.errors.value;
+        fileData.content = btoa(this.analyzeTextForm.controls.errors.value);
         // fileData.content = fileData.content.substr( 0, fileData.content.length - 1 ); // remove equal sign at the end of the string
         // console.log(`Field Data: ${fileData.content}`);
 

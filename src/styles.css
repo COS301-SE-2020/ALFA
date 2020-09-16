@@ -57,6 +57,7 @@ input:hover, input:focus, input:active, textarea:hover, textarea:focus, textarea
     outline: none;
     box-shadow: none !important;
     color: #fff !important;
+    padding-bottom: 0px;
 }
 .custom-input input{
     height: 40px;

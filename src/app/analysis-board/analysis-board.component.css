@@ -40,4 +40,5 @@
     box-shadow: none;
     align-self: flex-end;
     justify-self: flex-end;
+    border-radius: 30px;
 }
