@@ -31,7 +31,7 @@ router.post('/login', async(req, res) => {
 		}
 	}
 	catch(error){
-		res.status(400).json({message : error});
+		res.status(200).json({message : error});
 		console.log(error)
 	}
 });
@@ -78,7 +78,7 @@ router.post('/register', async(req, res) =>{
 		}
 	}
 	catch(error){
-		res.status(500).json({message : error.message});
+		res.status(200).json({message : error.message});
 		console.log(error.message)
 	}
 });
