@@ -4,11 +4,7 @@ const mongo = require('mongoose')
 const parser = require('body-parser')
 const articleRoute = require('./routes/articles')
 const logFileRoute = require('./routes/logfiles')
-<<<<<<< HEAD
 const userRoute = require('./routes/users')
-=======
-const userRoute = require('./routes/user');
->>>>>>> 9890ac99e74b20b72adb0b444c76aadd8442f0db
 require('dotenv/config')
 
 //FOR DB CONNECTION
@@ -52,21 +48,13 @@ mongo.connect(
 app.use(parser.json())
 app.use('/articles',articleRoute)
 app.use('/logfiles',logFileRoute)
-<<<<<<< HEAD
 app.use('/users',userRoute)
-=======
-app.use('/user',userRoute);
->>>>>>> 9890ac99e74b20b72adb0b444c76aadd8442f0db
 
 app.get('/', (req, res)=>{
     res.send("API IS Running")
 })
 //listening to incoming connections
-<<<<<<< HEAD
-const PORT = process.env.PORT || 9090;
-=======
 const PORT = process.env.PORT || 8090;
->>>>>>> 9890ac99e74b20b72adb0b444c76aadd8442f0db
 app.listen(PORT,()=>{
     console.log(`Server Running on localhost:${PORT}`)
 })

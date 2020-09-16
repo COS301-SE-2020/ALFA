@@ -1,4 +1,3 @@
-//BY Pako Diale
 const mongoose = require('mongoose')
 
 const suggestionSchema = mongoose.Schema({
