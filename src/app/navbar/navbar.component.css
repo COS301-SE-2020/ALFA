@@ -35,6 +35,7 @@
 
 #sign-in-btn{
     font-size: .9rem;
+    border: none;
     border-radius: 30px;
     transform: translateY(.3rem);
     background: #7851a9;

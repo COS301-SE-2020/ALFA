@@ -28,6 +28,10 @@
     pointer-events: all;
     transition: all .5s ease-out;
 }
+#snackbar .message{
+    display: flex;
+    align-items: center;
+}
 #snackbar .action{
     display: flex;
     text-align: right;

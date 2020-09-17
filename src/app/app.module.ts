@@ -21,6 +21,7 @@ import { PopularLogsComponent } from './popular-logs/popular-logs.component';
 import { StatsPanelComponent } from './stats-panel/stats-panel.component';
 import {  LoginComponent} from "./login/login.component";
 import { SignupComponent } from './signup/signup.component';
+import { DashboardComponent } from './dashboard/dashboard.component';
 
 
 @NgModule({
@@ -40,7 +41,7 @@ import { SignupComponent } from './signup/signup.component';
     PopularLogsComponent,
     StatsPanelComponent,  
     LoginComponent, 
-    SignupComponent,
+    SignupComponent, DashboardComponent,
   ],
   imports: [
     BrowserModule,

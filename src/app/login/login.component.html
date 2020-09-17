@@ -4,21 +4,21 @@
             <div class="row m-0">
                 <div class="col-6">
                     <h4 class="text-center mt-3 mb-0">SIGN IN HERE</h4>
-                    <form [formGroup]="formData" ngSubmit="onSubmit(formData)" novalidate>
+                    <form [formGroup]="formData" (ngSubmit)="onSubmit()" autocomplete="off">
                         <div class="custom-input form-group mt-4 mb-4">
                             <label class="label-text" for="userEmail">
                                 Email 
                             </label>
-                            <input type="email" class="form-control inField" placeholder="" formControlName="userEmail" id="userEmail"/>                            
+                            <input type="email" class="form-control inField" placeholder="" formControlName="email" id="userEmail"/>                            
                         </div>
                         <div class="custom-input form-group ">
                             <label class="label-text" for="userPassword">Password</label>
-                            <input type="password" formControlName="userPassword" class="form-control inField" id="userPassword" placeholder=""/>
+                            <input type="password" formControlName="password" class="form-control inField" id="userPassword" placeholder=""/>
                         </div>
                         <div class="text-center">
                             <button id="login-btn" type="submit" class="btn btn-block">sign in</button>
                             <p class="text-left px-2 mt-4">
-                                Don't Have an Account? Sign Up <a href="/signup">here</a>
+                                Don't Have an Account? Sign Up <a routerLink="/signup" class="btn btn-link text-primary px-0"><b>here</b></a>
                             </p>
                         </div>
                     </form>
