@@ -1,0 +1,11 @@
+<section class="row" id="dashboard">
+    <div class="col-12 p-o m-0">
+        <iframe src=" https://alfa-dash.herokuapp.com/" (load)="iframeLoaded()" width="100%" height="100%" frameborder="0">
+            Problem loading dashboard content, try refreshing or check back later
+        </iframe>
+    </div>
+</section>
+<div *ngIf="isLoaded === false" class="loaders-container">
+    <app-loader></app-loader>
+</div>
+ 
