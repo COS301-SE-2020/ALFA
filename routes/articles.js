@@ -16,14 +16,22 @@ router.post('/', async(req,res)=>{
     try {
         let data = req.body
 
+        //get the maximum index out of all KB articles
+        const maxIndexDoc = await KB_Article.findOne().sort("-kb_index");
+
         const file = new KB_Article({
-            description: data.description,
-            link: data.link
+            kb_index: maxIndexDoc!=null?(maxIndexDoc.kb_index + 1):0,
+            suggestions:{
+                votes:0,
+                description: data.description,
+                link: data.link
+            }
         })
 
         const newFile = await KB_Article.create(file);
         res.json({message:"New Record Saved!"})
         console.log("New Record Saved!")
+        // console.log(file)
     } catch (error) {
        handleErrors(error,res)
     }
@@ -33,11 +41,8 @@ router.post('/history', async(req,res)=>{
     try {
         let data = req.body
 
-        //get the maximum index out of all KB articles
-        // const maxIndexDoc = await KB_Article.findOne().sort("-kb_index");
 
         const file = new History({
-            // kb_index: maxIndexDoc!=null?(maxIndexDoc.kb_index + 1):0,
             suggestions:{
                 votes:0,
                 description: data.description,
