@@ -1,6 +1,7 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { AnalysisFormComponent } from './analysis-form.component';
+import { elementAt } from 'rxjs/operators';
 
 describe('AnalysisFormComponent', () => {
   let component: AnalysisFormComponent;
@@ -23,3 +24,5 @@ describe('AnalysisFormComponent', () => {
     expect(component).toBeTruthy();
   });
 });
+
+
