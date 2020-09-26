@@ -33,6 +33,10 @@ const AnalysisSchema = mongoose.Schema({
 })
 
 const HistorySchema = mongoose.Schema({
+    user_id:{
+    	type: String,
+    	required: true,
+    },
     save_date:{
         type: String,
         required: true,

@@ -2,6 +2,7 @@ const express = require('express')
 const router = express.Router()
 const KB_Article = require('../models/kb_article')
 const MongoClient = require('mongodb').MongoClient;
+const analysisHistory = require('../models/history');
 
 /**
  * NB: the 'link' attribute should be unique, sending duplicates will return error with code 100
@@ -71,19 +72,15 @@ router.get('/', async(req, res)=>{
 })
 
 // Endpoint to retrieve analysis history
-router.get('/history', async(req, res)=>{
+router.get('/history/:userId/:limit', async(req, res)=>{
     try {
-        let Histories =[];
-        MongoClient.connect(process.env.DB_CONNECTION, async(error, client)=>{
-            if(error){
-                handleErrors(error, res);
-            }
-            Histories = await client.db('ALFA_DB').collection('analysis_history').find().toArray()
-            console.log("Data recieved!")
-            // console.log(Histories)
-            res.json( Histories)
-        })
-        
+    	let data = req.params;
+
+    	let results = await analysisHistory.find({user_id : data.userId})
+    		.limit(data.limit)
+    		.exec();
+
+    	res.status(200).json(results);
     } catch (error) {
         handleErrors(error)
     }
