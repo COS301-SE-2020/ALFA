@@ -64,7 +64,7 @@ router.post('/history', async(req,res)=>{
 			save_time: timeFormat,
 			analysis_data: {
 				suggestion:{
-					description: data.description
+					description: data.description,
 					link: data.link
 				},
 				line_no: data.line_no,
