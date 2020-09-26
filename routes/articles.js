@@ -2,7 +2,7 @@ const express = require('express')
 const router = express.Router()
 const KB_Article = require('../models/kb_article')
 const MongoClient = require('mongodb').MongoClient;
-const analysisHistory = require('../models/history');
+const HistorySchema = require('../models/history');
 
 /**
  * NB: the 'link' attribute should be unique, sending duplicates will return error with code 100
@@ -42,13 +42,34 @@ router.post('/history', async(req,res)=>{
     try {
         let data = req.body
 
+		let currentDate = new Date();
+        let dateFormat = new Intl.DateTimeFormat(
+        	'en',
+            {
+            	year: 'numeric',
+                month:'2-digit',
+                day: '2-digit',
+            })
+            .format(currentDate);
+        let timeFormat = new Intl.DateTimeFormat(
+        	'en',
+        	{
+        		timeStyle: 'short'
+        	})
+        	.format(currentDate);
 
-        const file = new History({
-            suggestions:{
-                votes:0,
-                description: data.description,
-                link: data.link
-            }
+        const file = new HistorySchema({
+            user_id: data.user_id,
+			save_date: dateFormat,
+			save_time: timeFormat,
+			analysis_data: {
+				suggestion:{
+					description: data.description
+					link: data.link
+				},
+				line_no: data.line_no,
+				log_entry: data.log_entry
+			}
         })
 
         const newFile = await KB_Article.create(file);

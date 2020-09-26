@@ -1,10 +1,6 @@
 const mongoose = require('mongoose')
 
 const SuggestionSchema = mongoose.Schema({
-	votes:{
-		type: Number,
-		required: true
-	},
 	description: {
         type: String,
         required: true
@@ -17,12 +13,7 @@ const SuggestionSchema = mongoose.Schema({
 })
 
 const AnalysisSchema = mongoose.Schema({
-    kb_index:{
-        type: Number,
-		required: true,
-		unique: true
-    },
-    suggestions:[SuggestionSchema],  
+    suggestion:SuggestionSchema,
     line_no:{
         type: Number,
     },
@@ -45,7 +36,7 @@ const HistorySchema = mongoose.Schema({
 	    type: String,
         required: true,
     },
-    analysis_data:[AnalysisSchema],
+    analysis_data:AnalysisSchema,
 })
 
 module.exports = mongoose.model('analysis_history', HistorySchema)

@@ -3,31 +3,21 @@ const router = express.Router()
 const Logfile = require('../models/log_file')
 const KB_Article = require('../models/kb_article')
 
-router.get('/retrieve', async(req, res) => {
+router.get('/retrieve/:userId/:limit', async(req, res) => {
 	try{
-		let data = req.body;
-		if(data.user_id == null){
+		let data = req.params;
+        let isUser = await User.findByID(data.userId)
+        	.exec();
+        let limit;
+		if(isUser == null){
 			throw '401';
 		}
 		else{
-            let isUser = await User.findByID(data.user_id).exec();
-            let limit;
-			if(isUser == null){
-				throw '401';
-			}
-			else{
-				if(data.num_retrieve == null){
-					limit = 25;
-				}
-				else{
-					limit = data.num_retrieve;
-				}
-				let logfiles = await Logfile.find({user_id : data.user_id})
-					.limit(limit)
-					.exec();
-
+			limit = data.limit;
+			let logfiles = await Logfile.find({user_id : data.user_id})
+				.limit(limit)
+				.exec();
 				res.status(200).json(logfiles);
-			}
 		}
 	}
 	catch(error){
