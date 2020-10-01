@@ -107,6 +107,20 @@ router.get('/history/:userId/:limit', async(req, res)=>{
     }
 })
 
+// Endpoint to retrieve a specific History item
+router.get('history/:resultId', async(req, res) => {
+	try {
+		let data = req.params;
+
+		let results = await analysisHistory.findOne({_id : data.resultId})
+			.exec();
+
+		res.status(200).json(results);
+	} catch (error) {
+		handleErrors(error);
+	}
+})
+
 // Endpoint to append KB article to existing articles
 router.post('/suggestion', async(req, res)=>{
     try {
