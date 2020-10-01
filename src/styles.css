@@ -17,12 +17,17 @@ body{
     position: absolute;
     left: 0px;
     top: 0px;
-    width: 100%;
+    width: 100%; 
     height: 100%;
     line-height: 100%;
     display: flex;
     align-items: center;
     justify-content: center;
+}
+
+/* modals */
+.modal-content{
+    background: #333;
 }
 
 /* input fields */

@@ -1,4 +1,4 @@
-#analysis-result{
+.analysis-result{
     border: 1px solid #555;
     border-radius: 8px;
     background: #333;
@@ -40,6 +40,49 @@ li.list-group-item:nth-child(odd){
     -webkit-box-orient: vertical;
 }
 
+.share-to-apps.collapse:not(.show){
+    visibility: hidden;
+    transition: all .3s ease-out;
+}
+.share-to-apps.collapse.show{
+    visibility: visible;
+    transition: all .3s ease-out;
+}
+.share-to-apps{
+    visibility: hidden;
+    position: absolute;
+    bottom: 38px;
+    right: 0px;
+    width: 120px;
+    min-height: 120px;
+    display: grid !important;
+    grid-template-areas:
+    "whatsapp facebook"
+    "twitter copyurl";
+    background: #444;
+    border: 1px solid #333;
+    border-radius: 8px;
+    column-gap: 4px;
+    row-gap: 4px;
+    padding: 2px;
+    transition: all .3s ease-out;
+}
+.share-to-apps a{
+    color: #fff;
+    text-decoration: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 2rem;
+    width: 100%;
+    height: 100%;
+    transition: all .2s ease-out;
+    border-radius: 8px;
+}
+.share-to-apps a:hover{
+    background: rgba(0, 0, 0, .22);
+}
+
 .btn-group{
     border: 1px solid #555;
     border-radius: 30px;
@@ -55,17 +98,17 @@ li.list-group-item:nth-child(odd){
     background-color: #444;
     outline: none !important;
     box-shadow: none !important;
-    transition: all .1s ease-out;
+    transition: all .2s ease-out;
 }
-.article-suggest{
+.article-suggest, .btn-share{
     color: #ddd;
     background-color: #444;
     border: 1px solid #555;
     border-radius: 30px;
     box-shadow: none;
-    transition: all .1s ease-out;
+    transition: all .2s ease-out;
 }
-.article-suggest:hover, .article-open a:hover{
+.article-suggest:hover, .btn-share:hover, .article-open a:hover{
     background-color: #555;
 }
 .article-feedback a:hover{

@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { Router, NavigationEnd } from '@angular/router';
 import { map } from 'rxjs/operators';
 import { Observable } from 'rxjs';
 
@@ -10,10 +10,18 @@ import { Observable } from 'rxjs';
 })
 export class AppComponent {
     title = 'ALFA: Automated Log File Analyzer';
+    containerType: string;
 
-    constructor(route: ActivatedRoute) {
-    // const url: Observable<string> = route.url.pipe( map(segments => segments.join('')) ) ;
-    // console.log(url);
+    constructor(private router: Router) {
+        this.router.events.forEach( evt => {
+            if(evt instanceof NavigationEnd){
+                if(evt.url === '/dashboard'){
+                    this.containerType = "container-fluid";
+                }else{
+                    this.containerType = "container";
+                }
+            }
+        })
     }
     ngOnInit(): void {
     //   console.log(this.route.snapshot.data['path']);

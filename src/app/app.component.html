@@ -1,6 +1,6 @@
 <div id="drop-target" (drop)="ignoreDrop($event)" (dragover)="ignoreDragOver($event)">
     <app-navbar></app-navbar>
-    <div class="container" id="main-container">
+    <div [class]=containerType id="main-container">
         <router-outlet></router-outlet>
         <app-message></app-message>
     </div>

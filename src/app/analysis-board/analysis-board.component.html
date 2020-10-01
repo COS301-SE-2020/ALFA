@@ -16,8 +16,8 @@
             <div class="tab-pane" [class.active]="index == 0" [id]="result.filename + index" *ngFor="let result of analysisResults; let index = index">
                 <Strong>Data For {{result.filename.substr(3, result.filename.length - 2)}}</Strong>
                 <ul class="list-unstyled">
-                    <li *ngFor="let data of result.data" class="px-3">
-                        <app-analysis-result [analysisResult]="data"></app-analysis-result>
+                    <li *ngFor="let data of result.data; let index = index" class="px-3">
+                        <app-analysis-result [index]="index" [analysisResult]="data"></app-analysis-result>
                     </li>
                 </ul>
             </div>

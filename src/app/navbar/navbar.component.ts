@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { Location } from '@angular/common';
 import { Router, NavigationEnd } from '@angular/router';
 import { UserManService } from '../user-man.service';
 
@@ -12,7 +11,7 @@ export class NavbarComponent implements OnInit {
     isSignIn: boolean;
     isLoggedIn: boolean;
 
-    constructor(private location: Location, private router: Router, private userService: UserManService) {
+    constructor(private router: Router, private userService: UserManService) {
         this.router.events.forEach( evt => {
                 if(evt instanceof NavigationEnd){
                     this.isSignIn = (evt.url === '/signin');
