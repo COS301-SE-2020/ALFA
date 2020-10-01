@@ -7,11 +7,35 @@ const HASH_ROUNDS = 15;
  * @brief endpoint to authenticate user login credentials
  * @param req which is a user object with just the email and password
  */
+
+// Endpoint for changing the email of a user
+router.post('/changeEmail', async(req, res) => {
+	try{
+		let data = req.body;
+
+		let potentialChange = await User.findOne({_id : data.user_id})
+			.exec;
+		if(potentialLogin == null){
+			throw 'ERROR: User does not exist';
+		}
+		else{
+			User.findOneAndUpdate({_id : data.user_id}
+				,{email : data.new_email})
+				.exec();
+		}
+	} catch (error) {
+		res.status(200).json({message : error});
+		console.log(error);
+	}
+});
+
+
+
 router.post('/login', async(req, res) => {
 	try{
 		let data = req.body;
 		let potentialLogin = await User.findOne({email : data.email})
-		.exec();
+			.exec();
 		if(potentialLogin == null){
 			throw 'ERROR: User does not exist!';
 		}
