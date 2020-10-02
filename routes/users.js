@@ -19,17 +19,43 @@ router.post('/changeEmail', async(req, res) => {
 			throw 'ERROR: User does not exist';
 		}
 		else{
-			User.findOneAndUpdate({_id : data.user_id}
+			await User.findOneAndUpdate({_id : data.user_id}
 				,{email : data.new_email})
 				.exec();
+
+			res.status(200)
+				.json({message : 'email updated'});
 		}
 	} catch (error) {
-		res.status(200).json({message : error});
+		res.status(200)
+			.json({message : error});
 		console.log(error);
 	}
 });
 
+// Endpoint for changing name of a user
+router.post('/changeFullname', async(req, res) => {
+	try{
+		let data = req.body;
 
+		let potentialChange = await User.findOne({_id : data.user_id})
+			.exec();
+		if(potentialChange == null){
+			throw 'ERROR: User does not exist';
+		}
+		else{
+			await User.findONeAndUpdate({_id : data.user_id}
+				, {fullname : data.fullname})
+				.exec();
+
+			res.status(200)
+				.json({message : 'full name updated'});
+		}
+	} catch (error) {
+		res.status(200)
+			.json({message : error});
+	}
+});
 
 router.post('/login', async(req, res) => {
 	try{
