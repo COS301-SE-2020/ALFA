@@ -1,47 +1,54 @@
-#navbar{
-    background-color: #333;
-    border-bottom: 1px solid #121212;
-    overflow: hidden;
-    max-height: 68px;
+#navbar {
+  background-color: #333;
+  border-bottom: 1px solid #121212;
+  overflow: hidden;
+  max-height: 68px;
 }
-.navbar-brand{
-    color: #fff;
-    font-size: 1.5rem;
-    font-weight: bold;
+.navbar-brand {
+  color: #fff;
+  font-size: 1.5rem;
+  font-weight: bold;
 }
-.navbar-brand .alpha-icon{
-    padding: 0px 10px;
-    display: inline-flex;
-    align-content: center;
-    justify-content: center;
-    border: 2px solid #fefefe;
-    border-radius: 4px;
+.navbar-brand .alpha-icon {
+  padding: 0px 10px;
+  display: inline-flex;
+  align-content: center;
+  justify-content: center;
+  border: 2px solid #fefefe;
+  border-radius: 4px;
 }
-#navbar .navbar-nav a{
-    color: rgba(255, 255,255, .5);
-    transition: all .05s ease-out;
-    min-width: 80px;
-    text-align: center;
+#navbar .navbar-nav a {
+  color: rgba(255, 255, 255, 0.5);
+  transition: all 0.05s ease-out;
+  min-width: 80px;
+  text-align: center;
 
-    transition: all .15s ease-out;
+  transition: all 0.15s ease-out;
 }
-#navbar .navbar-nav a:hover{
-    color: #fff;
-}
-
-#navbar .active-link a{
-    color: #fff;
+#navbar .navbar-nav a:hover {
+  color: #fff;
 }
 
-#sign-in-btn{
-    font-size: .9rem;
-    border: none;
-    border-radius: 30px;
-    transform: translateY(.3rem);
-    background: #7851a9;
-    color: #fff !important;
-    transition: all .1s ease-out;
+#navbar .active-link a {
+  color: #fff;
 }
-#sign-in-btn:hover{
-    opacity: .7;
+
+#sign-in-btn {
+  font-size: 0.9rem;
+  border: none;
+  border-radius: 30px;
+  transform: translateY(0.3rem);
+  background: #7851a9;
+  color: #fff !important;
+  transition: all 0.1s ease-out;
+}
+#sign-in-btn:hover {
+  opacity: 0.7;
+}
+
+.avatar {
+  vertical-align: middle;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
 }

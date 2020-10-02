@@ -13,14 +13,7 @@
         >
           <a routerLink="/" class="nav-link">Home</a>
         </div>
-        <div
-          class="nav-item"
-          *ngIf="isLoggedIn === true"
-          routerLinkActive="active-link"
-          [routerLinkActiveOptions]="{ exact: true }"
-        >
-          <a routerLink="/dashboard" class="nav-link">Dashboard</a>
-        </div>
+
         <div
           class="nav-item"
           routerLinkActive="active-link"
@@ -44,20 +37,34 @@
           </div>
         </ng-template>
         <ng-template #user>
+          <div
+            class="nav-item"
+            routerLinkActive="active-link"
+            [routerLinkActiveOptions]="{ exact: true }"
+            *ngIf="auth.user$ | async as user"
+          >
+            <a routerLink="/history" class="nav-link"
+              ><b>{{ user.displayName }}'s</b> Analysis History</a
+            >
+          </div>
+          <div
+            class="nav-item"
+            routerLinkActive="active-link"
+            [routerLinkActiveOptions]="{ exact: true }"
+          >
+            <a routerLink="/dashboard" class="nav-link">Dashboard</a>
+          </div>
           <div class="nav-item px-2" *ngIf="auth.user$ | async as user">
             <button
               class="nav-link py-1"
               id="sign-in-btn"
               (click)="auth.signOut()"
             >
-              SIGN OUT
+              Sign Out
             </button>
-            <img
-              src="{{ user.photoURL }}"
-              class="img-circle"
-              height="10px"
-              width="10px"
-            />
+          </div>
+          <div class="nav-item" *ngIf="auth.user$ | async as user">
+            <img src="{{ user.photoURL }}" alt="Avatar" class="avatar" />
           </div>
         </ng-template>
       </div>
