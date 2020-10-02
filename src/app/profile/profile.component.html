@@ -1,40 +1,26 @@
-<section class="row" id="profile">
-    <div class="col-12 py-3">
-        <h4>Account Settings</h4>
-    </div>
-    <div class="col-sm-8 p-3">
-        <p class="profile-section-title px-2">Account Preferences</p>
-        <div class="profile-item px-2 py-2">
-            <div class="item-key">Full Names</div>
-            <div class="item-value pl-2">John Doe</div>
-            <div class="item-action">
-                <button class="btn btn-default" data-toggle="modal" data-target="#change-name-modal">Change</button>
-            </div>
-        </div>
-        <div class="profile-item px-2 py-2 mt-3">
-            <div class="item-key">Email</div>
-            <div class="item-value pl-2">johndoe@gmail.com</div>
-            <div class="item-action">
-                <button class="btn btn-default">Change</button>
-            </div>
-        </div>
-        <div class="profile-item px-2 py-2 my-3">
-            <div class="item-key">Password</div>
-            <div class="item-value pl-2">We'd show it here but there's someone behind you</div>
-            <div class="item-action">
-                <button class="btn btn-default">Change</button>
-            </div>
-        </div>
-
-        <p class="profile-section-title px-2 mt-5">Theme Preferences</p>
-        <div class="profile-item px-2 py-2 my-3">
-            <div class="item-key">Current Theme</div>
-            <div class="item-value pl-2">Dark</div>
-            <div class="item-action">
-                <button class="btn btn-default">Change</button>
-            </div>
+<section class="row pb-3" id="profile">
+    <div class="col-12 col-md-12 p-3" id="profile-details">
+        <img [src]="user.photoURL" alt="profile ALFA picture" class="img-responsive">
+        <p class="small text-muted mt-1">{{user.email}}</p>
+        <h4>Welcome, {{user.displayName}}</h4>
+        <div class="card stat px-3 py-2 mt-3">
+            <h4 class="text-center"><strong>12</strong></h4>
+            <p class="mb-0">Logfiles analyzed</p>
         </div>
     </div>
+    <div class="col-12 col-md-8 mx-auto text-center">
+        Your account is managed by a third party (<a href="https://accounts.google.com/AccountChooser" target="_blank">Google</a>), we only use it to identify you.
+    </div>
+    <!-- <div class="col-12 col-md-8 mx-auto p-3" id="user-stats">
+        <div class="card stat p-3">
+            <h4>Logfiles analyzed</h4>
+            <p>12 Logfiles analyzed</p>
+        </div>
+        <div class="card stat p-3">
+            <h4>Logfiles analyzed</h4>
+            <p>12 Logfiles analyzed</p>
+        </div>
+    </div> -->
 </section>
 
 <div class="modal fade" id="change-name-modal">
@@ -55,4 +41,4 @@
             </div>
         </div>
     </div>
-</div>
+</div> 
