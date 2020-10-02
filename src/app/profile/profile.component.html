@@ -1,0 +1,58 @@
+<section class="row" id="profile">
+    <div class="col-12 py-3">
+        <h4>Account Settings</h4>
+    </div>
+    <div class="col-sm-8 p-3">
+        <p class="profile-section-title px-2">Account Preferences</p>
+        <div class="profile-item px-2 py-2">
+            <div class="item-key">Full Names</div>
+            <div class="item-value pl-2">John Doe</div>
+            <div class="item-action">
+                <button class="btn btn-default" data-toggle="modal" data-target="#change-name-modal">Change</button>
+            </div>
+        </div>
+        <div class="profile-item px-2 py-2 mt-3">
+            <div class="item-key">Email</div>
+            <div class="item-value pl-2">johndoe@gmail.com</div>
+            <div class="item-action">
+                <button class="btn btn-default">Change</button>
+            </div>
+        </div>
+        <div class="profile-item px-2 py-2 my-3">
+            <div class="item-key">Password</div>
+            <div class="item-value pl-2">We'd show it here but there's someone behind you</div>
+            <div class="item-action">
+                <button class="btn btn-default">Change</button>
+            </div>
+        </div>
+
+        <p class="profile-section-title px-2 mt-5">Theme Preferences</p>
+        <div class="profile-item px-2 py-2 my-3">
+            <div class="item-key">Current Theme</div>
+            <div class="item-value pl-2">Dark</div>
+            <div class="item-action">
+                <button class="btn btn-default">Change</button>
+            </div>
+        </div>
+    </div>
+</section>
+
+<div class="modal fade" id="change-name-modal">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header my-1 pt-2 pb-0">
+                <h4>Update Full Names</h4>
+            </div>
+            <div class="modal-body">
+                <form>
+                    <div class="custom-input">
+                        <label for="fullnames-inp">Full Names</label>
+                        <input type="text" name="fullnames-inp" id="fullnames-inp" class="form-control">
+                    </div>
+                    <button type="submit" class="btn btn-default submit-btn float-right mt-3">Update</button>
+                    <button type="reset" class="btn btn-default cancel-btn float-right mt-3 mr-3"  data-dismiss="modal">Cancel</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
