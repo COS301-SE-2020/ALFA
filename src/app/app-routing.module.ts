@@ -7,7 +7,7 @@ import { LoginComponent } from './login/login.component';
 import { SignupComponent } from './signup/signup.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { ProfileComponent } from './profile/profile.component';
-
+import { AuthGuard } from './auth.guard';
 
 const routes: Routes = [
   { path: '', component: AnalysisFormComponent },
@@ -16,8 +16,8 @@ const routes: Routes = [
   { path: 'home', component: AnalysisFormComponent },
   { path: 'about', component: AboutComponent },
   { path: 'history', component: HistoryComponent },
-  { path: 'dashboard', component: DashboardComponent },
-  { path: 'profile', component: ProfileComponent },
+  { path: 'dashboard', component: DashboardComponent, canActivate: [AuthGuard] },
+  { path: 'profile', component: ProfileComponent, canActivate: [AuthGuard] },
 ];
 
 @NgModule({

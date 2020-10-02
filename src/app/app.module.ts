@@ -19,10 +19,12 @@ import { HistoryComponent } from './history/history.component';
 import { AnalysisFormComponent } from './analysis-form/analysis-form.component';
 import { PopularLogsComponent } from './popular-logs/popular-logs.component';
 import { StatsPanelComponent } from './stats-panel/stats-panel.component';
-import {  LoginComponent} from "./login/login.component";
+import { LoginComponent } from "./login/login.component";
 import { SignupComponent } from './signup/signup.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { ProfileComponent } from './profile/profile.component';
+import { AngularFireModule } from '@angular/fire';
+import { environment } from 'src/environments/environment';
 
 
 @NgModule({
@@ -40,8 +42,8 @@ import { ProfileComponent } from './profile/profile.component';
     HistoryComponent,
     AnalysisFormComponent,
     PopularLogsComponent,
-    StatsPanelComponent,  
-    LoginComponent, 
+    StatsPanelComponent,
+    LoginComponent,
     SignupComponent, DashboardComponent, ProfileComponent,
   ],
   imports: [
@@ -50,6 +52,7 @@ import { ProfileComponent } from './profile/profile.component';
     HttpClientModule,
     FormsModule,
     ReactiveFormsModule,
+    AngularFireModule.initializeApp(environment.firebaseConfig)
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -1,5 +1,14 @@
 {
   "projects": {
     "default": "alfa-automated-log-analyzer"
+  },
+  "targets": {
+    "alfa-automated-log-analyzer": {
+      "hosting": {
+        "alfa-ui": [
+          "alfa-automated-log-analyzer"
+        ]
+      }
+    }
   }
 }
