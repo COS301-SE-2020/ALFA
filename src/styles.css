@@ -30,6 +30,24 @@ body{
     background: #333;
 }
 
+/* dropdown */
+.dropdown-menu{
+    background-color: #444;
+    border: 1px solid #333;
+    transition: all .2s ease-out;
+    padding: 8px;
+}
+.dropdown-menu a{
+    border-radius: 8px;
+}
+.dropdown-menu a.active{
+    background: none;
+}
+.dropdown-menu a:hover, .dropdown-menu a:active, .dropdown-menu a.active-link{
+    background: #333;
+    color: #fff !important;
+}
+
 /* input fields */
 input:hover, input:focus, input:active, textarea:hover, textarea:focus, textarea:active{
     border-color: #7851A9 !important;

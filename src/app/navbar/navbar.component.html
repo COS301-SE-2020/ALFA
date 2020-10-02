@@ -6,19 +6,14 @@
     </a>
     <div class="navbar-collapse collapse justify-content-end">
       <div class="navbar-nav">
-        <div
-          class="nav-item"
-          routerLinkActive="active-link"
-          [routerLinkActiveOptions]="{ exact: true }"
-        >
+        <div class="nav-item" routerLinkActive="active-link" [routerLinkActiveOptions]="{ exact: true }">
           <a routerLink="/" class="nav-link">Home</a>
         </div>
-
+        <div class="nav-item" *ngIf="auth.user$ | async as user" routerLinkActive="active-link" [routerLinkActiveOptions]="{ exact: true }">
+            <a routerLink="/dashboard" class="nav-link">Dashboard</a>
+        </div>
         <div
-          class="nav-item"
-          routerLinkActive="active-link"
-          [routerLinkActiveOptions]="{ exact: true }"
-        >
+          class="nav-item" routerLinkActive="active-link" [routerLinkActiveOptions]="{ exact: true }">
           <a routerLink="/about" class="nav-link">How it Works</a>
         </div>
         <!-- <div class="nav-item" routerLinkActive="active-link" [routerLinkActiveOptions]="{exact: true}">
@@ -26,46 +21,32 @@
                 </div> -->
         <div *ngIf="auth.user$ | async; then user; else guest"></div>
         <ng-template #guest>
-          <div class="nav-item px-2">
-            <button
-              class="nav-link py-1"
-              id="sign-in-btn"
-              (click)="auth.googleSignIn()"
-            >
-              SIGN IN
-            </button>
-          </div>
+            <div class="nav-item px-2">
+                <button class="nav-link py-1" id="sign-in-btn" (click)="auth.googleSignIn()" title="Sign in with google">
+                    <i class="fa fa-google"></i> SIGN IN
+                </button>
+            </div>
         </ng-template>
         <ng-template #user>
-          <div
-            class="nav-item"
-            routerLinkActive="active-link"
-            [routerLinkActiveOptions]="{ exact: true }"
-            *ngIf="auth.user$ | async as user"
-          >
-            <a routerLink="/history" class="nav-link"
-              ><b>{{ user.displayName }}'s</b> Analysis History</a
-            >
-          </div>
-          <div
-            class="nav-item"
-            routerLinkActive="active-link"
-            [routerLinkActiveOptions]="{ exact: true }"
-          >
-            <a routerLink="/dashboard" class="nav-link">Dashboard</a>
-          </div>
-          <div class="nav-item px-2" *ngIf="auth.user$ | async as user">
-            <button
-              class="nav-link py-1"
-              id="sign-in-btn"
-              (click)="auth.signOut()"
-            >
-              Sign Out
-            </button>
-          </div>
-          <div class="nav-item" *ngIf="auth.user$ | async as user">
-            <img src="{{ user.photoURL }}" alt="Avatar" class="avatar" />
-          </div>
+            <div class="nav-item px-2" *ngIf="auth.user$ | async as user">
+                <div class="dropdown">
+                    <button class="nav-link py-0 pl-0" id="account-btn" data-toggle="dropdown">
+                        <img src="{{ user.photoURL }}" alt="Avatar" class="img-reponsive avatar">
+                        <span class="px-1">{{ user.displayName }} <i class="fa fa-caret-down"></i></span>
+                    </button>
+                    <div class="dropdown-menu dropdown-menu-right">
+                        <a routerLink="/profile" class="dropdown-item nav-item text-left px-1 active mb-1" routerLinkActive="active-link" [routerLinkActiveOptions]="{ exact: true }">
+                            Profile
+                        </a>
+                        <a routerLink="/history" class="dropdown-item nav-item text-left px-1 mb-1" routerLinkActive="active-link" [routerLinkActiveOptions]="{ exact: true }">
+                            Analysis History
+                        </a>
+                        <button class="dropdown-item text-center my-2" id="sign-in-btn" (click)="auth.signOut()">
+                            Sign Out
+                        </button>
+                    </div>
+                </div>
+            </div>
         </ng-template>
       </div>
     </div>

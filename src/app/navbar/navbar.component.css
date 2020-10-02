@@ -1,7 +1,7 @@
 #navbar {
   background-color: #333;
   border-bottom: 1px solid #121212;
-  overflow: hidden;
+  /* overflow-x: hidden; */
   max-height: 68px;
 }
 .navbar-brand {
@@ -45,10 +45,28 @@
 #sign-in-btn:hover {
   opacity: 0.7;
 }
+#account-btn{
+    background: #333;
+    border-radius: 30px;
+    border: 1px solid rgba(0, 0, 0, 0);
+    max-height: 42px;
+    display: flex;
+    flex-direction: row;
+    overflow-x: hidden;
+    box-shadow: none;
+    outline: none;
+    transition: all .2s ease-out;
+}
+#account-btn:hover, #account-btn:active{
+    background: #444;
+}
+#account-btn span{
+    align-self: center;
+}
 
 .avatar {
-  vertical-align: middle;
-  width: 40px;
-  height: 40px;
-  border-radius: 50%;
+    vertical-align: middle;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
 }
