@@ -57,6 +57,37 @@ router.post('/changeFullname', async(req, res) => {
 	}
 });
 
+router.post('/changePassword', async(req, res) => {
+	try{
+		let data = req.body;
+
+		let potentialChange = await User.findOne({_id : data.user_id})
+			.exec();
+		if(potentialChange == null){
+			throw 'ERROR: User does not exist';
+		}
+		else{
+			let saltedPass = data.password.concat(potentialChange.salt);
+			let hashedSaltedPass = bcrypt.hashSync(saltedPass, HASH_ROUNDS);
+
+			if(bcrypt.compareSync(saltedPass, potentialChange.hashedPassword)){
+				let newSaltedPass = data.newPassword.concat(potentialChange.salt);
+				let newHashedSaltedPass = bcrypt.hashSync(saltedPass, HASH_ROUNDS);
+
+				await User.findOneAndUpdate({_id : data.user_id}
+					, {hashedPassword : newHashedSaltedPass})
+					.exec();
+			}
+			else{
+				throw 'ERROR: invalid password provided';
+			}
+		}
+	} catch (error) {
+		res.status(200)
+			.json({message : error});
+	}
+});
+
 router.post('/login', async(req, res) => {
 	try{
 		let data = req.body;
