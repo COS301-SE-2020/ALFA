@@ -1,4 +1,3 @@
-//BY SHILI JABULANI
 const mongo = require('mongoose')
 const LogFileSchema = mongo.Schema({
     filename:{
@@ -14,6 +13,10 @@ const LogFileSchema = mongo.Schema({
         type: String,
         required: true,
         unique: true,
+    }, 
+    user_id:{
+        type:String,
+        required:false,
     }
 })
 module.exports = mongo.model("log_files", LogFileSchema)

@@ -1,8 +1,6 @@
 const express = require('express')
 const router = express.Router()
 const KB_Article = require('../models/kb_article')
-// const History = require('../models/history')
-// const  mongo  = require('mongoose')
 const MongoClient = require('mongodb').MongoClient;
 
 /**
@@ -13,6 +11,7 @@ const MongoClient = require('mongodb').MongoClient;
     console.log(error!=null?error:"Check API Console For more Info")
     // error!=null? res.json({message:error}): res.json({message:"Check API Console For more Info"}) 
  }
+ // Endpoint to add articles to the DB
 router.post('/', async(req,res)=>{
     try {
         let data = req.body
