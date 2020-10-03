@@ -23,7 +23,7 @@ export class AnalysisResultComponent implements OnInit {
 
     ngOnInit(): void {
         this.analysisResult.suggestions = [];
-        this.shareUrl = `${document.location.origin}/${btoa(this.analysisResult.link)}`;
+        this.shareUrl = `${document.location.origin}/history/${btoa(this.analysisResult.link)}`;
         console.log(this.shareUrl);
         /* this.firstSuggestion = this.analysisResult.suggestions[0];
         this.analysisResult.suggestions = this.analysisResult.suggestions.slice(1, this.analysisResult.suggestions.length); */
