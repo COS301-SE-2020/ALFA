@@ -1,4 +1,8 @@
 /node_modules
 /src
 README.md
+<<<<<<< HEAD
 .env
+=======
+.env
+>>>>>>> 2f93166... tested user management endpoints
