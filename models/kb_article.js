@@ -15,6 +15,9 @@ const suggestionSchema = mongoose.Schema({
         required: true,
         unique: true
 	},
+	comment:{
+		type:String
+	}
 })
 
 const KBArticleSchema = mongoose.Schema({

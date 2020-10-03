@@ -47,32 +47,6 @@ router.post('/', async(req,res)=>{
 })
 
 /**
- * @brief Endpoint to add an analysis history record to the DB
- * @param {object} req an object that contains properties that can form a Knowledge-base article.
- *                  e.i description and link [old]
- * @returns success message as an object
- */
-router.post('/history', async(req,res)=>{
-    try {
-        let data = req.body
-
-        const file = new History({
-            suggestions:{
-                votes:0,
-                description: data.description,
-                link: data.link
-            }
-        })
-
-        const newFile = await KB_Article.create(file);
-        res.json({message:"New Record Saved!"})
-        console.log("New Record Saved!")
-    } catch (error) {
-       handleErrors(error,res)
-    }
-})
-
-/**
  * @brief Endpoint to retrieve all KB articles
  * @returns All the articles ever stored in the database
  */
@@ -81,27 +55,6 @@ router.get('/', async(req, res)=>{
         const AllArticles = await KB_Article.find()
         console.log("Data recieved!")
         res.json(AllArticles)
-    } catch (error) {
-        handleErrors(error)
-    }
-})
-
-/**
- * @brief Endpoint to retrieve all analysis history  [old & hacked]
- * @returns all the history records ever stored in the database
- */
-router.get('/history', async(req, res)=>{
-    try {
-        let Histories =[];
-        MongoClient.connect(process.env.DB_CONNECTION, async(error, client)=>{
-            if(error){
-                handleErrors(error, res);
-            }
-            Histories = await client.db('ALFA_DB').collection('analysis_history').find().toArray()
-            console.log("Data recieved!")
-            res.json( Histories)
-        })
-        
     } catch (error) {
         handleErrors(error)
     }
@@ -118,7 +71,7 @@ router.post('/suggestion', async(req, res)=>{
         let data = req.body
         
         //get data from DB
-        let searckKey={"kb_index":data.kb_index}
+        let searckKey={"suggestions.link":data.link}
         const Article = await KB_Article.findOne(searckKey)
       
         if(Article !=null){
@@ -126,7 +79,8 @@ router.post('/suggestion', async(req, res)=>{
             Article.suggestions.push({
                 votes:0,
                 description: data.description,
-                link: data.link
+                link: data.link,
+                comment:data.comment
             })
             
             // updating 
@@ -140,8 +94,9 @@ router.post('/suggestion', async(req, res)=>{
             console.info({message: "Update Successful!"})
             res.json({message: "Update Successful!"})
         }else{
-            console.log({message: `No KB Article with index ${searckKey.kb_index} was found!`})
-            res.json({message: `No KB Article with index ${searckKey.kb_index} was found!`})
+            let response ={message: `No KB Article with URL '${data.link}' was found!`}
+            console.log(response)
+            res.json(response)
         }
     } catch (error) {
        handleErrors(error, res)
@@ -150,8 +105,9 @@ router.post('/suggestion', async(req, res)=>{
 
 /**
  * @brief Endpoint to up or dowm vote suggestions from a specific KB article 
- * @param {object} req an object that contains properties that can form a Knowledge-base article.
- *                  e.i description and link [old]
+ * @param {object} req an object that contains the link/URL of a specific KB 
+ *                  and a vote value (-1 to down vote or 1 to up vote a KB article )
+ * @returns {object} res that has a success message and the current votes of the KB
  */
 router.post('/rate_article', async(req, res)=>{
     try {
@@ -164,12 +120,13 @@ router.post('/rate_article', async(req, res)=>{
        
         if(Article !=null){
             //update vote for specific suggestion of a specifc KB
+
             let actual_votes=-1;
             Article.suggestions.forEach(element => {
-                // if(){
+                if(element.link==data.link){
                     element.votes+=data.vote;
                     actual_votes=element.votes;
-                // }
+                }
             });
 
             // updating 
@@ -180,16 +137,17 @@ router.post('/rate_article', async(req, res)=>{
                 }
             })
 
-            console.info({message: data.vote==-1? "Down Voting Successful!": "Up voting Successful!",
-                votes: Article.suggestions.votes
-            })
-            res.json({
+            let response= {
                 message: data.vote==-1? "Down Voting Successful!": "Up voting Successful!",
-                votes: Article.suggestions[0].votes
-            })
+                votes: actual_votes
+            }
+
+            console.info(response)
+            res.json(response)
         }else{
-            console.log({message: `No KB Article with index ${articleKey.suggestions.link} was found!`})
-            res.json({message: `No KB Article with index ${articleKey.suggestions.link} was found!`})
+            let response ={message: `No KB Article with URL '${data.link}' was found!`}
+            console.log(response)
+            res.json(response)
         }
     } catch (error) {
        handleErrors(error, res)
