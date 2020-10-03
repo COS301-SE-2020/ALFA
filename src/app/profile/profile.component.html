@@ -1,44 +1,19 @@
 <section class="row pb-3" id="profile">
-    <div class="col-12 col-md-12 p-3" id="profile-details">
+    <div class="col-12 loaders-container" *ngIf="!user">
+        <app-loader></app-loader>
+    </div>
+    <div class="col-12 col-md-12 p-3" *ngIf="user" id="profile-details">
         <img [src]="user.photoURL" alt="profile ALFA picture" class="img-responsive">
         <p class="small text-muted mt-1">{{user.email}}</p>
         <h4>Welcome, {{user.displayName}}</h4>
-        <div class="card stat px-3 py-2 mt-3">
-            <h4 class="text-center"><strong>12</strong></h4>
-            <p class="mb-0">Logfiles analyzed</p>
+        <div class="col-sm-12 col-md-3">
+            <div class="card stat px-3 py-2 mt-3 text-center">
+                <h4><strong>12</strong></h4>
+                <p class="mb-0">Logfiles analyzed</p>
+            </div>
         </div>
     </div>
     <div class="col-12 col-md-8 mx-auto text-center">
         Your account is managed by a third party (<a href="https://accounts.google.com/AccountChooser" target="_blank">Google</a>), we only use it to identify you.
     </div>
-    <!-- <div class="col-12 col-md-8 mx-auto p-3" id="user-stats">
-        <div class="card stat p-3">
-            <h4>Logfiles analyzed</h4>
-            <p>12 Logfiles analyzed</p>
-        </div>
-        <div class="card stat p-3">
-            <h4>Logfiles analyzed</h4>
-            <p>12 Logfiles analyzed</p>
-        </div>
-    </div> -->
 </section>
-
-<div class="modal fade" id="change-name-modal">
-    <div class="modal-dialog modal-dialog-centered">
-        <div class="modal-content">
-            <div class="modal-header my-1 pt-2 pb-0">
-                <h4>Update Full Names</h4>
-            </div>
-            <div class="modal-body">
-                <form>
-                    <div class="custom-input">
-                        <label for="fullnames-inp">Full Names</label>
-                        <input type="text" name="fullnames-inp" id="fullnames-inp" class="form-control">
-                    </div>
-                    <button type="submit" class="btn btn-default submit-btn float-right mt-3">Update</button>
-                    <button type="reset" class="btn btn-default cancel-btn float-right mt-3 mr-3"  data-dismiss="modal">Cancel</button>
-                </form>
-            </div>
-        </div>
-    </div>
-</div> 

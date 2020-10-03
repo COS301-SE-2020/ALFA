@@ -25,7 +25,16 @@ export class UploadServiceService {
      */
     uploadLogFile(logfile: Logfile): Observable<AnalysisResult[]>{
         return this.http.post<AnalysisResult[]>( this.URL, logfile/* , this.httpOptions */).pipe(
-            tap( () => {}),
+            tap( (data) => {
+                // save as a log email-log_entry pair, waiting on the endpoint
+                /**
+                 * {
+                 *  "email": <email>,
+                 *  "log_entries": <AnalysisResult[]>
+                 * }
+                 */
+                console.log(data);
+            }),
             catchError( this.handleError<AnalysisResult[]>('Logfile upload') )
         )
     }

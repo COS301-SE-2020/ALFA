@@ -18,18 +18,18 @@
                     -->
                     <div class="row">
                         <div class="col-12 m-0 mt-3 bottom-section">
-                            <!-- <div class="btn-group btn-group-sm article-feedback">
-                                <a  href="javascript: void(0)" (click)="upVote(analysisResult.kb_index, firstSuggestion._id)"  class="btn btn-default text-success">
+                            <div class="btn-group btn-group-sm article-feedback">
+                                <a  href="javascript: void(0)" (click)="upVote(analysisResult.link)"  class="btn btn-default text-success">
                                     <i class="fa fa-arrow-up"></i> Yes
                                 </a>
                                 <span class="btn btn-default">
                                     helpful?
                                 </span>
-                                <a href="javascript: void(0)" (click)="downVote(analysisResult.kb_index, firstSuggestion._id)" class="btn btn-default text-danger btn-sm">
+                                <a href="javascript: void(0)" (click)="downVote(analysisResult.link)" class="btn btn-default text-danger btn-sm">
                                     <i class="fa fa-arrow-down"></i> No
                                 </a>
-                            </div> -->
-                            <div class="btn-group btn-group-sm article-open">
+                            </div>
+                            <div class="btn-group btn-group-sm article-open ml-2">
                                 <a [href]="analysisResult.link" class="btn btn-default  btn-sm" target="_blank">
                                     <i class="fa fa-eye"></i> View solution
                                 </a>
@@ -81,7 +81,7 @@
     <div class="text-right" style="transform: translateY(10px); position: relative;">
         <!-- invokes the add suggestion modal a modal -->
         <div class="share-to-apps collapse" [id]="'share-result-'+index">
-            <a href="https://web.whatsapp.com/send?text=WhatsApp Sharing works!" data-text="WhatsApp Sharing works!" target="blank" title="Share on WhatsApp">
+            <a [href]="'https://web.whatsapp.com/send?text=' + shareUrl" [attr.data-text]="shareUrl" target="blank" title="Share on WhatsApp">
                 <i class="fa fa-whatsapp"></i>
             </a>
             <a href="#https://facebook.com" title="Share on Facebook">

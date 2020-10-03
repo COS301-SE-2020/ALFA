@@ -17,24 +17,26 @@ export class AnalysisResultComponent implements OnInit {
     @Input() analysisResult: AnalysisResult;
     @Input() index: number;
     firstSuggestion: any;
+    shareUrl: string;
 
     constructor(private suggestionService: SuggestionService, private messageService: MessageService, private router: Router, private location: Location) { }
 
     ngOnInit(): void {
         this.analysisResult.suggestions = [];
-        // console.log(this.router.);
+        this.shareUrl = `${document.location.origin}/${btoa(this.analysisResult.link)}`;
+        console.log(this.shareUrl);
         /* this.firstSuggestion = this.analysisResult.suggestions[0];
         this.analysisResult.suggestions = this.analysisResult.suggestions.slice(1, this.analysisResult.suggestions.length); */
     }
 
-    upVote(_index: number, _id: string): void {
-        this.suggestionService.vote(_index, _id, 1).subscribe( msg => {
+    upVote(_link: string): void {
+        this.suggestionService.vote(_link, 1).subscribe( msg => {
             console.log(msg);
         });
     }
     
-    downVote(_index: number, _id: string): void {
-        this.suggestionService.vote(_index, _id, -1).subscribe( msg => {
+    downVote(_link: string): void {
+        this.suggestionService.vote(_link, -1).subscribe( msg => {
             console.log(msg);
         });
     }
@@ -44,7 +46,7 @@ export class AnalysisResultComponent implements OnInit {
     // }
 
     copyToClipboard(inputElement, historyId: string){
-        inputElement.value = document.location.href;
+        inputElement.value = this.shareUrl;
         inputElement.select();
         document.execCommand("copy");
         inputElement.setSelectionRange(0, 0);

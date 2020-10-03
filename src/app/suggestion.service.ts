@@ -22,12 +22,12 @@ export class SuggestionService {
      * @param _id solution id
      * @param _vote voite either -1 or 1
      */
-    vote(_index: number, _id: string, _vote: number): Observable<any> {
+    vote(_link: string, _vote: number): Observable<any> {
         let data = {
-            "kb_index": _index,
-            "_id": _id,
+            "link": _link,
             "vote": _vote
         };
+        console.log(data);
         return this.http.post(`${this.URL}/rate_article`, data).pipe(
             tap( () => {
                 const msg = `You have ${(_vote == 1)? "upvoted":"downvoted"} the solution. We appreciate your contribution, it helps better train our Machine Learning model.`;

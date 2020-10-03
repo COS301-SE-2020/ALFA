@@ -13,12 +13,6 @@
     border-radius: 50%;
 }
 
-#user-stats{
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    column-gap: 15px;
-}
-
 .card.stat{
     border: 1px solid #444;
     background-color: #333;
