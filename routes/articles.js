@@ -1,27 +1,18 @@
 const express = require('express')
 const router = express.Router()
 const KB_Article = require('../models/kb_article')
-const MongoClient = require('mongodb').MongoClient;
+
 
 /**
  * NB: the 'link' attribute should be unique, sending duplicates will return error with code 100
  */
-/**
- * @brief handles error e.i to desiplay them accordingly
- * @param {object} error an object that contains an error message
- * @returns well formatted error response object 
- */
+
  function handleErrors(error, res) {
     console.log(error!=null?error:"Check API Console For more Info")
-    error!=null? res.json({message:error}): res.json({message:"Check API Console For more Info"}) 
+    // error!=null? res.json({message:error}): res.json({message:"Check API Console For more Info"}) 
  }
-
-/**
- * @brief Endpoint to add articles to the DB
- * @param {object} req an object that contains properties that can form a Knowledge-base article.
- *                  e.i description and link
- * @returns success message as an object
- */
+ 
+ // Endpoint to add articles to the DB
 router.post('/', async(req,res)=>{
     try {
         let data = req.body
@@ -41,15 +32,14 @@ router.post('/', async(req,res)=>{
         const newFile = await KB_Article.create(file);
         res.json({message:"New Record Saved!"})
         console.log("New Record Saved!")
+        // console.log(file)
     } catch (error) {
        handleErrors(error,res)
     }
 })
 
-/**
- * @brief Endpoint to retrieve all KB articles
- * @returns All the articles ever stored in the database
- */
+
+// Endpoint to retrieve all KB articles
 router.get('/', async(req, res)=>{
     try {
         const AllArticles = await KB_Article.find()
@@ -60,10 +50,10 @@ router.get('/', async(req, res)=>{
     }
 })
 
+
 /**
  * @brief Endpoint to append or add suggestions to the database
- * @param {object} req an object that contains properties that can form a Knowledge-base article.
- *                  e.i kb-index, description and link 
+ * @param {object} req an object that contains properties that can form a Knowledge-base article. e.i kb-index, description and link 
  */
 router.post('/suggestion', async(req, res)=>{
     try {
@@ -71,8 +61,8 @@ router.post('/suggestion', async(req, res)=>{
         let data = req.body
         
         //get data from DB
-        let searckKey={"suggestions.link":data.link}
-        const Article = await KB_Article.findOne(searckKey)
+        let searchKey={"suggestions.link":data.link}
+        const Article = await KB_Article.findOne(searchKey)
       
         if(Article !=null){
             //add new info to article's suggestion array
@@ -84,7 +74,7 @@ router.post('/suggestion', async(req, res)=>{
             })
             
             // updating 
-            const updated = await KB_Article.findOneAndUpdate(searckKey, {
+            const updated = await KB_Article.findOneAndUpdate(searchKey, {
                 $set: {
                     kb_index:Article.kb_index,
                     suggestions: Article.suggestions
@@ -153,5 +143,4 @@ router.post('/rate_article', async(req, res)=>{
        handleErrors(error, res)
     }
 })
-
 module.exports = router

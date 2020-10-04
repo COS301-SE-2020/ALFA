@@ -1,4 +1,3 @@
-//BY Pako Diale
 const mongoose = require('mongoose')
 
 const suggestionSchema = mongoose.Schema({
@@ -9,15 +8,15 @@ const suggestionSchema = mongoose.Schema({
 	description: {
         type: String,
         required: true
+	},
+	comment: {
+        type: String,
     },
 	link: {
 		type: String,
         required: true,
         unique: true
 	},
-	comment:{
-		type:String
-	}
 })
 
 const KBArticleSchema = mongoose.Schema({

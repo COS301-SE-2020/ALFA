@@ -13,11 +13,17 @@ const MongoClient = require('mongodb').MongoClient;
     error!=null? res.json({message:error}): res.json({message:"Check API Console For more Info"}) 
  }
 
- 
 /**
  * @brief Endpoint to add an analysis history record to the DB
- * @param {object} req an object that contains 
- *                  e.i description and link [old]
+ * @param {object} req an object  like this 
+ * {
+ *  "email": <email>
+ *  "log_entries": {
+ *      "link":<url>,
+ *      "description":<description>,
+ *      "log_entry":<error entry>
+ *    }
+ * }
  * @returns success message as an object
  */
 router.post('/', async(req,res)=>{
@@ -38,26 +44,41 @@ router.post('/', async(req,res)=>{
 })
 
 /**
- * @brief Endpoint to retrieve all analysis history  [old & hacked]
- * @returns all the history records ever stored in the database
+ * @brief Endpoint to retrieve all analysis history linked to a specific user (identified by emal)
+ * @returns all the history records linked to a specific user from the database
  */
 router.get('/:email', async(req, res)=>{
     try {
-        // let Histories =[];
-        // MongoClient.connect(process.env.DB_CONNECTION, async(error, client)=>{
-        //     if(error){
-        //         handleErrors(error, res);
-        //     }
-        //     Histories = await client.db('ALFA_DB').collection('analysis_history').find().toArray()
-        //     console.log("Data recieved!")
-        //     res.json( Histories)
-        // })
-        
+        let searckKey={"email":req.params.email}
+        const record = await History.find(searckKey)
+        console.log(record)
+        res.json( record)
+
     } catch (error) {
         handleErrors(error)
     }
 })
 
-router.get('/history/:email/:url')
+/**
+ * @brief Endpoint to retrieve a specific analysis history record (identified by url) linked to a specific user (identified by emal)
+ * @returns a specific history records linked to a specific user from the database
+ */
+router.get('/:email/:url', async(req, res)=>{
+    try {
+        const buff = new Buffer(req.params.url, 'base64');
+        const url = buff.toString('ascii');
+
+        let searchKey={
+            "email":req.params.email,
+            "log_entries.link": url
+        }
+        const record = await History.find(searchKey)
+        console.log(record)
+        res.json( record)
+
+    } catch (error) {
+        handleErrors(error)
+    }
+})
 
 module.exports = router;
