@@ -61,7 +61,7 @@ router.post('/suggestion', async(req, res)=>{
         let data = req.body
         
         //get data from DB
-        let searchKey={"suggestions.link":data.link}
+        let searchKey={"suggestions.link":data.parent_link}
         const Article = await KB_Article.findOne(searchKey)
       
         if(Article !=null){
