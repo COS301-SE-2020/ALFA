@@ -1,7 +1,6 @@
 const express = require('express')
 const router = express.Router()
 const History = require('../models/history')
-const MongoClient = require('mongodb').MongoClient;
 
 /**
  * @brief handles error e.i to desiplay them accordingly
@@ -79,6 +78,34 @@ router.get('/:email/:url', async(req, res)=>{
     } catch (error) {
         handleErrors(error)
     }
+})
+
+router.get('/', async(req, res)=>{
+    const History_count = await History.find().count({}, (err, count)=>{
+        if (err){
+            console.log(err)
+        }
+        return count;
+    })
+
+    if(History_count!=null){
+        let resp={
+            count: History_count
+        }
+        console.log(resp)
+         res.json(resp)
+    }
+})
+
+router.get('/Count', async(req, res)=>{
+    const count = await History.find();
+    console.log('here')
+    // let resp={
+    //     messgae:"Results",
+    //     data: count
+    // }
+
+    // console.info(resp)
 })
 
 module.exports = router;

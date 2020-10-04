@@ -9,15 +9,13 @@ const KB_Article = require('../models/kb_article')
 
  function handleErrors(error, res) {
     console.log(error!=null?error:"Check API Console For more Info")
-    error!=null? res.json({message:error}): res.json({message:"Check API Console For more Info"})
+    // error!=null? res.json({message:error}): res.json({message:"Check API Console For more Info"}) 
  }
  
  // Endpoint to add articles to the DB
 router.post('/', async(req,res)=>{
     try {
         let data = req.body
-
-        console.log(data);
 
         //get the maximum index out of all KB articles
         const maxIndexDoc = await KB_Article.findOne().sort("-kb_index");
@@ -36,7 +34,6 @@ router.post('/', async(req,res)=>{
         console.log("New Record Saved!")
         // console.log(file)
     } catch (error) {
-    console.log(error);
        handleErrors(error,res)
     }
 })
@@ -48,6 +45,28 @@ router.get('/', async(req, res)=>{
         const AllArticles = await KB_Article.find()
         console.log("Data recieved!")
         res.json(AllArticles)
+    } catch (error) {
+        handleErrors(error)
+    }
+})
+
+// Endpoint to retrieve all KB articles
+router.post('/getSuggeestions', async(req, res)=>{
+    try {
+        const data = req.body
+
+        const searchKey={"suggestions.link":data.parent_link}
+         const result = await KB_Article.findOne(searchKey)
+      
+        if(result !=null){
+
+            let response={
+                message:"KB Article successfully recieved!",
+                data: result
+            }
+            console.log(response)
+            res.json(result)
+        }
     } catch (error) {
         handleErrors(error)
     }

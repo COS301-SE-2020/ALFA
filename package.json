@@ -1,11 +1,11 @@
 {
   "name": "alfa-api",
   "version": "1.0.0",
-  "description": "Unit tests for the alfa api (vote, add suggestion, and history)",
+  "description": "Node JS API for ALFA",
   "main": "app.js",
   "scripts": {
     "test": "mocha || true",
-    "start": "nodemon index.js || node index.js"
+    "start": "nodemon index.js"
   },
   "author": "Pyraspace Dev Team",
   "license": "ISC",
