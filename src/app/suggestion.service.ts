@@ -10,7 +10,7 @@ import { MessageService } from './message.service';
 export class SuggestionService {
     indexEmmiter: EventEmitter<number> = new EventEmitter();
     // URL: string = "https://project-alfa.herokuapp.com/";
-    URL: string = "https://mean-api-test-301.herokuapp.com/articles";
+    URL: string = "https://mean-api-test-301.herokuapp.com";
 
     constructor(private http: HttpClient, private messageService: MessageService) { }
 
@@ -28,7 +28,7 @@ export class SuggestionService {
             "vote": _vote
         };
         console.log(data);
-        return this.http.post(`${this.URL}/rate_article`, data).pipe(
+        return this.http.post(`${this.URL}/articles/rate_article`, data).pipe(
             tap( () => {
                 const msg = `You have ${(_vote == 1)? "upvoted":"downvoted"} the solution. We appreciate your contribution, it helps better train our Machine Learning model.`;
                 this.messageService.notify(msg);
@@ -58,8 +58,8 @@ export class SuggestionService {
         );
     }
 
-    getHistory(): Observable<any> {
-        return this.http.get(`${this.URL}/history`).pipe(
+    getHistory(email: string): Observable<any> {
+        return this.http.get(`${this.URL}/history/${email}`).pipe(
             tap(),
             catchError( this.handleError("Fetching history", []))
         );

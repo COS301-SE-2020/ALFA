@@ -1,6 +1,5 @@
 import { Component, OnInit, Input, EventEmitter } from '@angular/core';
 import { Router } from '@angular/router';
-import { Location } from '@angular/common';
 import { AnalysisResult } from '../analysis-result';
 import { SuggestionService } from '../suggestion.service';
 import { MessageService } from '../message.service';
@@ -19,12 +18,11 @@ export class AnalysisResultComponent implements OnInit {
     firstSuggestion: any;
     shareUrl: string;
 
-    constructor(private suggestionService: SuggestionService, private messageService: MessageService, private router: Router, private location: Location) { }
+    constructor(private suggestionService: SuggestionService, private messageService: MessageService, private router: Router) { }
 
     ngOnInit(): void {
         this.analysisResult.suggestions = [];
         this.shareUrl = `${document.location.origin}/history/${btoa(this.analysisResult.link)}`;
-        console.log(this.shareUrl);
         /* this.firstSuggestion = this.analysisResult.suggestions[0];
         this.analysisResult.suggestions = this.analysisResult.suggestions.slice(1, this.analysisResult.suggestions.length); */
     }

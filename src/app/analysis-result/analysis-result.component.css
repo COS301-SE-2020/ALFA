@@ -54,11 +54,11 @@ li.list-group-item:nth-child(odd){
     bottom: 38px;
     right: 0px;
     width: 120px;
-    min-height: 120px;
+    min-height: 60px;
     display: grid !important;
     grid-template-areas:
-    "whatsapp facebook"
-    "twitter copyurl";
+    "whatsapp copyurl";
+    /* "twitter facebook"; */
     background: #444;
     border: 1px solid #333;
     border-radius: 8px;

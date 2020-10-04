@@ -25,6 +25,7 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { ProfileComponent } from './profile/profile.component';
 import { AngularFireModule } from '@angular/fire';
 import { environment } from 'src/environments/environment';
+import { HistoryItemComponent } from './history-item/history-item.component';
 
 
 @NgModule({
@@ -44,7 +45,7 @@ import { environment } from 'src/environments/environment';
     PopularLogsComponent,
     StatsPanelComponent,
     LoginComponent,
-    SignupComponent, DashboardComponent, ProfileComponent,
+    SignupComponent, DashboardComponent, ProfileComponent, HistoryItemComponent,
   ],
   imports: [
     BrowserModule,

@@ -15,7 +15,7 @@ import { MessageService } from './message.service';
 export class UploadServiceService {
     URL: string = "https://alfa-ml-api.herokuapp.com/analyse";
 
-    constructor(private http: HttpClient, private messageService: MessageService) { }
+    constructor(private http: HttpClient, private messageService: MessageService) {}
 
     /**
      * @brief this function uploads a single file by sending a post request to the API
@@ -25,17 +25,20 @@ export class UploadServiceService {
      */
     uploadLogFile(logfile: Logfile): Observable<AnalysisResult[]>{
         return this.http.post<AnalysisResult[]>( this.URL, logfile/* , this.httpOptions */).pipe(
-            tap( (data) => {
-                // save as a log email-log_entry pair, waiting on the endpoint
-                /**
-                 * {
-                 *  "email": <email>,
-                 *  "log_entries": <AnalysisResult[]>
-                 * }
-                 */
-                console.log(data);
-            }),
+            tap( () => {}),
             catchError( this.handleError<AnalysisResult[]>('Logfile upload') )
+        )
+    }
+
+    /**
+     * @brief save the analysis result along with user email
+     * @param payload analysis history item
+     */
+    saveAnalysisResult(payload: any): Observable<any>{
+        console.log("save history: " + JSON.stringify(payload));
+        return this.http.post<any>( "https://mean-api-test-301.herokuapp.com/history/", payload).pipe(
+            tap( () => {}),
+            catchError( this.handleError<any>('Save analysis result') )
         )
     }
 
@@ -48,7 +51,7 @@ export class UploadServiceService {
         return (err: any): Observable<T> =>{
             // console.log(err);
 
-            this.messageService.notify(`Operation failed, an unexpected error occured.Please try again on contact the system administrator at pyraspace301@gmail.com`);
+            this.messageService.notify(`We could not find a suitable solution for the logfile.`);
 
             return of(result as T);
         };
