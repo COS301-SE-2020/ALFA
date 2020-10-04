@@ -13,7 +13,7 @@ export class SuggestionBoxComponent implements OnInit {
         link: new FormControl(''),
         description: new FormControl('')
     });
-    kb_index: number;
+    parent_link: string;
 
     constructor(private suggestionService: SuggestionService, private messageService: MessageService) { }
 
@@ -22,8 +22,8 @@ export class SuggestionBoxComponent implements OnInit {
         //     this.kb_index = data;
         //     console.log(`Emmiting index ${this.kb_index}`);
         // });
-        this.suggestionService.indexEmmiter.subscribe( data => {
-            this.kb_index = data;
+        this.suggestionService.linkEmitter.subscribe( data => {
+            this.parent_link = data;
         });
     }
 
@@ -37,9 +37,9 @@ export class SuggestionBoxComponent implements OnInit {
             return;
         }
 
-        this.suggestionService.addSuggestion(this.form.controls.link.value, this.form.controls.description.value, this.kb_index).subscribe( msg => {
+        this.suggestionService.addSuggestion(this.form.controls.link.value, this.form.controls.description.value, this.parent_link).subscribe( res => {
             this.form.reset();
-            // this.messageService.notify(msg);
+            this.messageService.notify(res.message);
         });
     }
 

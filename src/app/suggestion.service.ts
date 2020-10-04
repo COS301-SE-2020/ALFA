@@ -8,7 +8,7 @@ import { MessageService } from './message.service';
   providedIn: 'root'
 })
 export class SuggestionService {
-    indexEmmiter: EventEmitter<number> = new EventEmitter();
+    linkEmitter: EventEmitter<string> = new EventEmitter();
     // URL: string = "https://project-alfa.herokuapp.com/";
     URL: string = "https://mean-api-test-301.herokuapp.com";
 
@@ -27,11 +27,9 @@ export class SuggestionService {
             "link": _link,
             "vote": _vote
         };
-        console.log(data);
-        return this.http.post(`${this.URL}/articles/rate_article`, data).pipe(
-            tap( () => {
-                const msg = `You have ${(_vote == 1)? "upvoted":"downvoted"} the solution. We appreciate your contribution, it helps better train our Machine Learning model.`;
-                this.messageService.notify(msg);
+        return this.http.post<any>(`${this.URL}/articles/rate_article`, data).pipe(
+            tap( (res) => {
+                this.messageService.notify(res.message);
             }),
             catchError( this.handleError<any>('Solution up/down voting') )
         );
@@ -41,17 +39,20 @@ export class SuggestionService {
      * 
      * @param _url resource url
      * @param _descr resource title/description
-     * @param _index kb_index
+     * @param _parent_link url field of the parent component
      */
-    addSuggestion(_url: string, _descr: string, _index: number): Observable<any> {
+    addSuggestion(_url: string, _descr: string, _parent_link: string): Observable<any> {
         let data = {
             "link": _url,
-            "description": _descr
+            "parent_link": _parent_link,
+            "description": _descr,
+            "comment": ""
         };
 
-        return this.http.post(`${this.URL}`, data).pipe(
-            tap( () => {
-                const msg = "Suggestion added succesfully. We appreciate your contribution, it helps better train our Machine Learning model.";
+        return this.http.post<any>(`${this.URL}/articles/suggestion`, data).pipe(
+            tap( (data) => {
+                console.log(data);
+                const msg = "Suggestion added succesfully. We appreciate your contribution, it helps us help others.";
                 this.messageService.notify(msg);
             }),
             catchError( this.handleError<any>('Adding suggestion') )
@@ -69,15 +70,15 @@ export class SuggestionService {
         return this.http.get(`${this.URL}/history/${email}/${url}`).pipe(
             tap( () => {}),
             catchError( this.handleError('Fetching history item'))
-        )
+        );
     }
 
      /**
      * 
      * @param _index kb_index to emmit to the add suggestion component
      */
-    emmitKbIndex(_index: number): void {
-        this.indexEmmiter.emit(_index);
+    emmitParentLink(_link: string): void {
+        this.linkEmitter.emit(_link);
     }
 
     /**
@@ -87,7 +88,7 @@ export class SuggestionService {
    */
     private handleError<T>(operation = 'operation', result?: T){
         return (err: any): Observable<T> =>{
-            this.messageService.notify(`Operation failed, an unexpected error occured.Please try again on contact the system administrator at pyraspace301@gmail.com`);
+            this.messageService.notify(`${operation} failed.Please try again on contact the system administrator at pyraspace301@gmail.com`);
             return of(result as T);
         };
     }

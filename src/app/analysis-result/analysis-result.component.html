@@ -96,9 +96,9 @@
             </a>
         </div>
         <!-- (click)="emmitKbIndex(analysisResult.kb_index)" -->
-        <button class="btn btn-default btn-sm article-suggest mr-3" data-toggle="modal" data-target="#suggestion-modal">
+        <button class="btn btn-default btn-sm article-suggest mr-3" (click)="emmitParentLink(analysisResult.link)" data-toggle="modal" data-target="#suggestion-modal">
             <i class="fa fa-plus"></i>
-            Suggest solution
+            Suggest solution 
         </button>
         <button class="btn btn-default btn-sm btn-share" data-toggle="collapse" [attr.data-target]="'#share-result-'+index">
             <i class="fa fa-share"></i>

@@ -23,7 +23,7 @@ export class AnalysisResultComponent implements OnInit {
 
     ngOnInit(): void {
         this.analysisResult.suggestions = [];
-        
+        console.log(this.analysisResult);
         this.auth.user$.subscribe( user => {
             if(user){
                 this.router.params.subscribe( ps => {
@@ -41,20 +41,16 @@ export class AnalysisResultComponent implements OnInit {
     }
 
     upVote(_link: string): void {
-        this.suggestionService.vote(_link, 1).subscribe( msg => {
-            console.log(msg);
-        });
+        this.suggestionService.vote(_link, 1).subscribe( () => {});
     }
     
     downVote(_link: string): void {
-        this.suggestionService.vote(_link, -1).subscribe( msg => {
-            console.log(msg);
-        });
+        this.suggestionService.vote(_link, -1).subscribe( () => {});
     }
 
-    // emmitKbIndex(_index: number): void {
-    //     this.suggestionService.emmitKbIndex(_index);
-    // }
+    emmitParentLink(_link: string): void {
+        this.suggestionService.emmitParentLink(_link);
+    }
 
     whatsappShare(evt){
         this.auth.user$.subscribe( user=> {

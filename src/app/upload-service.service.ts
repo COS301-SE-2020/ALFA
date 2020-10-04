@@ -35,7 +35,6 @@ export class UploadServiceService {
      * @param payload analysis history item
      */
     saveAnalysisResult(payload: any): Observable<any>{
-        console.log("save history: " + JSON.stringify(payload));
         return this.http.post<any>( "https://mean-api-test-301.herokuapp.com/history/", payload).pipe(
             tap( () => {}),
             catchError( this.handleError<any>('Save analysis result') )

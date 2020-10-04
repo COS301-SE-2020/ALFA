@@ -119,3 +119,7 @@ li.list-group-item:nth-child(odd){
 .btn-link{
     box-shadow: none !important;
 }
+
+.comment-section{
+    background: #222;
+}
