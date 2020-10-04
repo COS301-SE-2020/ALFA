@@ -1,6 +1,8 @@
 <section class="row" id="history-item">
-    <h4 class="text-center">You are now viewing item: {{URL}}</h4>
-    <div class="col-12 col-md-8">
-        <app-analysis-result></app-analysis-result>
+    <div *ngIf="loading === true" class="col-sm-12 py-3 loaders-container">
+        <app-loader></app-loader>
+    </div>
+    <div *ngIf="loading === false" class="col-12 col-md-8">
+        <app-analysis-result [analysisResult]="historyItem"></app-analysis-result>
     </div>
 </section>

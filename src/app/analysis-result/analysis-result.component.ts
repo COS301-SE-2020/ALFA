@@ -1,11 +1,12 @@
 import { Component, OnInit, Input, EventEmitter } from '@angular/core';
-import { Router } from '@angular/router';
 import { AnalysisResult } from '../analysis-result';
 import { SuggestionService } from '../suggestion.service';
 import { MessageService } from '../message.service';
 import { first } from 'rxjs/operators';
 import { Article } from '../article';
 import { FormControl, FormGroup } from '@angular/forms';
+import { AuthService } from '../auth.service';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-analysis-result',
@@ -18,11 +19,23 @@ export class AnalysisResultComponent implements OnInit {
     firstSuggestion: any;
     shareUrl: string;
 
-    constructor(private suggestionService: SuggestionService, private messageService: MessageService, private router: Router) { }
+    constructor(private suggestionService: SuggestionService, private messageService: MessageService, private router: ActivatedRoute, private auth: AuthService) { }
 
     ngOnInit(): void {
         this.analysisResult.suggestions = [];
-        this.shareUrl = `${document.location.origin}/history/${btoa(this.analysisResult.link)}`;
+        
+        this.auth.user$.subscribe( user => {
+            if(user){
+                this.router.params.subscribe( ps => {
+                    if(ps && (ps.email && ps.url)){
+                        this.shareUrl = document.location.href;
+                    }
+                    else {
+                        this.shareUrl = `${document.location.origin}/history/${btoa(user.email).split("=")[0]}/${btoa(this.analysisResult.link)}`;
+                    }
+                });
+            }
+        })
         /* this.firstSuggestion = this.analysisResult.suggestions[0];
         this.analysisResult.suggestions = this.analysisResult.suggestions.slice(1, this.analysisResult.suggestions.length); */
     }
@@ -43,11 +56,26 @@ export class AnalysisResultComponent implements OnInit {
     //     this.suggestionService.emmitKbIndex(_index);
     // }
 
-    copyToClipboard(inputElement, historyId: string){
-        inputElement.value = this.shareUrl;
-        inputElement.select();
-        document.execCommand("copy");
-        inputElement.setSelectionRange(0, 0);
-        this.messageService.notify(`URL copied to clipboard for sharing on other platforms`);
+    whatsappShare(evt){
+        this.auth.user$.subscribe( user=> {
+            if(!user){
+                evt.preventDefault();
+                this.messageService.notify(`This functionality is only available for signed in users`);
+            }
+        })
+    }
+
+    copyToClipboard(inputElement){
+        this.auth.user$.subscribe( user => {
+            if(user){
+                inputElement.value = this.shareUrl;
+                inputElement.select();
+                document.execCommand("copy");
+                inputElement.setSelectionRange(0, 0);
+                this.messageService.notify(`URL copied to clipboard for sharing on other platforms`);
+                return;
+            }
+            this.messageService.notify(`This functionality is only available for signed in users`);
+        });
     }
 }

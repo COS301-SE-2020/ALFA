@@ -29,6 +29,7 @@ export class HistoryComponent implements OnInit {
                         this.history.push(historyEntry.log_entries);
                     })
                     this.loading = false;
+                    console.log(this.history);
                 });
                 return;
             }

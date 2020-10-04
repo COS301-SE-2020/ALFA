@@ -16,10 +16,11 @@ const routes: Routes = [
   { path: 'signup', component: SignupComponent },
   { path: 'home', component: AnalysisFormComponent },
   { path: 'about', component: AboutComponent },
-  { path: 'history', component: HistoryComponent },
-  { path: 'history/:url', component: HistoryItemComponent },
+  { path: 'history', component: HistoryComponent, canActivate: [AuthGuard] },
+  { path: 'history/:email/:url', component: HistoryItemComponent },
   { path: 'dashboard', component: DashboardComponent, canActivate: [AuthGuard] },
   { path: 'profile', component: ProfileComponent, canActivate: [AuthGuard] },
+//   { path: '**', component: AnalysisFormComponent }
 ];
 
 @NgModule({
