@@ -7,5 +7,6 @@ export interface AnalysisResult {
     kb_index: number,
     line_no: number,
     suggestions: Article[],
+    votes: number,
     _id: string
 }

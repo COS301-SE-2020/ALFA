@@ -20,13 +20,14 @@
                         <div class="col-12 m-0 mt-3 bottom-section">
                             <div class="btn-group btn-group-sm article-feedback">
                                 <a  href="javascript: void(0)" (click)="upVote(analysisResult.link)"  class="btn btn-default text-success">
-                                    <i class="fa fa-arrow-up"></i> Yes
+                                    <i class="fa fa-arrow-up"></i>
                                 </a>
                                 <span class="btn btn-default">
-                                    helpful?
+                                    <!-- {{formatVoteCount(analysisResult.votes)}} -->
+                                    {{analysisResult.votes}}
                                 </span>
                                 <a href="javascript: void(0)" (click)="downVote(analysisResult.link)" class="btn btn-default text-danger btn-sm">
-                                    <i class="fa fa-arrow-down"></i> No
+                                    <i class="fa fa-arrow-down"></i>
                                 </a>
                             </div>
                             <div class="btn-group btn-group-sm article-open ml-2">
@@ -37,11 +38,11 @@
                         </div>
                     </div>
                 </li>
-                <button *ngIf="analysisResult.suggestions.length > 0" class="btn btn-link btn-sm results-toggler" data-toggle="collapse" [attr.data-target]="'#solution-list-for-' + analysisResult.kb_index">
-                    View {{analysisResult.suggestions.length}} more solutions mapped to this error
+                <button *ngIf="analysisResult.suggestions.length > 0" class="btn btn-link btn-sm results-toggler" data-toggle="collapse" [attr.data-target]="'#solution-list-for-' + toggleSuggestionsId">
+                    View {{analysisResult.suggestions.length}} suggestions from users like you
                     <!-- <i class="fa fa-caret-down"></i> -->
                 </button>
-                <ul *ngIf="analysisResult.suggestions.length > 0" class="list-group collapse" id="solution-list-for-{{analysisResult.kb_index}}">
+                <ul *ngIf="analysisResult.suggestions.length > 0" class="list-group collapse" id="solution-list-for-{{toggleSuggestionsId}}">
                     <li class="collapse"></li>
                     <li class="list-group-item" *ngFor="let suggestion of analysisResult.suggestions">
                         <div class="small  article-origin pt-2 mb-0">{{suggestion.link.split('/')[2]}}</div>
@@ -53,16 +54,16 @@
                            1. voting
                            2. viewing/opening the solution                       
                         -->
-                        <!-- <div class="row">
+                        <div class="row">
                             <div class="col-12 m-0 mt-3 bottom-section">
                                 <div class="btn-group btn-group-sm article-feedback">
-                                    <a  href="javascript: void(0)" (click)="upVote(analysisResult.kb_index, suggestion._id)"  class="btn btn-default text-success">
+                                    <a  href="javascript: void(0)" (click)="upVote(suggestion.link)"  class="btn btn-default text-success">
                                         <i class="fa fa-arrow-up"></i> Yes
                                     </a>
                                     <span class="btn btn-default">
-                                        helpful?
+                                        {{formatVoteCount(suggestion.votes)}}
                                     </span>
-                                    <a href="javascript: void(0)" (click)="downVote(analysisResult.kb_index, suggestion._id)" class="btn btn-default text-danger btn-sm">
+                                    <a href="javascript: void(0)" (click)="downVote(suggestion.link)" class="btn btn-default text-danger btn-sm">
                                         <i class="fa fa-arrow-down"></i> No
                                     </a>
                                 </div>
@@ -72,7 +73,7 @@
                                     </a>
                                 </div>
                             </div>
-                        </div> -->
+                        </div>
                     </li>
                 </ul>
             </ul>

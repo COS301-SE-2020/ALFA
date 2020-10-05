@@ -15,14 +15,13 @@ export class ProfileComponent implements OnInit {
     ngOnInit(): void {
         this.auth.user$.subscribe( data => {
             this.user = data;
-            this.suggestionService.getUserHistoryCount(this.user.email).subscribe( data => {
-                data.length *= 10;
-                if(data.length > 99){
-                    this.logfileCount = `${(data.length/1000.0)}K`;
-                }else if(data.length > 99999){
-                    this.logfileCount = `${(data.length/1000000)}M`;
+            this.suggestionService.getUserHistoryCount(this.user.email).subscribe( res => {
+                if(res.length > 99){
+                    this.logfileCount = `${(res.length/1000.0)}K`;
+                }else if(res.length > 99999){
+                    this.logfileCount = `${(res.length/1000000)}M`;
                 }else{
-                    this.logfileCount = data.length;
+                    this.logfileCount = res.length;
                 }
             });
         });

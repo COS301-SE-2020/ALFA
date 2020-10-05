@@ -28,7 +28,7 @@ export class HistoryItemComponent implements OnInit {
     
     getHistoryItem(): any{
         this.suggestionService.getHistoryItem(this.email, this.url).subscribe( data =>{
-            if(!data){
+            if(!data || data.length <= 0){
                 this.messageService.notify("The resource you requested was not found, you will be redirected to our home page");
                 this.router.navigateByUrl("/");
                 return;

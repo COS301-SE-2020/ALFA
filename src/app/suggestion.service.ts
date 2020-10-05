@@ -87,6 +87,14 @@ export class SuggestionService {
         );
     }
 
+    getSuggestions(_link: string): Observable<any>{
+        const payload = {"parent_link": _link}
+        return this.http.post<any>(`${this.URL}/articles/getSuggestion`, payload).pipe(
+            tap( () => {}),
+            catchError( this.handleError('Getting suggestions', []) )
+        )
+    }
+
     /**
      * @param _index kb_index to emmit to the add suggestion component
      */
