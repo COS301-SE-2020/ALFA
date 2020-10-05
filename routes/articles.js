@@ -51,7 +51,7 @@ router.get('/', async(req, res)=>{
 })
 
 // Endpoint to retrieve all KB articles
-router.post('/getSuggeestions', async(req, res)=>{
+router.post('/getSuggestion', async(req, res)=>{
     try {
         const data = req.body
 
