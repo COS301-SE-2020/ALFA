@@ -9,7 +9,7 @@ const KB_Article = require('../models/kb_article')
 
  function handleErrors(error, res) {
     console.log(error!=null?error:"Check API Console For more Info")
-    // error!=null? res.json({message:error}): res.json({message:"Check API Console For more Info"}) 
+    error!=null? res.json({message:error}): res.json({message:"Something went wrong. Contact ALFA support team for more Info"}) 
  }
  
  // Endpoint to add articles to the DB
