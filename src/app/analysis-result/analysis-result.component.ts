@@ -25,7 +25,7 @@ export class AnalysisResultComponent implements OnInit {
     
     ngOnInit(): void {
         this.analysisResult.suggestions = [];
-        this.toggleSuggestionsId = btoa(this.analysisResult.link).substr(0, this.analysisResult.link.length/2);
+        this.toggleSuggestionsId = this.generateId(this.analysisResult.link);
         // get suggestions
         // console.log(this.analysisResult);
         this.suggestionService.getSuggestions(this.analysisResult.link).subscribe( res => {
@@ -107,5 +107,9 @@ export class AnalysisResultComponent implements OnInit {
                 }
             })
         }
+    }
+
+    generateId(str: string){
+        return btoa(str).substr(0, str.length/2);
     }
 }

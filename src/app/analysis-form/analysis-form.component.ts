@@ -168,6 +168,19 @@ export class AnalysisFormComponent implements OnInit {
             }
             this.analysisResults = [];
 
+             // save as a log email-log_entry pair, waiting on the endpoint
+            /**
+             * {
+             *  "email": <email>,
+             *  "log_entries": <AnalysisResult[]>
+             * }
+             */
+            this.auth.user$.subscribe( user => {
+                if(user){ // this means user is signed in
+                    this.uploadService.saveAnalysisResult({ "email": user.email, "log_entries": data}).subscribe( () => {})
+                }
+            })
+
             this.analysisResults.push({
                 "filename" : (
                     "lf-"+fileData.filename.split('.').join('-').split('_').join('-')
