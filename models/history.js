@@ -13,7 +13,11 @@ const LogEntriesSchema = mongoose.Schema({
 		type: String,
         required: true,
         unique: true
-	},
+    },
+    votes:{
+        type:Number,
+        required: true
+    }
 })
 
 const HistorySchema = mongoose.Schema({

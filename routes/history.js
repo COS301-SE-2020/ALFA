@@ -56,7 +56,8 @@ router.get('/count/:email', async(req, res)=>{
  *  "log_entries": {
  *      "link":<url>,
  *      "description":<description>,
- *      "log_entry":<error entry>
+ *      "log_entry":<error entry>,
+ *      "votes":<votes>
  *    }
  * }
  * @returns success message as an object
@@ -66,7 +67,8 @@ router.post('/', async(req,res)=>{
         let data = req.body
         const file = new History({
             email:data.email,
-            log_entries:data.log_entries
+            log_entries:data.log_entries,
+            votes:data.votes
         })
 
         const newFile = await History.create(file);
