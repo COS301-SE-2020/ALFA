@@ -73,8 +73,21 @@ export class SuggestionService {
         );
     }
 
-     /**
-     * 
+    getHistoryCount(): Observable<any>{
+        return this.http.get<any>(`${this.URL}/history/count`).pipe(
+            tap( () => {}),
+            catchError( this.handleError('Get analysis count', []) )
+        );
+    }
+
+    getUserHistoryCount(email: string): Observable<any>{
+        return this.http.get<any>(`${this.URL}/history/${email}`).pipe(
+            tap( () => {} ),
+            catchError( this.handleError('Get user analysis count', []))
+        );
+    }
+
+    /**
      * @param _index kb_index to emmit to the add suggestion component
      */
     emmitParentLink(_link: string): void {
@@ -82,10 +95,10 @@ export class SuggestionService {
     }
 
     /**
-   * @brief this function handles errors encountered during Http operations
-   * @param operation the operation that failed
-   * @param result optional value, returned as the observable result
-   */
+     * @brief this function handles errors encountered during Http operations
+     * @param operation the operation that failed
+     * @param result optional value, returned as the observable result
+     */
     private handleError<T>(operation = 'operation', result?: T){
         return (err: any): Observable<T> =>{
             this.messageService.notify(`${operation} failed.Please try again on contact the system administrator at pyraspace301@gmail.com`);

@@ -23,7 +23,7 @@ export class AnalysisResultComponent implements OnInit {
 
     ngOnInit(): void {
         this.analysisResult.suggestions = [];
-        console.log(this.analysisResult);
+        // console.log(this.analysisResult);
         this.auth.user$.subscribe( user => {
             if(user){
                 this.router.params.subscribe( ps => {
