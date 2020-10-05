@@ -11,8 +11,7 @@ const LogEntriesSchema = mongoose.Schema({
     },
 	link: {
 		type: String,
-        required: true,
-        unique: true
+        required: true
     },
     votes:{
         type:Number,
