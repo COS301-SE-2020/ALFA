@@ -14,8 +14,7 @@ const suggestionSchema = mongoose.Schema({
     },
 	link: {
 		type: String,
-        required: true,
-        unique: true
+        required: true
 	},
 })
 
