@@ -60,6 +60,7 @@ export class AnalysisResultComponent implements OnInit {
         }else link = evt.target;
 
         link.classList.add("disabled");
+        link.parentElement.children[2].classList.remove("disabled");
     }
 
     formatVoteCount(votes: number): string{
@@ -81,6 +82,7 @@ export class AnalysisResultComponent implements OnInit {
         }else link = evt.target;
 
         link.classList.add("disabled");
+        link.parentElement.children[0].classList.remove("disabled");
     }
 
     emmitParentLink(_link: string): void {
