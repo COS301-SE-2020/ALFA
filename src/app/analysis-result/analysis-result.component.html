@@ -19,14 +19,14 @@
                     <div class="row">
                         <div class="col-12 m-0 mt-3 bottom-section">
                             <div class="btn-group btn-group-sm article-feedback">
-                                <a  href="javascript: void(0)" (click)="upVote(analysisResult.link)"  class="btn btn-default text-success"  title="up vote solution">
+                                <a  href="javascript: void(0)" (click)="upVote(analysisResult.link, $event)"  class="btn btn-default text-success"  title="up vote solution">
                                     <i class="fa fa-arrow-up"></i>
                                 </a>
                                 <span class="btn btn-default">
                                     <!-- {{formatVoteCount(analysisResult.votes)}} -->
                                     {{analysisResult.votes}}
                                 </span>
-                                <a href="javascript: void(0)" (click)="downVote(analysisResult.link)" class="btn btn-default text-danger btn-sm"  title="down vote solution">
+                                <a href="javascript: void(0)" (click)="downVote(analysisResult.link, $event)" class="btn btn-default text-danger btn-sm"  title="down vote solution">
                                     <i class="fa fa-arrow-down"></i>
                                 </a>
                             </div>
@@ -57,13 +57,13 @@
                         <div class="row">
                             <div class="col-12 m-0 mt-3 bottom-section">
                                 <div class="btn-group btn-group-sm article-feedback">
-                                    <a  href="javascript: void(0)" (click)="upVote(suggestion.link)"  class="btn btn-default text-success" title="up vote solution">
+                                    <a  href="javascript: void(0)" (click)="upVote(suggestion.link, $event)"  class="btn btn-default text-success" title="up vote solution">
                                         <i class="fa fa-arrow-up"></i>
                                     </a>
                                     <span class="btn btn-default">
                                         {{formatVoteCount(suggestion.votes)}}
                                     </span>
-                                    <a href="javascript: void(0)" (click)="downVote(suggestion.link)" class="btn btn-default text-danger btn-sm"  title="down vote solution">
+                                    <a href="javascript: void(0)" (click)="downVote(suggestion.link, $event)" class="btn btn-default text-danger btn-sm"  title="down vote solution">
                                         <i class="fa fa-arrow-down"></i>
                                     </a>
                                 </div>

@@ -50,9 +50,16 @@ export class AnalysisResultComponent implements OnInit {
         this.analysisResult.suggestions = this.analysisResult.suggestions.slice(1, this.analysisResult.suggestions.length); */
     }
 
-    upVote(_link: string): void {
+    upVote(_link: string, evt): void {
         this.suggestionService.vote(_link, 1).subscribe( () => {});
         this.updateVotes(_link, 1);
+
+        let link = null;
+        if(evt.target.classList[0].indexOf("fa") != -1){
+            link = evt.target.parentElement;
+        }else link = evt.target;
+
+        link.classList.add("disabled");
     }
 
     formatVoteCount(votes: number): string{
@@ -64,9 +71,16 @@ export class AnalysisResultComponent implements OnInit {
         return `${votes}`
     }
     
-    downVote(_link: string): void {
+    downVote(_link: string, evt): void {
         this.suggestionService.vote(_link, -1).subscribe( () => {});
         this.updateVotes(_link, -1);
+        
+        let link = null;
+        if(evt.target.classList[0].indexOf("fa") != -1){
+            link = evt.target.parentElement;
+        }else link = evt.target;
+
+        link.classList.add("disabled");
     }
 
     emmitParentLink(_link: string): void {
