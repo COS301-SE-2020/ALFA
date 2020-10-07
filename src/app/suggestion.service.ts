@@ -11,6 +11,7 @@ export class SuggestionService {
     linkEmitter: EventEmitter<string> = new EventEmitter();
     // URL: string = "https://project-alfa.herokuapp.com/";
     URL: string = "https://mean-api-test-301.herokuapp.com";
+    addSuggestionEvt: EventEmitter<any> = new EventEmitter();
 
     constructor(private http: HttpClient, private messageService: MessageService) { }
 
@@ -50,10 +51,11 @@ export class SuggestionService {
         };
 
         return this.http.post<any>(`${this.URL}/articles/suggestion`, data).pipe(
-            tap( (data) => {
-                console.log(data);
+            tap( (res) => {
+                // console.log(res);
                 const msg = "Suggestion added succesfully. We appreciate your contribution, it helps us help others.";
                 this.messageService.notify(msg);
+                this.addSuggestionEvt.emit(data);
             }),
             catchError( this.handleError<any>('Adding suggestion') )
         );

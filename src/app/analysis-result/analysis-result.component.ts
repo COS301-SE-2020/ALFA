@@ -28,6 +28,14 @@ export class AnalysisResultComponent implements OnInit {
         this.toggleSuggestionsId = this.generateId(this.analysisResult.link);
         // get suggestions
         // console.log(this.analysisResult);
+
+        this.suggestionService.addSuggestionEvt.subscribe( res => {
+            // console.log(res);
+            if(this.analysisResult.link === res.parent_link){
+                this.analysisResult.suggestions.push(res);
+            }
+        })
+
         this.suggestionService.getSuggestions(this.analysisResult.link).subscribe( res => {
             if(res && res.suggestions){
                 this.analysisResult.suggestions = res.suggestions.slice(1, res.suggestions.length);

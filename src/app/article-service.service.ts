@@ -9,7 +9,7 @@ import { MessageService } from './message.service';
   providedIn: 'root'
 })
 export class ArticleServiceService {
-    URL: string = "https://project-alfa.herokuapp.com/articles";
+    URL: string = "https://mean-api-test-301.herokuapp.com";
     suggestionFormPayload: any = null;
 
     constructor(private http: HttpClient, private messageService: MessageService) { }

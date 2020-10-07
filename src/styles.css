@@ -10,6 +10,9 @@ body{
 .primary-bg-color{
     background-color: #7851a9
 }
+.btn-link{
+    color: #fff !important;
+}
 
 /* loader container */
 .loaders-container{

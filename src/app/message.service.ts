@@ -11,6 +11,6 @@ export class MessageService {
     constructor() { }
 
     notify(msg: string): void {
-        this.notifier.emit(msg);
+        this.notifier.emit(msg); 
     }
 }

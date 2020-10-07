@@ -24,10 +24,19 @@ export class HistoryComponent implements OnInit {
         this.auth.user$.subscribe( user => {
             if(user){
                 this.suggestionService.getHistory(user.email).subscribe( data => {
-                    // console.log("Data: " + JSON.stringify(data));
+                    let tmpLinks = new Set();
                     data.forEach( historyEntry => {
                         this.history.push(historyEntry.log_entries);
-                    })
+                    });
+                    this.history.forEach( entry => {
+                        entry.forEach( (e, index) => {
+                            if( tmpLinks.has(e.link) ){
+                                entry = entry.splice(index, 1);
+                            }else{
+                                tmpLinks.add(e.link);
+                            }
+                        });
+                    });
                     this.loading = false;
                 });
                 return;
